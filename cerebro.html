@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerebro Digital — Emilio Moreno</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Chatea con el Cerebro Digital de Emilio Moreno. Un asistente conversacional con todas sus reflexiones, ideas de tecnología, inteligencia artificial y podcasts.">
+    <meta name="keywords" content="Emilio Moreno, chatbot, cerebro digital, reflexiones, inteligencia artificial, tecnología, mindfulness">
+    <meta name="author" content="Emilio Moreno">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="cerebro.css">
+</head>
+<body>
+
+    <!-- Background Grid Effect -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <!-- Header -->
+    <header id="main-header" class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo" id="nav-logo">
+                <span class="logo-dot"></span>emiliomoreno<span class="logo-ext">.com</span>
+            </a>
+            <a href="index.html" class="nav-back-home" id="btn-back-home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="back-arrow-icon">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Volver al sitio principal
+            </a>
+        </div>
+    </header>
+
+    <!-- Chat Container -->
+    <main class="chat-main-container">
+        <div class="chat-box">
+            
+            <!-- Chat Header Info -->
+            <div class="chat-box-header">
+                <div class="bot-info">
+                    <span class="bot-status-active"></span>
+                    <div>
+                        <h2>Cerebro Digital</h2>
+                        <p>Pregúntame sobre mis notas de IA, tiempo, decisiones o podcasts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Topics / Tags -->
+            <div class="quick-tags-container">
+                <button class="quick-tag-btn" data-tag="ia">#IA & Software</button>
+                <button class="quick-tag-btn" data-tag="tiempo">#GestiónDelTiempo</button>
+                <button class="quick-tag-btn" data-tag="decisiones">#TomaDeDecisiones</button>
+                <button class="quick-tag-btn" data-tag="podcast">#Podcasts</button>
+            </div>
+
+            <!-- Chat Message Log -->
+            <div class="chat-log" id="chat-log">
+                <!-- Welcome Message (Rendered on load) -->
+                <div class="chat-message bot-message">
+                    <div class="message-bubble welcome-bubble">
+                        <h3>🧠 ¡Hola! Bienvenido a mi Cerebro Digital.</h3>
+                        <p>
+                            Este es un prototipo conversacional diseñado para que puedas explorar de forma interactiva las reflexiones, marcas de dominios y temas de tecnología que voy registrando en mi camino.
+                        </p>
+                        <p>
+                            Puedes escribirme cualquier pregunta en la barra inferior o hacer clic en las etiquetas de arriba para ver notas específicas. Por ejemplo, pregúntame: 
+                            <em>"¿Qué opinas sobre el peso de las decisiones?"</em> o <em>"Háblame de IA"</em>.
+                        </p>
+                    </div>
+                </div>
+                <!-- Dynamic messages go here -->
+            </div>
+
+            <!-- Chat Input Form -->
+            <div class="chat-input-bar">
+                <div class="input-wrapper">
+                    <input type="text" id="chat-input" placeholder="Pregúntame algo sobre mis reflexiones..." autocomplete="off">
+                    <button id="btn-send" aria-label="Enviar mensaje">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <p>&copy; 2026 Emilio Moreno. Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-right">
+                <span class="status-dot"></span>
+                <span class="status-text">Cerebro Digital V1.0 (Local AI Simulation)</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vercel Web Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- JS Link -->
+    <script src="cerebro.js"></script>
+</body>
+</html>
