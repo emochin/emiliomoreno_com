@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emilio Moreno — Desarrollador & Diseñador de Productos Digitales</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio y landing page de Emilio Moreno. Creador de productos digitales como weigh-up.com y whatstime.net. Desarrollador web y diseñador enfocado en rendimiento y estética visual.">
+    <meta name="keywords" content="Emilio Moreno, desarrollo web, diseño UI UX, weigh-up, whatstime, portfolio, desarrollador frontend">
+    <meta name="author" content="Emilio Moreno">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://emiliomoreno.com/">
+    <meta property="og:title" content="Emilio Moreno — Desarrollador & Diseñador de Productos Digitales">
+    <meta property="og:description" content="Portfolio y landing page de Emilio Moreno. Creador de productos digitales como weigh-up.com y whatstime.net.">
+    <meta property="og:image" content="https://emiliomoreno.com/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://emiliomoreno.com/">
+    <meta property="twitter:title" content="Emilio Moreno — Desarrollador & Diseñador de Productos Digitales">
+    <meta property="twitter:description" content="Portfolio y landing page de Emilio Moreno. Creador de productos digitales como weigh-up.com y whatstime.net.">
+    <meta property="twitter:image" content="https://emiliomoreno.com/assets/og-image.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Background Grid Effect -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <!-- Header / Navigation -->
+    <header id="main-header" class="header">
+        <div class="header-container">
+            <a href="#" class="logo" id="nav-logo">
+                <span class="logo-dot"></span>emiliomoreno<span class="logo-ext">.com</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#proyectos" class="nav-link">Proyectos</a>
+                <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+                <a href="#contacto" class="nav-link btn-header">Contacto</a>
+            </nav>
+
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-tag animate-fade-in">Disponible para nuevos proyectos</div>
+                <h1 class="hero-title animate-slide-up" id="hero-main-title">
+                    Construyendo productos <span class="gradient-text">digitales con propósito.</span>
+                </h1>
+                <p class="hero-subtitle animate-slide-up-delayed">
+                    Soy Emilio Moreno. Me dedico a conceptualizar, diseñar y desarrollar soluciones web interactivas que combinan una estética premium con un rendimiento excepcional.
+                </p>
+                <div class="hero-actions animate-slide-up-delayed-more">
+                    <a href="#proyectos" class="btn btn-primary" id="btn-hero-projects">Explorar Proyectos</a>
+                    <a href="#contacto" class="btn btn-secondary" id="btn-hero-contact">Contactar</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="proyectos" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Portafolio</span>
+                    <h2 class="section-title">Proyectos Destacados</h2>
+                    <p class="section-desc">Una selección de las plataformas digitales que he creado, diseñado y puesto en marcha.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: Weigh-up.com -->
+                    <article class="project-card" id="card-weigh-up">
+                        <div class="project-glow" style="--glow-color: rgba(99, 102, 241, 0.15);"></div>
+                        <div class="project-header">
+                            <span class="project-category">Productividad & Business</span>
+                            <span class="project-status status-active">Activo</span>
+                        </div>
+                        <h3 class="project-card-title">weigh-up.com</h3>
+                        <p class="project-card-desc">
+                            Una herramienta inteligente de análisis de decisiones y balance de opciones. Diseñada para ayudar a profesionales y equipos a ponderar variables complejas y tomar decisiones basadas en datos.
+                        </p>
+                        <div class="project-tags">
+                            <span>SaaS</span>
+                            <span>UI/UX</span>
+                            <span>React</span>
+                        </div>
+                        <a href="https://weigh-up.com" target="_blank" rel="noopener" class="project-link" id="link-weigh-up">
+                            Visitar proyecto 
+                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- Project 2: Whatstime.net -->
+                    <article class="project-card" id="card-whatstime">
+                        <div class="project-glow" style="--glow-color: rgba(6, 182, 212, 0.15);"></div>
+                        <div class="project-header">
+                            <span class="project-category">Utilidad Global</span>
+                            <span class="project-status status-active">Activo</span>
+                        </div>
+                        <h3 class="project-card-title">whatstime.net</h3>
+                        <p class="project-card-desc">
+                            Planificador horario y visualizador de zonas horarias minimalista. Simplifica la programación de reuniones y la coordinación entre equipos distribuidos geográficamente de manera intuitiva.
+                        </p>
+                        <div class="project-tags">
+                            <span>Herramienta</span>
+                            <span>Minimalista</span>
+                            <span>Vanilla JS</span>
+                        </div>
+                        <a href="https://whatstime.net" target="_blank" rel="noopener" class="project-link" id="link-whatstime">
+                            Visitar proyecto
+                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- Project 3: emiliomoreno.com / .es -->
+                    <article class="project-card" id="card-emiliomoreno">
+                        <div class="project-glow" style="--glow-color: rgba(168, 85, 247, 0.15);"></div>
+                        <div class="project-header">
+                            <span class="project-category">Identidad Personal</span>
+                            <span class="project-status status-active">Activo</span>
+                        </div>
+                        <h3 class="project-card-title">emiliomoreno.com <span class="card-alias">/ .es</span></h3>
+                        <p class="project-card-desc">
+                            Este sitio web. Un espacio personal diseñado desde cero para centralizar mis proyectos, compartir ideas y servir como canal directo de comunicación con clientes e interesados en mi trabajo.
+                        </p>
+                        <div class="project-tags">
+                            <span>Web</span>
+                            <span>Responsive</span>
+                            <span>Git Workflow</span>
+                        </div>
+                        <a href="#" class="project-link" id="link-emiliomoreno-self">
+                            Ver código fuente
+                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="sobre-mi" class="about-section">
+            <div class="container about-container">
+                <div class="about-content">
+                    <span class="section-tag">Perfil</span>
+                    <h2 class="section-title">Sobre Mí</h2>
+                    <p class="about-text">
+                        Hola, soy Emilio. Me apasiona crear productos digitales que no solo funcionen perfectamente, sino que también deleiten visualmente a quienes los utilizan.
+                    </p>
+                    <p class="about-text">
+                        Con un enfoque multidisciplinar en diseño de interfaces y desarrollo front-end, dedico mi tiempo a optimizar la experiencia de usuario y a implementar flujos de desarrollo ágiles y ordenados mediante Git.
+                    </p>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-icon">✨</span>
+                            <div>
+                                <h4>Diseño UI / UX</h4>
+                                <p>Interfaces refinadas, limpias y centradas en el usuario.</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">💻</span>
+                            <div>
+                                <h4>Frontend Dev</h4>
+                                <p>Código moderno en Javascript, HTML5, CSS3, React y Next.js.</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">🚀</span>
+                            <div>
+                                <h4>Optimización</h4>
+                                <p>Rendimiento óptimo, carga ultra rápida y buenas prácticas SEO.</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">🐙</span>
+                            <div>
+                                <h4>Control de Versiones</h4>
+                                <p>Gestión limpia de repositorios y despliegue continuo con Git.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <div class="contact-card">
+                    <div class="contact-glow"></div>
+                    <div class="contact-content">
+                        <h2 class="contact-title">¿Tienes un proyecto en mente?</h2>
+                        <p class="contact-desc">
+                            Hablemos sobre cómo podemos dar vida a tus ideas con una presencia digital sólida y atractiva.
+                        </p>
+                        <div class="contact-actions">
+                            <a href="mailto:hola@emiliomoreno.com" class="btn btn-primary" id="link-email">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                Enviar Correo
+                            </a>
+                            <div class="social-links">
+                                <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub" id="social-github">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" id="social-linkedin">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <p>&copy; 2026 Emilio Moreno. Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-right">
+                <span class="status-dot"></span>
+                <span class="status-text">Sistemas Operativos & SSL Verificado</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Link -->
+    <script src="index.js"></script>
+</body>
+</html>
