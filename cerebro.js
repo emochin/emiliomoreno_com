@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: "estrategia-ia",
             date: "2026-05-28",
-            title: "Modelos de lenguaje en la transformación digital",
+            title: "Criterios de elección y arquitectura para LLMs",
             tag: "#IA",
-            text: "La verdadera transformación digital no consiste en añadir Inteligencia Artificial porque esté de moda, sino en integrarla estratégicamente en la arquitectura de negocio. Los modelos de lenguaje (LLMs) no son solo chatbots; son motores cognitivos capaces de automatizar flujos de información, sintetizar conocimientos y asistir en la toma de decisiones. Para que aporten valor real, la estrategia de IA debe centrarse en casos de uso concretos y en la calidad del contexto y los datos que alimentan al modelo.",
+            text: "Al integrar modelos de lenguaje (LLMs), la elección del modelo y la arquitectura de soporte son decisiones críticas. No siempre se requiere el modelo comercial más potente; a veces, modelos de código abierto locales o especializados ofrecen mayor control de privacidad, menor latencia y menor coste. Arquitectónicamente, la clave está en desacoplar la aplicación del modelo concreto mediante capas de abstracción y optimizar el contexto (RAG) en lugar de intentar reentrenar modelos de forma innecesaria.",
             source: "LinkedIn (Milko C.)",
             sourceUrl: "https://www.linkedin.com/posts/milkocc_estrategiaia-modelosdelenguaje-transformaciaejndigital-share-7463302192670859265-DAyu/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAForToBmuOb9IOAkN9w-5u2wvgTIv2Z3pc",
             link: "https://www.linkedin.com/posts/milkocc_estrategiaia-modelosdelenguaje-transformaciaejndigital-share-7463302192670859265-DAyu/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAForToBmuOb9IOAkN9w-5u2wvgTIv2Z3pc",
