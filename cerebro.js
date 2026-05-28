@@ -91,23 +91,17 @@ document.addEventListener('DOMContentLoaded', () => {
         sortedReflections.forEach((note) => {
             const card = document.createElement('article');
             card.className = 'blog-card';
+            const targetUrl = note.sourceUrl || note.link;
             card.innerHTML = `
                 <div class="blog-card-meta">
                     <span class="blog-card-date">
                         ${formatDate(note.date)} — 
-                        ${note.sourceUrl ? `vía <a href="${note.sourceUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source} <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `vía ${note.source}`}
+                        ${targetUrl ? `vía <a href="${targetUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source} <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `vía ${note.source}`}
                     </span>
                     <span class="blog-card-tag">${note.tag}</span>
                 </div>
                 <h3 class="blog-card-title">${note.title}</h3>
                 <p class="blog-card-text">"${note.text}"</p>
-                <a href="${note.link}" target="_blank" rel="noopener" class="blog-card-link">
-                    ${note.linkLabel}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
             `;
             reflectionsFeedList.appendChild(card);
         });
@@ -282,16 +276,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Return matched response
         if (matchKey && brainMap[matchKey]) {
             const note = brainMap[matchKey];
+            const targetUrl = note.sourceUrl || note.link;
             return `
                 <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:1px; font-weight:700;">
-                    He encontrado una nota sobre ${note.tag} (${formatDate(note.date)}) ${note.sourceUrl ? `— <a href="${note.sourceUrl}" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.15rem; font-weight:700;">vía ${note.source} <svg style="width:10px; height:10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `— vía ${note.source}`}
+                    He encontrado una nota sobre ${note.tag} (${formatDate(note.date)}) ${targetUrl ? `— <a href="${targetUrl}" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.15rem; font-weight:700;">vía ${note.source} <svg style="width:10px; height:10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `— vía ${note.source}`}
                 </div>
                 <h4 style="font-size:1rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-primary);">${note.title}</h4>
-                <p style="color:var(--text-secondary); margin-bottom:0.75rem;">"${note.text}"</p>
-                <a href="${note.link}" target="_blank" rel="noopener" style="color:var(--color-primary); font-weight:600; text-decoration:none; font-size:0.85rem; display:inline-flex; align-items:center; gap:0.25rem;">
-                    ${note.linkLabel}
-                    <svg style="width:12px; height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
+                <p style="color:var(--text-secondary); margin-bottom:0.25rem;">"${note.text}"</p>
             `;
         }
 
