@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2026-05-28",
             title: "Criterios de elección y arquitectura para LLMs",
             tag: "#IA",
+            image: "img/reflection-llm.png",
             text: "Al integrar modelos de lenguaje (LLMs), la elección del modelo y la arquitectura de soporte son decisiones críticas. No siempre se requiere el modelo comercial más potente; a veces, modelos de código abierto locales o especializados ofrecen mayor control de privacidad, menor latencia y menor coste. Arquitectónicamente, la clave está en desacoplar la aplicación del modelo concreto mediante capas de abstracción y optimizar el contexto (RAG) en lugar de intentar reentrenar modelos de forma innecesaria.",
             source: "LinkedIn (Milko C.)",
             sourceUrl: "https://www.linkedin.com/posts/milkocc_estrategiaia-modelosdelenguaje-transformaciaejndigital-share-7463302192670859265-DAyu/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAForToBmuOb9IOAkN9w-5u2wvgTIv2Z3pc",
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2026-05-28",
             title: "Copilotos en el desarrollo de software",
             tag: "#IA",
+            image: "img/reflection-copilot.png",
             text: "La Inteligencia Artificial no va a reemplazar a los desarrolladores, sino a aquellos que no la utilicen. En mi día a día, la veo como un copiloto de ingeniería de primer nivel: le delego la sintaxis repetitiva, las estructuras estándar y las pruebas rápidas, lo que me permite liberar ancho de banda mental para concentrarme en lo que importa: la arquitectura, el diseño de la lógica de negocio y la experiencia de usuario final. Menos picar código, más diseñar soluciones pragmáticas.",
             source: "LinkedIn",
             sourceUrl: "https://www.linkedin.com/in/emiliomorenochinchilla",
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2026-05-24",
             title: "Atención vs Calendario",
             tag: "#Tiempo",
+            image: "img/reflection-tiempo.png",
             text: "Solemos obsesionarnos con la gestión del tiempo, cuando en realidad lo que debemos gestionar es la atención. De nada sirve tener un bloque de 3 horas reservado en tu Google Calendar si tu mente está dispersa o sobreestimulada por notificaciones. Crear whatstime.net nació precisamente de esa inquietud: la necesidad de crear un espacio digital minimalista para 'limpiar' la atención antes de enfocarse en tareas complejas.",
             source: "whatstime.net",
             link: "https://whatstime.net",
@@ -57,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2026-05-20",
             title: "El verdadero peso de las opciones",
             tag: "#Decisiones",
+            image: "img/reflection-decisiones.png",
             text: "Cuando usas una lista de pros y contras para tomar una decisión (de ahí el concepto detrás de weigh-up.com), el error común es contar cuántos puntos hay en cada lado de la lista. En la realidad, las decisiones se toman por peso moral o estratégico. Un solo 'contra' con peso de importancia 5 (como comprometer tu salud, tus valores o el tiempo familiar) debe ganar por goleada a cinco 'pros' con peso de importancia 1. Ponderar con honestidad es el verdadero camino al crecimiento personal.",
             source: "weigh-up.com",
             link: "https://weigh-up.com",
@@ -67,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2026-05-15",
             title: "La neurociencia detrás del enfoque",
             tag: "#Podcasts",
+            image: "img/reflection-podcast.png",
             text: "Hace poco escuché un episodio fascinante en un podcast sobre la neurociencia del enfoque. Explicaban cómo nuestro cerebro está programado evolutivamente para reaccionar a las interrupciones, y cómo las notificaciones móviles explotan esa debilidad. Mi consejo práctico: mantén el móvil en modo 'No molestar' permanentemente y deja solo llamadas de emergencia en tu lista de excepciones. El aumento en tu capacidad de concentración profunda en solo una semana te sorprenderá.",
             source: "Spotify",
             sourceUrl: "https://open.spotify.com/show/79CkJv3rnGaqNHJbHQf328",
@@ -134,15 +139,18 @@ document.addEventListener('DOMContentLoaded', () => {
             card.id = `nota-${note.id}`;
             const targetUrl = note.sourceUrl || note.link;
             card.innerHTML = `
-                <div class="blog-card-meta">
-                    <span class="blog-card-date">
-                        ${formatDate(note.date)} — 
-                        ${targetUrl ? `vía <a href="${targetUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source} <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `vía ${note.source}`}
-                    </span>
-                    <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
+                ${note.image ? `<div class="blog-card-image"><img src="${note.image}" alt="${note.title}" loading="lazy"></div>` : ''}
+                <div class="blog-card-body">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">
+                            ${formatDate(note.date)} — 
+                            ${targetUrl ? `vía <a href="${targetUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source} <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `vía ${note.source}`}
+                        </span>
+                        <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
+                    </div>
+                    <h3 class="blog-card-title">${note.title}</h3>
+                    <p class="blog-card-text">"${note.text}"</p>
                 </div>
-                <h3 class="blog-card-title">${note.title}</h3>
-                <p class="blog-card-text">"${note.text}"</p>
             `;
             reflectionsFeedList.appendChild(card);
         });
