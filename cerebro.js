@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tag: "#IA",
             text: "La Inteligencia Artificial no va a reemplazar a los desarrolladores, sino a aquellos que no la utilicen. En mi día a día, la veo como un copiloto de ingeniería de primer nivel: le delego la sintaxis repetitiva, las estructuras estándar y las pruebas rápidas, lo que me permite liberar ancho de banda mental para concentrarme en lo que importa: la arquitectura, el diseño de la lógica de negocio y la experiencia de usuario final. Menos picar código, más diseñar soluciones pragmáticas.",
             source: "LinkedIn",
+            sourceUrl: "https://www.linkedin.com/in/emilio-moreno-b3bb164b/",
             link: "https://emiliomoreno.com#sobre-mi",
             linkLabel: "Ver mi perfil"
         },
@@ -56,7 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "La neurociencia detrás del enfoque",
             tag: "#Podcasts",
             text: "Hace poco escuché un episodio fascinante en un podcast sobre la neurociencia del enfoque. Explicaban cómo nuestro cerebro está programado evolutivamente para reaccionar a las interrupciones, y cómo las notificaciones móviles explotan esa debilidad. Mi consejo práctico: mantén el móvil en modo 'No molestar' permanentemente y deja solo llamadas de emergencia en tu lista de excepciones. El aumento en tu capacidad de concentración profunda en solo una semana te sorprenderá.",
-            source: "Podcast recomendado",
+            source: "Spotify",
+            sourceUrl: "https://open.spotify.com/show/79CkJv3rnGaqNHJbHQf328",
             link: "https://whatstime.net",
             linkLabel: "Ver whatstime.net"
         }
@@ -80,7 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'blog-card';
             card.innerHTML = `
                 <div class="blog-card-meta">
-                    <span class="blog-card-date">${formatDate(note.date)} — vía ${note.source}</span>
+                    <span class="blog-card-date">
+                        ${formatDate(note.date)} — 
+                        ${note.sourceUrl ? `vía <a href="${note.sourceUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source} <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `vía ${note.source}`}
+                    </span>
                     <span class="blog-card-tag">${note.tag}</span>
                 </div>
                 <h3 class="blog-card-title">${note.title}</h3>
@@ -266,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const note = brainMap[matchKey];
             return `
                 <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:1px; font-weight:700;">
-                    He encontrado una nota sobre ${note.tag} (${formatDate(note.date)})
+                    He encontrado una nota sobre ${note.tag} (${formatDate(note.date)}) ${note.sourceUrl ? `— <a href="${note.sourceUrl}" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.15rem; font-weight:700;">vía ${note.source} <svg style="width:10px; height:10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `— vía ${note.source}`}
                 </div>
                 <h4 style="font-size:1rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-primary);">${note.title}</h4>
                 <p style="color:var(--text-secondary); margin-bottom:0.75rem;">"${note.text}"</p>

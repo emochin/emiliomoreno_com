@@ -165,6 +165,28 @@
     color: var(--text-muted);
 }
 
+.blog-card-source-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    transition: var(--transition-smooth);
+    border-bottom: 1px dashed rgba(139, 92, 246, 0.3);
+}
+
+.blog-card-source-link:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+}
+
+.external-link-icon {
+    width: 10px;
+    height: 10px;
+    stroke-width: 2.5;
+}
+
 .blog-card-tag {
     color: var(--color-primary);
     background: rgba(139, 92, 246, 0.08);
