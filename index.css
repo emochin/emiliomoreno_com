@@ -591,12 +591,20 @@ body {
 }
 
 .skill-icon {
-    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
-    padding: 0.5rem;
+    padding: 0.625rem;
     border-radius: 12px;
-    line-height: 1;
+}
+
+.skill-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-primary);
+    display: block;
 }
 
 .skill-item h4 {
