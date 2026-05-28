@@ -73,10 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
             tag: "#Podcasts",
             image: "img/reflection-podcast.png",
             text: "Hace poco escuché un episodio fascinante en un podcast sobre la neurociencia del enfoque. Explicaban cómo nuestro cerebro está programado evolutivamente para reaccionar a las interrupciones, y cómo las notificaciones móviles explotan esa debilidad. Mi consejo práctico: mantén el móvil en modo 'No molestar' permanentemente y deja solo llamadas de emergencia en tu lista de excepciones. El aumento en tu capacidad de concentración profunda en solo una semana te sorprenderá.",
-            source: "Spotify",
-            sourceUrl: "https://open.spotify.com/show/79CkJv3rnGaqNHJbHQf328",
-            link: "https://whatstime.net",
-            linkLabel: "Ver whatstime.net"
+            source: "Podcast",
+            link: null,
+            linkLabel: null
         }
     ];
 
