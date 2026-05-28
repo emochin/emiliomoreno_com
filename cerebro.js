@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tag: "#IA",
             text: "La Inteligencia Artificial no va a reemplazar a los desarrolladores, sino a aquellos que no la utilicen. En mi día a día, la veo como un copiloto de ingeniería de primer nivel: le delego la sintaxis repetitiva, las estructuras estándar y las pruebas rápidas, lo que me permite liberar ancho de banda mental para concentrarme en lo que importa: la arquitectura, el diseño de la lógica de negocio y la experiencia de usuario final. Menos picar código, más diseñar soluciones pragmáticas.",
             source: "LinkedIn",
-            sourceUrl: "https://www.linkedin.com/in/emilio-moreno-b3bb164b/",
+            sourceUrl: "https://www.linkedin.com/in/emiliomorenochinchilla",
             link: "https://emiliomoreno.com#sobre-mi",
             linkLabel: "Ver mi perfil"
         },
