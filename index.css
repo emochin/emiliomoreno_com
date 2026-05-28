@@ -319,6 +319,20 @@ body {
     transform: translateY(-3px);
 }
 
+.btn-cerebro {
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.btn-cerebro:hover {
+    background: rgba(139, 92, 246, 0.18);
+    border-color: rgba(139, 92, 246, 0.7);
+    box-shadow: 0 6px 24px rgba(139, 92, 246, 0.25);
+    transform: translateY(-3px);
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 3rem;
