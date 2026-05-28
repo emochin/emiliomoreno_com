@@ -6,14 +6,14 @@
     <title>Cerebro Digital — Emilio Moreno</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Chatea con el Cerebro Digital de Emilio Moreno. Un asistente conversacional con todas sus reflexiones, ideas de tecnología, inteligencia artificial y podcasts.">
-    <meta name="keywords" content="Emilio Moreno, chatbot, cerebro digital, reflexiones, inteligencia artificial, tecnología, mindfulness">
+    <meta name="description" content="Chatea con el Cerebro Digital de Emilio Moreno o lee su feed cronológico de reflexiones sobre tecnología, inteligencia artificial y productividad.">
+    <meta name="keywords" content="Emilio Moreno, blog, chatbot, cerebro digital, reflexiones, inteligencia artificial, tecnología">
     <meta name="author" content="Emilio Moreno">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <!-- CSS Links -->
     <link rel="stylesheet" href="index.css">
@@ -36,66 +36,118 @@
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
-                Volver al sitio principal
+                Volver
             </a>
         </div>
     </header>
 
-    <!-- Chat Container -->
-    <main class="chat-main-container">
-        <div class="chat-box">
+    <!-- Mobile Tabs (Visible only on mobile screens in Dual View) -->
+    <div class="mobile-tabs-bar" id="mobile-tabs-navigation">
+        <button class="mobile-tab-btn active" data-tab="feed">📋 Feed de Notas</button>
+        <button class="mobile-tab-btn" data-tab="chat">💬 Asistente IA</button>
+    </div>
+
+    <!-- Layout Switcher (Desktop and Tablet) -->
+    <div class="layout-switcher-container container">
+        <div class="layout-switcher">
+            <span class="switcher-label">Modo de vista:</span>
+            <div class="switcher-buttons">
+                <button class="switcher-btn active" id="btn-layout-split" title="Ver notas y asistente lado a lado">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="switcher-icon">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="12" y1="3" x2="12" y2="21"></line>
+                    </svg>
+                    <span>Vista Dual</span>
+                </button>
+                <button class="switcher-btn" id="btn-layout-blog" title="Ver notas a ancho completo y chat flotante">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="switcher-icon">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="15" y2="18"></line>
+                    </svg>
+                    <span>Blog Clásico</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Layout -->
+    <main class="cerebro-layout-container container" id="main-layout-wrapper">
+        
+        <!-- Left Column: Blog Feed of Notes -->
+        <section class="feed-column active" id="column-feed">
+            <div class="column-header">
+                <span class="column-tag">Bitácora</span>
+                <h1 class="column-title">Reflexiones <span class="serif-text">& Notas</span></h1>
+                <p class="column-desc">Un historial cronológico de ideas interesantes, recomendaciones y aprendizajes en el camino.</p>
+            </div>
             
-            <!-- Chat Header Info -->
-            <div class="chat-box-header">
-                <div class="bot-info">
-                    <span class="bot-status-active"></span>
-                    <div>
-                        <h2>Cerebro Digital</h2>
-                        <p>Pregúntame sobre mis notas de IA, tiempo, decisiones o podcasts.</p>
+            <!-- Dynamic Blog Feed Container -->
+            <div class="reflections-feed" id="reflections-feed-list">
+                <!-- Dynamically loaded via JS -->
+            </div>
+        </section>
+
+        <!-- Right Column: Chatbot -->
+        <section class="chat-column" id="column-chat">
+            <div class="chat-box">
+                
+                <!-- Chat Header Info -->
+                <div class="chat-box-header">
+                    <div class="bot-info">
+                        <span class="bot-status-active"></span>
+                        <div>
+                            <h2>Asistente Conversacional</h2>
+                            <p>Consulta mis reflexiones mediante lenguaje natural.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Quick Topics / Tags -->
-            <div class="quick-tags-container">
-                <button class="quick-tag-btn" data-tag="ia">#IA & Software</button>
-                <button class="quick-tag-btn" data-tag="tiempo">#GestiónDelTiempo</button>
-                <button class="quick-tag-btn" data-tag="decisiones">#TomaDeDecisiones</button>
-                <button class="quick-tag-btn" data-tag="podcast">#Podcasts</button>
-            </div>
-
-            <!-- Chat Message Log -->
-            <div class="chat-log" id="chat-log">
-                <!-- Welcome Message (Rendered on load) -->
-                <div class="chat-message bot-message">
-                    <div class="message-bubble welcome-bubble">
-                        <h3>🧠 ¡Hola! Bienvenido a mi Cerebro Digital.</h3>
-                        <p>
-                            Este es un prototipo conversacional diseñado para que puedas explorar de forma interactiva las reflexiones, marcas de dominios y temas de tecnología que voy registrando en mi camino.
-                        </p>
-                        <p>
-                            Puedes escribirme cualquier pregunta en la barra inferior o hacer clic en las etiquetas de arriba para ver notas específicas. Por ejemplo, pregúntame: 
-                            <em>"¿Qué opinas sobre el peso de las decisiones?"</em> o <em>"Háblame de IA"</em>.
-                        </p>
-                    </div>
-                </div>
-                <!-- Dynamic messages go here -->
-            </div>
-
-            <!-- Chat Input Form -->
-            <div class="chat-input-bar">
-                <div class="input-wrapper">
-                    <input type="text" id="chat-input" placeholder="Pregúntame algo sobre mis reflexiones..." autocomplete="off">
-                    <button id="btn-send" aria-label="Enviar mensaje">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    <button class="chat-close-btn" id="chat-close-btn" aria-label="Cerrar chat" title="Cerrar chat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="close-icon">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                     </button>
                 </div>
-            </div>
 
-        </div>
+                <!-- Quick Topics / Tags -->
+                <div class="quick-tags-container">
+                    <button class="quick-tag-btn" data-tag="ia">#IA</button>
+                    <button class="quick-tag-btn" data-tag="tiempo">#Tiempo</button>
+                    <button class="quick-tag-btn" data-tag="decisiones">#Decisiones</button>
+                    <button class="quick-tag-btn" data-tag="podcast">#Podcasts</button>
+                </div>
+
+                <!-- Chat Message Log -->
+                <div class="chat-log" id="chat-log">
+                    <div class="chat-message bot-message">
+                        <div class="message-bubble welcome-bubble">
+                            <h3>🧠 Pregúntale a mi Gemelo Digital</h3>
+                            <p>
+                                Este asistente tiene acceso a todas mis reflexiones del feed de la izquierda. 
+                            </p>
+                            <p>
+                                Puedes hacerle preguntas como: <em>"¿Qué opinas del tiempo?"</em> o <em>"Recomiéndame un podcast"</em> y te contestará basándose en mis notas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input Form -->
+                <div class="chat-input-bar">
+                    <div class="input-wrapper">
+                        <input type="text" id="chat-input" placeholder="Pregúntame sobre mis notas..." autocomplete="off">
+                        <button id="btn-send" aria-label="Enviar mensaje">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -106,13 +158,19 @@
             </div>
             <div class="footer-right">
                 <span class="status-dot"></span>
-                <span class="status-text">Cerebro Digital V1.0 (Local AI Simulation)</span>
+                <span class="status-text">Cerebro Digital Dual V2.0</span>
             </div>
         </div>
     </footer>
 
-    <!-- Vercel Web Analytics -->
-    <script defer src="/_vercel/insights/script.js"></script>
+    <!-- Floating Chat Button (FAB) -->
+    <button class="floating-chat-fab" id="floating-chat-fab" aria-label="Preguntar al Gemelo Digital" title="Preguntar al Gemelo Digital">
+        <span class="fab-pulse"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="fab-icon">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="fab-text">Gemelo Digital</span>
+    </button>
 
     <!-- JS Link -->
     <script src="cerebro.js"></script>
