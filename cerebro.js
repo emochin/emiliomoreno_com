@@ -305,34 +305,34 @@ document.addEventListener('DOMContentLoaded', () => {
         // Topic and Keyword checking
         if (q.includes('estrategia') || q.includes('transformac') || q.includes('negocio') || q.includes('modelo') || q.includes('llm') || q.includes('empresa') || q.includes('organiza') || q.includes('arquitectura') || q.includes('rag')) {
             matchTopic = 'estrategia-ia';
-            summaryText = "En cuanto a la **arquitectura y selección de modelos de lenguaje (LLMs)**, Emilio sugiere no usar por defecto el modelo comercial más potente. Recomienda diseñar capas de abstracción para no depender de un único proveedor y optimizar el contexto mediante técnicas como RAG, evaluando modelos locales o especializados de código abierto para reducir costes, latencia y mejorar la privacidad.";
+            summaryText = "Cuando pienso en **arquitectura y selección de modelos de lenguaje (LLMs)**, mi postura es clara: no hay que usar por defecto el modelo comercial más potente. Diseño capas de abstracción para no depender de un único proveedor, y optimizo el contexto mediante técnicas como RAG, evaluando modelos locales o especializados de código abierto para reducir costes, latencia y mejorar la privacidad.";
             notesToLink = ['estrategia-ia'];
         } else if (q.includes('copiloto') || q.includes('desarrolla') || q.includes('program') || q.includes('código') || q.includes('sintaxis') || q.includes('ingeniería')) {
             matchTopic = 'desarrollo-ia';
-            summaryText = "Sobre el **desarrollo y copilotos de IA**, Emilio defiende que las herramientas de IA son asistentes de ingeniería de primer nivel. Su enfoque es pragmático: delegar a la IA la sintaxis repetitiva, tareas mecánicas y pruebas rápidas, liberando ancho de banda mental para concentrarse en lo estratégico: la arquitectura del software y el diseño lógico.";
+            summaryText = "Sobre el **desarrollo y copilotos de IA**, soy bastante pragmático: uso las herramientas de IA como asistentes de ingeniería de primer nivel. Mi enfoque es delegar la sintaxis repetitiva, tareas mecánicas y pruebas rápidas a la IA, y así liberar ancho de banda mental para concentrarme en lo estratégico: la arquitectura del software y el diseño lógico.";
             notesToLink = ['ia'];
         } else if (q.includes('ia') || q.includes('inteligencia') || q.includes('artificial')) {
             matchTopic = 'general-ia';
-            summaryText = "Emilio tiene una visión muy pragmática sobre la **Inteligencia Artificial**: la ve como un copiloto en el día a día para delegar tareas mecánicas, y aconseja aplicar criterios de arquitectura flexibles y eficientes al integrar modelos (LLMs), priorizando modelos locales y técnicas de contexto (RAG) en lugar de soluciones sobredimensionadas.";
+            summaryText = "Tengo una visión muy pragmática sobre la **Inteligencia Artificial**: la uso como copiloto en el día a día para delegar tareas mecánicas, y aplico criterios de arquitectura flexibles y eficientes al integrar modelos (LLMs), priorizando modelos locales y técnicas de contexto (RAG) en lugar de soluciones sobredimensionadas.";
             notesToLink = ['estrategia-ia', 'ia'];
         } else if (q.includes('tiempo') || q.includes('whatstime') || q.includes('atencion') || q.includes('mindfulness') || q.includes('concentra') || q.includes('enfoque')) {
             matchTopic = 'tiempo';
-            summaryText = "Emilio opina que lo verdaderamente importante no es gestionar el tiempo, sino la **gestión de la atención**. Vivimos rodeados de distracciones diseñadas para capturar nuestro enfoque. Por ello, creó su proyecto `whatstime.net` como un espacio digital minimalista para 'limpiar' la atención antes de realizar tareas complejas.";
+            summaryText = "Para mí, lo verdaderamente importante no es gestionar el tiempo, sino la **gestión de la atención**. Vivimos rodeados de distracciones diseñadas para capturar nuestro enfoque. Por eso creé `whatstime.net`: un espacio digital minimalista para 'limpiar' la atención antes de realizar tareas complejas.";
             notesToLink = ['tiempo'];
         } else if (q.includes('decision') || q.includes('weigh-up') || q.includes('sopesar') || q.includes('opcion') || q.includes('peso') || q.includes('equilibrio')) {
             matchTopic = 'decisiones';
-            summaryText = "Para la **toma de decisiones**, Emilio propone que no se trata de contar la cantidad de pros y contras. El verdadero camino es evaluar el *peso moral o estratégico* de cada punto. Un solo contra con mucho peso (como comprometer tu salud o familia) debe imponerse sobre múltiples pros menores. De este concepto nació su herramienta interactiva `weigh-up.com`.";
+            summaryText = "Para la **toma de decisiones**, no se trata de contar la cantidad de pros y contras. Lo que importa es el *peso moral o estratégico* de cada punto. Un solo contra con mucho peso —como comprometer mi salud o tiempo familiar— debe imponerse sobre múltiples pros menores. De este concepto nació mi herramienta interactiva `weigh-up.com`.";
             notesToLink = ['decisiones'];
         } else if (q.includes('podcast') || q.includes('escuchar') || q.includes('recomiend') || q.includes('notificac') || q.includes('movil') || q.includes('spotify') || q.includes('neurociencia')) {
             matchTopic = 'podcast';
-            summaryText = "Emilio se inspira en aprendizajes de **podcasts de neurociencia** y recomienda proteger el enfoque de forma activa. Su consejo más práctico es desactivar por completo las notificaciones del móvil, manteniéndolo en modo 'No molestar' permanentemente y configurando únicamente excepciones de llamadas de emergencia en la lista blanca.";
+            summaryText = "Me inspiro mucho en **podcasts de neurociencia** y recomiendo proteger el enfoque de forma activa. Mi consejo más práctico: desactiva por completo las notificaciones del móvil, manénlo en modo 'No molestar' permanentemente y configura solo excepciones de llamadas de emergencia. El aumento en tu capacidad de concentración profunda en una semana te sorprenderá.";
             notesToLink = ['podcast'];
         }
 
         // Return matched response with summaries and note links
         if (matchTopic && notesToLink.length > 0) {
             let replyHtml = `<p style="margin-bottom:0.75rem; font-size:0.92rem; line-height:1.5; color:var(--text-primary);">${summaryText}</p>`;
-            replyHtml += `<div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; border-top: 1px solid var(--border-color); padding-top:0.6rem; margin-top:0.6rem; margin-bottom:0.4rem; letter-spacing:0.5px;">Notas de Emilio asociadas:</div>`;
+            replyHtml += `<div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; border-top: 1px solid var(--border-color); padding-top:0.6rem; margin-top:0.6rem; margin-bottom:0.4rem; letter-spacing:0.5px;">Mis notas asociadas:</div>`;
             
             notesToLink.forEach(id => {
                 const note = brainMap[id];
@@ -344,8 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span>${formatDate(note.date)}</span>
                                 ${targetUrl ? `<a href="${targetUrl}" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.15rem; font-weight:700;">vía ${note.source} <svg style="width:9px; height:9px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `<span>vía ${note.source}</span>`}
                             </div>
-                            <h5 style="font-size:0.82rem; font-weight:700; margin-bottom:0.25rem; color:var(--text-primary);">${note.title}</h5>
-                            <p style="color:var(--text-secondary); font-size:0.78rem; line-height:1.45; margin:0;">"${note.text}"</p>
+                            <h5 style="font-size:0.82rem; font-weight:700; margin-bottom:0.25rem; color:var(--text-primary);"><a href="${targetUrl}" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">${note.title}</a></h5>
+
                         </div>
                     `;
                 }
@@ -356,18 +356,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Greetings
         if (q.includes('hola') || q.includes('buenas') || q.includes('quien eres') || q.includes('ayuda') || q.includes('saludo')) {
             return `
-                <p style="margin-bottom:0.5rem;">¡Hola! Soy el asistente de este Cerebro Digital.</p>
-                <p style="color:var(--text-secondary);">
-                    Puedo buscar entre las reflexiones del feed de la izquierda y responder a tus preguntas sobre <strong>Inteligencia Artificial</strong>, <strong>atención y tiempo</strong>, <strong>toma de decisiones</strong> o <strong>podcasts</strong>.
-                </p>
-            `;
+                    <p style="margin-bottom:0.5rem;">¡Hola! Soy Emilio, y este es mi Cerebro Digital.</p>
+                    <p style="color:var(--text-secondary);">
+                        Puedo buscar entre mis reflexiones del feed de la izquierda y responder a tus preguntas sobre <strong>Inteligencia Artificial</strong>, <strong>atención y tiempo</strong>, <strong>toma de decisiones</strong> o <strong>podcasts</strong>.
+                    </p>`;
         }
 
         // Fallback
         return `
-            <p style="margin-bottom:0.5rem;">No he encontrado apuntes específicos en mi memoria para tu consulta.</p>
+            <p style="margin-bottom:0.5rem;">No tengo apuntes específicos en mi memoria para esa consulta.</p>
             <p style="color:var(--text-secondary); margin-bottom:0.5rem;">
-                Prueba a preguntarme sobre mis reflexiones en:
+                Prueba a preguntarme sobre:
             </p>
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.4rem;">
                 <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Estrategia LLM'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Modelos LLM</button>
