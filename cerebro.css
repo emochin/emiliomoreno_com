@@ -355,14 +355,13 @@
     gap: 0.75rem;
 }
 
-.bot-status-active {
-    width: 8px;
-    height: 8px;
-    background-color: #34d399;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 8px #34d399;
-    animation: pulse-dot 2s infinite ease-in-out;
+.bot-avatar {
+    font-size: 1.6rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .bot-info h2 {
