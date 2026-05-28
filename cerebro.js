@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayReflections.forEach((note) => {
             const card = document.createElement('article');
             card.className = 'blog-card';
+            card.id = `nota-${note.id}`;
             const targetUrl = note.sourceUrl || note.link;
             card.innerHTML = `
                 <div class="blog-card-meta">
@@ -250,6 +251,37 @@ document.addEventListener('DOMContentLoaded', () => {
         messageDiv.appendChild(bubble);
         chatLog.appendChild(messageDiv);
         scrollToBottom();
+
+        // Wire up note-link clicks: scroll to & highlight the feed card
+        if (isHtml) {
+            bubble.querySelectorAll('a.note-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const noteId = link.getAttribute('data-note-id');
+                    const targetCard = document.getElementById(`nota-${noteId}`);
+                    if (!targetCard) return;
+
+                    // In blog mode, switch to feed; in split mode, switch mobile tab to feed
+                    if (document.body.classList.contains('layout-mode-blog-active')) {
+                        columnFeed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        // Switch mobile tab to feed if needed
+                        mobileTabButtons.forEach(b => b.classList.remove('active'));
+                        const feedTab = document.querySelector('.mobile-tab-btn[data-tab="feed"]');
+                        if (feedTab) feedTab.classList.add('active');
+                        columnFeed.classList.add('active');
+                        columnChat.classList.remove('active');
+                    }
+
+                    // Scroll to card and flash highlight
+                    setTimeout(() => {
+                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        targetCard.classList.add('card-highlight');
+                        setTimeout(() => targetCard.classList.remove('card-highlight'), 2000);
+                    }, 150);
+                });
+            });
+        }
     }
 
     function showTypingIndicator() {
@@ -337,15 +369,10 @@ document.addEventListener('DOMContentLoaded', () => {
             notesToLink.forEach(id => {
                 const note = brainMap[id];
                 if (note) {
-                    const targetUrl = note.sourceUrl || note.link;
                     replyHtml += `
-                        <div style="background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:12px; padding:0.75rem; margin-bottom:0.5rem; text-align:left;">
-                            <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:0.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.25rem;">
-                                <span>${formatDate(note.date)}</span>
-                                ${targetUrl ? `<a href="${targetUrl}" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.15rem; font-weight:700;">vía ${note.source} <svg style="width:9px; height:9px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `<span>vía ${note.source}</span>`}
-                            </div>
-                            <h5 style="font-size:0.82rem; font-weight:700; margin-bottom:0.25rem; color:var(--text-primary);"><a href="${targetUrl}" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">${note.title}</a></h5>
-
+                        <div style="background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:12px; padding:0.6rem 0.75rem; margin-bottom:0.5rem; text-align:left;">
+                            <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:0.2rem;">${formatDate(note.date)}</div>
+                            <h5 style="font-size:0.82rem; font-weight:700; margin:0; color:var(--color-primary);"><a href="#nota-${note.id}" data-note-id="${note.id}" class="note-link" style="color:inherit; text-decoration:none;">${note.title}</a></h5>
                         </div>
                     `;
                 }
