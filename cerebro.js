@@ -21,6 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Brain Database: Emilio's thoughts & reflections (Chronological Array)
     const reflections = [
         {
+            id: "estrategia-ia",
+            date: "2026-05-28",
+            title: "Modelos de lenguaje en la transformación digital",
+            tag: "#IA",
+            text: "La verdadera transformación digital no consiste en añadir Inteligencia Artificial porque esté de moda, sino en integrarla estratégicamente en la arquitectura de negocio. Los modelos de lenguaje (LLMs) no son solo chatbots; son motores cognitivos capaces de automatizar flujos de información, sintetizar conocimientos y asistir en la toma de decisiones. Para que aporten valor real, la estrategia de IA debe centrarse en casos de uso concretos y en la calidad del contexto y los datos que alimentan al modelo.",
+            source: "LinkedIn (Milko C.)",
+            sourceUrl: "https://www.linkedin.com/posts/milkocc_estrategiaia-modelosdelenguaje-transformaciaejndigital-share-7463302192670859265-DAyu/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAForToBmuOb9IOAkN9w-5u2wvgTIv2Z3pc",
+            link: "https://www.linkedin.com/posts/milkocc_estrategiaia-modelosdelenguaje-transformaciaejndigital-share-7463302192670859265-DAyu/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAForToBmuOb9IOAkN9w-5u2wvgTIv2Z3pc",
+            linkLabel: "Ver en LinkedIn"
+        },
+        {
             id: "ia",
             date: "2026-05-28",
             title: "Copilotos en el desarrollo de software",
@@ -256,7 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let matchKey = null;
 
         // Keyword checking
-        if (q.includes('ia') || q.includes('inteligencia') || q.includes('artificial') || q.includes('software') || q.includes('program') || q.includes('copiloto')) {
+        if (q.includes('estrategia') || q.includes('transformac') || q.includes('negocio') || q.includes('modelo') || q.includes('llm') || q.includes('empresa') || q.includes('organiza')) {
+            matchKey = 'estrategia-ia';
+        } else if (q.includes('ia') || q.includes('inteligencia') || q.includes('artificial') || q.includes('software') || q.includes('program') || q.includes('copiloto')) {
             matchKey = 'ia';
         } else if (q.includes('tiempo') || q.includes('whatstime') || q.includes('atencion') || q.includes('mindfulness') || q.includes('concentra') || q.includes('enfoque')) {
             matchKey = 'tiempo';
