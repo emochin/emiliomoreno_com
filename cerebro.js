@@ -298,36 +298,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getBotResponse(query) {
         const q = query.toLowerCase();
-        let matchKey = null;
+        let matchTopic = null;
+        let summaryText = "";
+        let notesToLink = [];
 
-        // Keyword checking
-        if (q.includes('estrategia') || q.includes('transformac') || q.includes('negocio') || q.includes('modelo') || q.includes('llm') || q.includes('empresa') || q.includes('organiza')) {
-            matchKey = 'estrategia-ia';
-        } else if (q.includes('ia') || q.includes('inteligencia') || q.includes('artificial') || q.includes('software') || q.includes('program') || q.includes('copiloto')) {
-            matchKey = 'ia';
+        // Topic and Keyword checking
+        if (q.includes('estrategia') || q.includes('transformac') || q.includes('negocio') || q.includes('modelo') || q.includes('llm') || q.includes('empresa') || q.includes('organiza') || q.includes('arquitectura') || q.includes('rag')) {
+            matchTopic = 'estrategia-ia';
+            summaryText = "En cuanto a la **arquitectura y selección de modelos de lenguaje (LLMs)**, Emilio sugiere no usar por defecto el modelo comercial más potente. Recomienda diseñar capas de abstracción para no depender de un único proveedor y optimizar el contexto mediante técnicas como RAG, evaluando modelos locales o especializados de código abierto para reducir costes, latencia y mejorar la privacidad.";
+            notesToLink = ['estrategia-ia'];
+        } else if (q.includes('copiloto') || q.includes('desarrolla') || q.includes('program') || q.includes('código') || q.includes('sintaxis') || q.includes('ingeniería')) {
+            matchTopic = 'desarrollo-ia';
+            summaryText = "Sobre el **desarrollo y copilotos de IA**, Emilio defiende que las herramientas de IA son asistentes de ingeniería de primer nivel. Su enfoque es pragmático: delegar a la IA la sintaxis repetitiva, tareas mecánicas y pruebas rápidas, liberando ancho de banda mental para concentrarse en lo estratégico: la arquitectura del software y el diseño lógico.";
+            notesToLink = ['ia'];
+        } else if (q.includes('ia') || q.includes('inteligencia') || q.includes('artificial')) {
+            matchTopic = 'general-ia';
+            summaryText = "Emilio tiene una visión muy pragmática sobre la **Inteligencia Artificial**: la ve como un copiloto en el día a día para delegar tareas mecánicas, y aconseja aplicar criterios de arquitectura flexibles y eficientes al integrar modelos (LLMs), priorizando modelos locales y técnicas de contexto (RAG) en lugar de soluciones sobredimensionadas.";
+            notesToLink = ['estrategia-ia', 'ia'];
         } else if (q.includes('tiempo') || q.includes('whatstime') || q.includes('atencion') || q.includes('mindfulness') || q.includes('concentra') || q.includes('enfoque')) {
-            matchKey = 'tiempo';
+            matchTopic = 'tiempo';
+            summaryText = "Emilio opina que lo verdaderamente importante no es gestionar el tiempo, sino la **gestión de la atención**. Vivimos rodeados de distracciones diseñadas para capturar nuestro enfoque. Por ello, creó su proyecto `whatstime.net` como un espacio digital minimalista para 'limpiar' la atención antes de realizar tareas complejas.";
+            notesToLink = ['tiempo'];
         } else if (q.includes('decision') || q.includes('weigh-up') || q.includes('sopesar') || q.includes('opcion') || q.includes('peso') || q.includes('equilibrio')) {
-            matchKey = 'decisiones';
-        } else if (q.includes('podcast') || q.includes('escuchar') || q.includes('recomiend') || q.includes('notificac') || q.includes('movil')) {
-            matchKey = 'podcast';
+            matchTopic = 'decisiones';
+            summaryText = "Para la **toma de decisiones**, Emilio propone que no se trata de contar la cantidad de pros y contras. El verdadero camino es evaluar el *peso moral o estratégico* de cada punto. Un solo contra con mucho peso (como comprometer tu salud o familia) debe imponerse sobre múltiples pros menores. De este concepto nació su herramienta interactiva `weigh-up.com`.";
+            notesToLink = ['decisiones'];
+        } else if (q.includes('podcast') || q.includes('escuchar') || q.includes('recomiend') || q.includes('notificac') || q.includes('movil') || q.includes('spotify') || q.includes('neurociencia')) {
+            matchTopic = 'podcast';
+            summaryText = "Emilio se inspira en aprendizajes de **podcasts de neurociencia** y recomienda proteger el enfoque de forma activa. Su consejo más práctico es desactivar por completo las notificaciones del móvil, manteniéndolo en modo 'No molestar' permanentemente y configurando únicamente excepciones de llamadas de emergencia en la lista blanca.";
+            notesToLink = ['podcast'];
         }
 
-        // Return matched response
-        if (matchKey && brainMap[matchKey]) {
-            const note = brainMap[matchKey];
-            const targetUrl = note.sourceUrl || note.link;
-            return `
-                <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:1px; font-weight:700;">
-                    He encontrado una nota sobre ${note.tag} (${formatDate(note.date)}) ${targetUrl ? `— <a href="${targetUrl}" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.15rem; font-weight:700;">vía ${note.source} <svg style="width:10px; height:10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `— vía ${note.source}`}
-                </div>
-                <h4 style="font-size:1rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-primary);">${note.title}</h4>
-                <p style="color:var(--text-secondary); margin-bottom:0.25rem;">"${note.text}"</p>
-            `;
+        // Return matched response with summaries and note links
+        if (matchTopic && notesToLink.length > 0) {
+            let replyHtml = `<p style="margin-bottom:0.75rem; font-size:0.92rem; line-height:1.5; color:var(--text-primary);">${summaryText}</p>`;
+            replyHtml += `<div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; border-top: 1px solid var(--border-color); padding-top:0.6rem; margin-top:0.6rem; margin-bottom:0.4rem; letter-spacing:0.5px;">Notas de Emilio asociadas:</div>`;
+            
+            notesToLink.forEach(id => {
+                const note = brainMap[id];
+                if (note) {
+                    const targetUrl = note.sourceUrl || note.link;
+                    replyHtml += `
+                        <div style="background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:12px; padding:0.75rem; margin-bottom:0.5rem; text-align:left;">
+                            <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:0.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.25rem;">
+                                <span>${formatDate(note.date)}</span>
+                                ${targetUrl ? `<a href="${targetUrl}" target="_blank" rel="noopener" style="color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.15rem; font-weight:700;">vía ${note.source} <svg style="width:9px; height:9px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `<span>vía ${note.source}</span>`}
+                            </div>
+                            <h5 style="font-size:0.82rem; font-weight:700; margin-bottom:0.25rem; color:var(--text-primary);">${note.title}</h5>
+                            <p style="color:var(--text-secondary); font-size:0.78rem; line-height:1.45; margin:0;">"${note.text}"</p>
+                        </div>
+                    `;
+                }
+            });
+            return replyHtml;
         }
 
         // Greetings
-        if (q.includes('hola') || q.includes('buenas') || q.includes('quien eres') || q.includes('ayuda')) {
+        if (q.includes('hola') || q.includes('buenas') || q.includes('quien eres') || q.includes('ayuda') || q.includes('saludo')) {
             return `
                 <p style="margin-bottom:0.5rem;">¡Hola! Soy el asistente de este Cerebro Digital.</p>
                 <p style="color:var(--text-secondary);">
@@ -343,7 +370,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 Prueba a preguntarme sobre mis reflexiones en:
             </p>
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.4rem;">
-                <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Háblame de IA'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#IA</button>
+                <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Estrategia LLM'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Modelos LLM</button>
+                <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Copilotos de IA'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Copilotos</button>
                 <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Reflexión sobre el tiempo'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Tiempo</button>
                 <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Balanza de Decisiones'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Decisiones</button>
             </div>
@@ -361,8 +389,14 @@ document.addEventListener('DOMContentLoaded', () => {
     quickTags.forEach(btn => {
         btn.addEventListener('click', () => {
             const tag = btn.getAttribute('data-tag');
-            if (brainMap[tag]) {
-                chatInput.value = `Háblame de ${brainMap[tag].tag}`;
+            let queryText = "";
+            if (tag === "ia") queryText = "Inteligencia Artificial";
+            else if (tag === "tiempo") queryText = "Reflexión sobre el tiempo";
+            else if (tag === "decisiones") queryText = "Toma de decisiones";
+            else if (tag === "podcast") queryText = "Recomiéndame un podcast";
+            
+            if (queryText) {
+                chatInput.value = queryText;
                 sendMessage();
             }
         });
