@@ -81,6 +81,25 @@ document.addEventListener('DOMContentLoaded', () => {
         return acc;
     }, {});
 
+    // --- Tag Filtering Logic State ---
+    let currentTagFilter = null;
+
+    // Event delegation for tag clicks inside reflectionsFeedList
+    reflectionsFeedList.addEventListener('click', (e) => {
+        const tagElement = e.target.closest('.blog-card-tag');
+        if (tagElement) {
+            const tagText = tagElement.textContent.trim();
+            filterByTag(tagText);
+        }
+    });
+
+    function filterByTag(tag) {
+        currentTagFilter = tag;
+        renderBlogFeed();
+        // Smooth scroll to top of feed column
+        columnFeed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     // --- Render Blog Feed (Chronological, Newest First) ---
     function renderBlogFeed() {
         reflectionsFeedList.innerHTML = '';
@@ -88,7 +107,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sort chronologically (just in case the array isn't ordered)
         const sortedReflections = [...reflections].sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        sortedReflections.forEach((note) => {
+        // Filter reflections if a tag filter is active
+        let displayReflections = sortedReflections;
+        if (currentTagFilter) {
+            displayReflections = sortedReflections.filter(note => note.tag.toLowerCase() === currentTagFilter.toLowerCase());
+
+            // Create and append the filter status bar at the top of the feed
+            const filterBar = document.createElement('div');
+            filterBar.className = 'filter-status-bar';
+            filterBar.innerHTML = `
+                <span>Filtrado por: <strong>${currentTagFilter}</strong> (${displayReflections.length} ${displayReflections.length === 1 ? 'nota' : 'notas'})</span>
+                <button class="clear-filter-btn" id="btn-clear-filter">Ver todas</button>
+            `;
+            reflectionsFeedList.appendChild(filterBar);
+
+            // Add clear filter event listener
+            filterBar.querySelector('#btn-clear-filter').addEventListener('click', () => {
+                currentTagFilter = null;
+                renderBlogFeed();
+            });
+        }
+
+        displayReflections.forEach((note) => {
             const card = document.createElement('article');
             card.className = 'blog-card';
             const targetUrl = note.sourceUrl || note.link;
@@ -98,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${formatDate(note.date)} — 
                         ${targetUrl ? `vía <a href="${targetUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source} <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `vía ${note.source}`}
                     </span>
-                    <span class="blog-card-tag">${note.tag}</span>
+                    <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
                 </div>
                 <h3 class="blog-card-title">${note.title}</h3>
                 <p class="blog-card-text">"${note.text}"</p>

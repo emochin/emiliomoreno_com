@@ -193,6 +193,54 @@
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
     border: 1px solid rgba(139, 92, 246, 0.15);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    user-select: none;
+}
+
+.blog-card-tag:hover {
+    background: rgba(139, 92, 246, 0.18);
+    border-color: rgba(139, 92, 246, 0.35);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+/* --- Filter Status Bar --- */
+.filter-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(139, 92, 246, 0.04);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    padding: 0.8rem 1.4rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    animation: fade-in-down 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.filter-status-bar strong {
+    color: var(--color-primary);
+}
+
+.clear-filter-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.35rem 0.95rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.clear-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
 }
 
 .blog-card-title {
