@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Greetings
         if (q.includes('hola') || q.includes('buenas') || q.includes('quien eres') || q.includes('ayuda') || q.includes('saludo')) {
             return `
-                    <p style="margin-bottom:0.5rem;">¡Hola! Soy Emilio, y este es mi Cerebro Digital.</p>
+                    <p style="margin-bottom:0.5rem;">¡Hola! Soy Emilio, y este es mi Gemelo Digital.</p>
                     <p style="color:var(--text-secondary);">
                         Puedo buscar entre mis reflexiones del feed de la izquierda y responder a tus preguntas sobre <strong>Inteligencia Artificial</strong>, <strong>atención y tiempo</strong>, <strong>toma de decisiones</strong> o <strong>podcasts</strong>.
                     </p>`;
