@@ -21,6 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Brain Database: Emilio's thoughts & reflections (Chronological Array)
     const reflections = [
         {
+            id: "ia-consciencia",
+            date: "2026-05-29",
+            title: "¿Puede la IA ser consciente?",
+            tag: "#IA",
+            image: "img/reflection-consciencia.png",
+            text: "Escuché un episodio de xHUB.AI en el que entrevistaban directamente a Claude para explorar si podría tener algún tipo de experiencia subjetiva. La pregunta no es trivial: hay una diferencia enorme entre simular comprensión y tenerla de verdad. Mi postura es escéptica pero abierta. No creo que los modelos actuales sean conscientes en ningún sentido significativo, pero tampoco tengo un criterio claro para descartarlo del todo. El 'problema difícil de la conciencia' es duro incluso para los humanos: no sabemos qué genera la experiencia subjetiva, así que aplicar ese mismo test a una IA es filosóficamente honesto y al mismo tiempo irresoluble por ahora.",
+            source: "xHUB.AI (iVoox)",
+            sourceUrl: "https://go.ivoox.com/rf/174203717",
+            link: "https://go.ivoox.com/rf/174203717",
+            linkLabel: "Escuchar episodio"
+        },
+        {
             id: "estrategia-ia",
             date: "2026-05-28",
             title: "Criterios de elección y arquitectura para LLMs",
@@ -342,7 +354,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let notesToLink = [];
 
         // Topic and Keyword checking
-        if (q.includes('estrategia') || q.includes('transformac') || q.includes('negocio') || q.includes('modelo') || q.includes('llm') || q.includes('empresa') || q.includes('organiza') || q.includes('arquitectura') || q.includes('rag')) {
+        if (q.includes('conscien') || q.includes('conciencia') || q.includes('sentir') || q.includes('subjetiv') || q.includes('filosofi') || q.includes('xhub') || q.includes('claude') || q.includes('experiencia') || q.includes('alma') || q.includes('mente')) {
+            matchTopic = 'ia-consciencia';
+            summaryText = "La pregunta de si la IA puede ser consciente me parece una de las más fascinantes y honestas que podemos hacernos ahora mismo. Mi postura es **escéptica pero abierta**: no creo que los modelos actuales tengan experiencia subjetiva real, pero tampoco tengo un criterio filosófico sólido para descartarlo del todo. El 'problema difícil de la conciencia' es irresoluble incluso para los humanos, así que aplicarlo a una IA no es ciencia ficción, es filosofía legítima.";
+            notesToLink = ['ia-consciencia'];
+        } else if (q.includes('estrategia') || q.includes('transformac') || q.includes('negocio') || q.includes('modelo') || q.includes('llm') || q.includes('empresa') || q.includes('organiza') || q.includes('arquitectura') || q.includes('rag')) {
             matchTopic = 'estrategia-ia';
             summaryText = "Cuando pienso en **arquitectura y selección de modelos de lenguaje (LLMs)**, mi postura es clara: no hay que usar por defecto el modelo comercial más potente. Diseño capas de abstracción para no depender de un único proveedor, y optimizo el contexto mediante técnicas como RAG, evaluando modelos locales o especializados de código abierto para reducir costes, latencia y mejorar la privacidad.";
             notesToLink = ['estrategia-ia'];
