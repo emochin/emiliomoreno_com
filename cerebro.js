@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatLog = document.getElementById('chat-log');
     const chatInput = document.getElementById('chat-input');
     const btnSend = document.getElementById('btn-send');
-    const quickTags = document.querySelectorAll('.quick-tag-btn');
+    const quickTagsContainer = document.getElementById('quick-tags-container');
     const reflectionsFeedList = document.getElementById('reflections-feed-list');
     
     // Mobile Tabs Navigation
@@ -439,25 +439,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') sendMessage();
     });
 
-    // Quick Tags Click
-    quickTags.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tag = btn.getAttribute('data-tag');
-            let queryText = "";
-            if (tag === "ia") queryText = "Inteligencia Artificial";
-            else if (tag === "tiempo") queryText = "Reflexión sobre el tiempo";
-            else if (tag === "decisiones") queryText = "Toma de decisiones";
-            else if (tag === "podcast") queryText = "Recomiéndame un podcast";
-            
-            if (queryText) {
-                chatInput.value = queryText;
+    // Pool de sugerencias aleatorias
+    const suggestionPool = [
+        { label: "¿Puede la IA ser consciente?",        query: "¿Crees que la IA puede ser consciente?" },
+        { label: "Recomiéndame un podcast",            query: "Recomiéndame un podcast" },
+        { label: "¿Cómo eliges un modelo LLM?",         query: "¿Cómo elegir un modelo LLM?" },
+        { label: "Gestión de la atención",             query: "¿Cómo gestionas tu atención?" },
+        { label: "IA como copiloto",                    query: "¿Cómo usas la IA en tu día a día?" },
+        { label: "Tomar mejores decisiones",            query: "¿Cómo tomar mejores decisiones?" },
+        { label: "Arquitectura con RAG",                query: "Explícame qué es RAG y cuándo usarlo" },
+        { label: "Notificaciones y foco",               query: "Qué opinas de las notificaciones del móvil" },
+        { label: "IA open source vs comercial",         query: "Modelos de código abierto vs comerciales" },
+        { label: "Filosofía de la mente artificial",   query: "¿Tiene mente la IA?" },
+        { label: "Weigh-up: sopesar opciones",          query: "Cómo usas weigh-up para decidir" },
+        { label: "¿Qué es whatstime.net?",             query: "Cuéntame sobre whatstime.net" },
+    ];
+
+    function renderSuggestions() {
+        const container = document.getElementById('quick-tags-container');
+        if (!container) return;
+        // Mezclar y coger 4
+        const shuffled = [...suggestionPool].sort(() => Math.random() - 0.5).slice(0, 4);
+        container.innerHTML = '';
+        shuffled.forEach(({ label, query }) => {
+            const btn = document.createElement('button');
+            btn.className = 'quick-tag-btn';
+            btn.textContent = label;
+            btn.addEventListener('click', () => {
+                chatInput.value = query;
                 sendMessage();
-            }
+            });
+            container.appendChild(btn);
         });
-    });
+    }
 
     // Initial Execution on Load
     renderBlogFeed();
+    renderSuggestions();
 
     // Initialize Layout from Preference
     const savedLayout = localStorage.getItem('cerebro-layout-preference') || 'split';
