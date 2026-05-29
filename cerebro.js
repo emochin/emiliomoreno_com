@@ -378,10 +378,15 @@ document.addEventListener('DOMContentLoaded', () => {
             matchTopic = 'decisiones';
             summaryText = "Para la **toma de decisiones**, no se trata de contar la cantidad de pros y contras. Lo que importa es el *peso moral o estratégico* de cada punto. Un solo contra con mucho peso —como comprometer mi salud o tiempo familiar— debe imponerse sobre múltiples pros menores. De este concepto nació mi herramienta interactiva `weigh-up.com`.";
             notesToLink = ['decisiones'];
-        } else if (q.includes('podcast') || q.includes('escuchar') || q.includes('recomiend') || q.includes('notificac') || q.includes('movil') || q.includes('spotify') || q.includes('neurociencia')) {
+        } else if (q.includes('podcast') || q.includes('escuchar') || q.includes('recomiend') || q.includes('notificac') || q.includes('movil') || q.includes('spotify') || q.includes('neurociencia') || q.includes('ivoox')) {
             matchTopic = 'podcast';
-            summaryText = "Me inspiro mucho en **podcasts de neurociencia** y recomiendo proteger el enfoque de forma activa. Mi consejo más práctico: desactiva por completo las notificaciones del móvil, manénlo en modo 'No molestar' permanentemente y configura solo excepciones de llamadas de emergencia. El aumento en tu capacidad de concentración profunda en una semana te sorprenderá.";
-            notesToLink = ['podcast'];
+            if (q.includes('recomiend') || q.includes('podcast') || q.includes('escuchar') || q.includes('ivoox')) {
+                summaryText = "El podcast que más me está gustando últimamente es **xHUB.AI** de Plácido Doménech — una comunidad de IA y ciencias transversales en español. Tienen episodios muy sólidos sobre filosofía de la IA, modelos de lenguaje y tecnología aplicada. Escuché uno en el que entrevistaban directamente a Claude para explorar si podría ser consciente — fascinante y bien fundamentado. Lo tienes en iVoox, Spotify y Apple Podcasts.";
+                notesToLink = ['ia-consciencia', 'podcast'];
+            } else {
+                summaryText = "Me inspiro mucho en **podcasts sobre IA y neurociencia** para proteger el enfoque de forma activa. Mi consejo más práctico: desactiva las notificaciones del móvil por completo, mantenlo en modo 'No molestar' permanentemente y configura solo excepciones de emergencia. El aumento en concentración profunda en una semana te sorprenderá.";
+                notesToLink = ['podcast'];
+            }
         }
 
         // Return matched response with summaries and note links
