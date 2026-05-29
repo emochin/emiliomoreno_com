@@ -439,38 +439,59 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') sendMessage();
     });
 
-    // Pool de sugerencias aleatorias
-    const suggestionPool = [
-        { label: "¿Puede la IA ser consciente?",        query: "¿Crees que la IA puede ser consciente?" },
-        { label: "Recomiéndame un podcast",            query: "Recomiéndame un podcast" },
-        { label: "¿Cómo eliges un modelo LLM?",         query: "¿Cómo elegir un modelo LLM?" },
-        { label: "Gestión de la atención",             query: "¿Cómo gestionas tu atención?" },
-        { label: "IA como copiloto",                    query: "¿Cómo usas la IA en tu día a día?" },
-        { label: "Tomar mejores decisiones",            query: "¿Cómo tomar mejores decisiones?" },
-        { label: "Arquitectura con RAG",                query: "Explícame qué es RAG y cuándo usarlo" },
-        { label: "Notificaciones y foco",               query: "Qué opinas de las notificaciones del móvil" },
-        { label: "IA open source vs comercial",         query: "Modelos de código abierto vs comerciales" },
-        { label: "Filosofía de la mente artificial",   query: "¿Tiene mente la IA?" },
-        { label: "Weigh-up: sopesar opciones",          query: "Cómo usas weigh-up para decidir" },
-        { label: "¿Qué es whatstime.net?",             query: "Cuéntame sobre whatstime.net" },
+    // Pool de etiquetas cortas (quick tags)
+    const tagPool = [
+        { label: "#IA",          query: "¿Qué opinas sobre la Inteligencia Artificial?" },
+        { label: "#Tiempo",      query: "¿Cómo gestionas tu atención?" },
+        { label: "#Decisiones",  query: "¿Cómo tomar mejores decisiones?" },
+        { label: "#Podcasts",    query: "Recomiéndame un podcast" },
+        { label: "#Consciencia", query: "¿Crees que la IA puede ser consciente?" },
+        { label: "#LLMs",        query: "¿Cómo eliges un modelo LLM?" },
+        { label: "#Enfoque",     query: "¿Qué opinas de las notificaciones del móvil?" },
+        { label: "#Filosofía",   query: "¿Tiene mente la IA?" },
     ];
 
+    // Pool de ejemplos del bubble de bienvenida (pares)
+    const bubbleExamplePool = [
+        ["¿Qué opinas del tiempo?",              "Recomiéndame un podcast"],
+        ["¿Puede la IA ser consciente?",          "¿Cómo eliges un modelo LLM?"],
+        ["¿Cómo gestionas tu atención?",          "¿Qué opinas de las notificaciones?"],
+        ["¿Cómo tomar mejores decisiones?",       "¿Para qué usas la IA en tu trabajo?"],
+        ["¿Qué es RAG y cuándo lo usas?",         "Recomiéndame algo sobre neurociencia"],
+    ];
+
+    function fireQuestion(q) {
+        chatInput.value = q;
+        sendMessage();
+    }
+
     function renderSuggestions() {
+        // Quick tags: 4 aleatorias del pool
         const container = document.getElementById('quick-tags-container');
-        if (!container) return;
-        // Mezclar y coger 4
-        const shuffled = [...suggestionPool].sort(() => Math.random() - 0.5).slice(0, 4);
-        container.innerHTML = '';
-        shuffled.forEach(({ label, query }) => {
-            const btn = document.createElement('button');
-            btn.className = 'quick-tag-btn';
-            btn.textContent = label;
-            btn.addEventListener('click', () => {
-                chatInput.value = query;
-                sendMessage();
+        if (container) {
+            const shuffled = [...tagPool].sort(() => Math.random() - 0.5).slice(0, 4);
+            container.innerHTML = '';
+            shuffled.forEach(({ label, query }) => {
+                const btn = document.createElement('button');
+                btn.className = 'quick-tag-btn';
+                btn.textContent = label;
+                btn.addEventListener('click', () => fireQuestion(query));
+                container.appendChild(btn);
             });
-            container.appendChild(btn);
-        });
+        }
+
+        // Bubble de bienvenida: par de ejemplos aleatorio con enlaces clicables
+        const bubbleEl = document.getElementById('bubble-examples');
+        if (bubbleEl) {
+            const [ex1, ex2] = bubbleExamplePool[Math.floor(Math.random() * bubbleExamplePool.length)];
+            bubbleEl.innerHTML = `Pregúntame cosas como: <a class="bubble-link" href="#">"${ex1}"</a> o <a class="bubble-link" href="#">"${ex2}"</a> y responderé basándome en mis propias notas.`;
+            bubbleEl.querySelectorAll('.bubble-link').forEach((link, i) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    fireQuestion(i === 0 ? ex1 : ex2);
+                });
+            });
+        }
     }
 
     // Initial Execution on Load
