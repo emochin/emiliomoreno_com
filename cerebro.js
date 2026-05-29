@@ -197,10 +197,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalText     = document.getElementById('modal-text');
     const modalImageWrap = document.getElementById('modal-image-wrap');
     const modalSourceLink = document.getElementById('modal-source-link');
+    const btnPrev       = document.getElementById('modal-prev-btn');
+    const btnNext       = document.getElementById('modal-next-btn');
+
+    let currentModalNoteId = null;
+
+    function getSortedReflections() {
+        const sorted = [...reflections].sort((a, b) => new Date(b.date) - new Date(a.date));
+        if (currentTagFilter) {
+            return sorted.filter(note => note.tag.toLowerCase() === currentTagFilter.toLowerCase());
+        }
+        return sorted;
+    }
 
     function openModal(noteId) {
-        const note = reflections.find(r => r.id === noteId);
-        if (!note) return;
+        currentModalNoteId = noteId;
+        const currentList = getSortedReflections();
+        const index = currentList.findIndex(r => r.id === noteId);
+        
+        if (index === -1) return;
+        const note = currentList[index];
+
         modalDate.textContent = formatDate(note.date);
         modalTag.textContent  = note.tag;
         modalTitle.textContent = note.title;
@@ -208,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImageWrap.innerHTML = note.image
             ? `<img src="${note.image}" alt="${note.title}">`
             : '';
+        
         const url = note.sourceUrl || note.link;
         if (url) {
             modalSourceLink.href        = url;
@@ -216,18 +234,65 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             modalSourceLink.style.display = 'none';
         }
-        modalOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
+
+        // Configure Navigation buttons
+        btnPrev.disabled = index === 0;
+        btnNext.disabled = index === currentList.length - 1;
+
+        if (!modalOverlay.classList.contains('open')) {
+            // Prevent layout shifting by checking scrollbar width
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+            document.body.style.overflow = 'hidden';
+            modalOverlay.classList.add('open');
+        }
+    }
+
+    function navigateModal(direction) {
+        const currentList = getSortedReflections();
+        const currentIndex = currentList.findIndex(r => r.id === currentModalNoteId);
+        if (currentIndex === -1) return;
+
+        const nextIndex = currentIndex + direction;
+        if (nextIndex >= 0 && nextIndex < currentList.length) {
+            openModal(currentList[nextIndex].id);
+        }
     }
 
     function closeModal() {
+        if (!modalOverlay.classList.contains('open')) return;
+        
         modalOverlay.classList.remove('open');
         document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+
+        // Flash target card in the feed for visual feedback
+        if (currentModalNoteId) {
+            const targetCard = document.getElementById(`nota-${currentModalNoteId}`);
+            if (targetCard) {
+                targetCard.classList.remove('card-attention');
+                void targetCard.offsetWidth; // Trigger reflow
+                targetCard.classList.add('card-attention');
+            }
+        }
     }
 
+    // Modal listeners
     document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+    btnPrev.addEventListener('click', () => navigateModal(-1));
+    btnNext.addEventListener('click', () => navigateModal(1));
     modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    
+    document.addEventListener('keydown', (e) => {
+        if (!modalOverlay.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+            closeModal();
+        } else if (e.key === 'ArrowLeft') {
+            navigateModal(-1);
+        } else if (e.key === 'ArrowRight') {
+            navigateModal(1);
+        }
+    });
 
     // Helper: Format Date String
     function formatDate(dateStr) {

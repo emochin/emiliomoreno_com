@@ -953,3 +953,77 @@ body.layout-mode-blog-active .mobile-tabs-bar {
 .load-more-container { text-align: center; padding: 1.5rem 0 0.5rem; }
 .btn-load-more { background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 0.65rem 1.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s; font-family: inherit; }
 .btn-load-more:hover { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.4); color: var(--color-primary); }
+
+/* ====================================================
+   MODAL UX IMPROVEMENTS (Blur, Nav buttons & Highlight)
+   ==================================================== */
+
+/* Blur background container when modal is open */
+body:has(.reflection-modal-overlay.open) .dual-column-layout {
+    filter: blur(4px);
+    transition: filter 0.25s ease;
+}
+.dual-column-layout {
+    transition: filter 0.25s ease;
+}
+
+/* Modal Inner Navigation Buttons */
+.modal-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    gap: 1rem;
+}
+
+.modal-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    font-family: inherit;
+}
+
+.modal-nav-btn:hover:not(:disabled) {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.4);
+    color: var(--color-primary);
+}
+
+.modal-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.modal-nav-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Highlight Card target when closing modal */
+.blog-card.card-attention {
+    animation: pulseHighlight 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes pulseHighlight {
+    0% {
+        box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.4);
+        border-color: var(--color-primary);
+        background: rgba(139, 92, 246, 0.08);
+    }
+    100% {
+        box-shadow: 0 0 0 0px rgba(139, 92, 246, 0);
+        border-color: var(--border-color);
+        background: var(--bg-card);
+    }
+}
