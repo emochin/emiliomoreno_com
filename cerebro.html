@@ -163,6 +163,28 @@
         <span class="fab-text">Gemelo Digital</span>
     </button>
 
+    <!-- Reflection Detail Modal -->
+    <div class="reflection-modal-overlay" id="reflection-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="reflection-modal" id="reflection-modal">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-image-wrap" id="modal-image-wrap"></div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-date" id="modal-date"></span>
+                    <span class="modal-tag" id="modal-tag"></span>
+                </div>
+                <h2 class="modal-title" id="modal-title"></h2>
+                <p class="modal-text" id="modal-text"></p>
+                <a class="modal-source-link" id="modal-source-link" target="_blank" rel="noopener"></a>
+            </div>
+        </div>
+    </div>
+
     <!-- JS Link -->
     <script src="cerebro.js"></script>
 </body>

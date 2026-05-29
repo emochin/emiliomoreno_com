@@ -117,18 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Render Blog Feed (Chronological, Newest First) ---
-    function renderBlogFeed() {
-        reflectionsFeedList.innerHTML = '';
-        
-        // Sort chronologically (just in case the array isn't ordered)
-        const sortedReflections = [...reflections].sort((a, b) => new Date(b.date) - new Date(a.date));
+    const PAGE_SIZE = 5;
+    let currentPage = 1;
 
-        // Filter reflections if a tag filter is active
+    function renderBlogFeed(resetPage = true) {
+        if (resetPage) currentPage = 1;
+        reflectionsFeedList.innerHTML = '';
+
+        const sortedReflections = [...reflections].sort((a, b) => new Date(b.date) - new Date(a.date));
         let displayReflections = sortedReflections;
+
         if (currentTagFilter) {
             displayReflections = sortedReflections.filter(note => note.tag.toLowerCase() === currentTagFilter.toLowerCase());
-
-            // Create and append the filter status bar at the top of the feed
             const filterBar = document.createElement('div');
             filterBar.className = 'filter-status-bar';
             filterBar.innerHTML = `
@@ -136,15 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="clear-filter-btn" id="btn-clear-filter">Ver todas</button>
             `;
             reflectionsFeedList.appendChild(filterBar);
-
-            // Add clear filter event listener
             filterBar.querySelector('#btn-clear-filter').addEventListener('click', () => {
                 currentTagFilter = null;
                 renderBlogFeed();
             });
         }
 
-        displayReflections.forEach((note) => {
+        const paginated = displayReflections.slice(0, currentPage * PAGE_SIZE);
+        const hasMore = paginated.length < displayReflections.length;
+
+        paginated.forEach((note) => {
             const card = document.createElement('article');
             card.className = 'blog-card';
             card.id = `nota-${note.id}`;
@@ -154,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="blog-card-body">
                     <div class="blog-card-meta">
                         <span class="blog-card-date">
-                            ${formatDate(note.date)} — 
+                            ${formatDate(note.date)} —
                             ${targetUrl ? `vía <a href="${targetUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source} <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `vía ${note.source}`}
                         </span>
                         <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
@@ -163,9 +164,70 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="blog-card-text">"${note.text}"</p>
                 </div>
             `;
+            // Open modal on card click
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return; // let source links work normally
+                openModal(note.id);
+            });
+            card.style.cursor = 'pointer';
             reflectionsFeedList.appendChild(card);
         });
+
+        if (hasMore) {
+            const loadMoreWrap = document.createElement('div');
+            loadMoreWrap.className = 'load-more-container';
+            const loadMoreBtn = document.createElement('button');
+            loadMoreBtn.className = 'btn-load-more';
+            const remaining = displayReflections.length - paginated.length;
+            loadMoreBtn.textContent = `Ver ${Math.min(remaining, PAGE_SIZE)} más`;
+            loadMoreBtn.addEventListener('click', () => {
+                currentPage++;
+                renderBlogFeed(false);
+            });
+            loadMoreWrap.appendChild(loadMoreBtn);
+            reflectionsFeedList.appendChild(loadMoreWrap);
+        }
     }
+
+    // --- Reflection Modal ---
+    const modalOverlay  = document.getElementById('reflection-modal-overlay');
+    const modalDate     = document.getElementById('modal-date');
+    const modalTag      = document.getElementById('modal-tag');
+    const modalTitle    = document.getElementById('modal-title');
+    const modalText     = document.getElementById('modal-text');
+    const modalImageWrap = document.getElementById('modal-image-wrap');
+    const modalSourceLink = document.getElementById('modal-source-link');
+
+    function openModal(noteId) {
+        const note = reflections.find(r => r.id === noteId);
+        if (!note) return;
+        modalDate.textContent = formatDate(note.date);
+        modalTag.textContent  = note.tag;
+        modalTitle.textContent = note.title;
+        modalText.textContent  = '"' + note.text + '"';
+        modalImageWrap.innerHTML = note.image
+            ? `<img src="${note.image}" alt="${note.title}">`
+            : '';
+        const url = note.sourceUrl || note.link;
+        if (url) {
+            modalSourceLink.href        = url;
+            modalSourceLink.textContent = note.linkLabel || ('vía ' + note.source);
+            modalSourceLink.style.display = '';
+        } else {
+            modalSourceLink.style.display = 'none';
+        }
+        modalOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modalOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
     // Helper: Format Date String
     function formatDate(dateStr) {
@@ -271,33 +333,13 @@ document.addEventListener('DOMContentLoaded', () => {
         chatLog.appendChild(messageDiv);
         scrollToBottom();
 
-        // Wire up note-link clicks: scroll to & highlight the feed card
+        // Wire up note-link clicks: open detail modal directly (works regardless of pagination)
         if (isHtml) {
             bubble.querySelectorAll('a.note-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const noteId = link.getAttribute('data-note-id');
-                    const targetCard = document.getElementById(`nota-${noteId}`);
-                    if (!targetCard) return;
-
-                    // In blog mode, switch to feed; in split mode, switch mobile tab to feed
-                    if (document.body.classList.contains('layout-mode-blog-active')) {
-                        columnFeed.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    } else {
-                        // Switch mobile tab to feed if needed
-                        mobileTabButtons.forEach(b => b.classList.remove('active'));
-                        const feedTab = document.querySelector('.mobile-tab-btn[data-tab="feed"]');
-                        if (feedTab) feedTab.classList.add('active');
-                        columnFeed.classList.add('active');
-                        columnChat.classList.remove('active');
-                    }
-
-                    // Scroll to card and flash highlight
-                    setTimeout(() => {
-                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        targetCard.classList.add('card-highlight');
-                        setTimeout(() => targetCard.classList.remove('card-highlight'), 2000);
-                    }, 150);
+                    openModal(noteId);
                 });
             });
         }
