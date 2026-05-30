@@ -48,12 +48,12 @@ module.exports = async function handler(req, res) {
 
         // 2. Check auto-suggestion confirmation
         const isAffirmative = /^(s[ií]|claro|vale|ok|por favor|dale)$/i.test(queryLower);
-        if (isAffirmative && history.length >= 2) {
-            const lastBotMessage = history[history.length - 1];
-            const lastUserMessage = history[history.length - 2];
+        if (isAffirmative && history.length >= 3) {
+            const lastBotMessage = history[history.length - 2];
+            const originalUserMessage = history[history.length - 3];
             
             if (lastBotMessage.role === 'model' && lastBotMessage.content.includes('¿Te gustaría que se lo anote a Emilio como sugerencia')) {
-                const suggestion = lastUserMessage.content;
+                const suggestion = originalUserMessage.content;
                 await sendSuggestionEmail(suggestion);
                 return res.status(200).json({ text: "¡Perfecto! Ya le he enviado el correo a Emilio con tu propuesta. ¡Gracias!" });
             }
