@@ -16,20 +16,26 @@ module.exports = async function handler(req, res) {
         if (queryLower.startsWith('/sugerir') || queryLower.startsWith('sugerencia:')) {
             const suggestion = query.replace(/^\/sugerir|sugerencia:/i, '').trim();
             if (suggestion) {
-                // Send to Telegram
-                const botToken = process.env.TELEGRAM_BOT_TOKEN;
-                const chatId = process.env.TELEGRAM_CHAT_ID;
-                if (botToken && chatId) {
-                    const message = `💡 Nueva sugerencia de tema:\n\n${suggestion}`;
-                    await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                // Send email via Resend
+                const resendKey = process.env.RESEND_API_KEY;
+                if (resendKey) {
+                    await fetch('https://api.resend.com/emails', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ chat_id: chatId, text: message })
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${resendKey}`
+                        },
+                        body: JSON.stringify({
+                            from: 'onboarding@resend.dev',
+                            to: 'web@emiliomoreno.com',
+                            subject: '💡 Nueva sugerencia de tema para tu Gemelo Digital',
+                            text: `Alguien ha sugerido este tema:\n\n${suggestion}`
+                        })
                     });
                 } else {
-                    console.warn("TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not set.");
+                    console.warn("RESEND_API_KEY not set.");
                 }
-                return res.status(200).json({ text: "¡Anotado! He guardado esta sugerencia para revisarla más adelante. ¡Gracias por la idea!" });
+                return res.status(200).json({ text: "¡Anotado! He guardado esta sugerencia y se la he enviado a Emilio por correo. ¡Gracias por la idea!" });
             } else {
                 return res.status(200).json({ text: "Por favor, escribe el tema que quieres sugerir después de '/sugerir'." });
             }
