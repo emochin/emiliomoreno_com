@@ -402,7 +402,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             
             removeTypingIndicator();
-            appendMessage('bot', data.replyHtml, true);
+            if (data.replyHtml) {
+                appendMessage('bot', data.replyHtml, true);
+            } else if (data.text) {
+                let html = `<p style="margin-bottom:0.75rem; font-size:0.92rem; line-height:1.5; color:var(--text-primary);">${data.text}</p>`;
+                if (data.notes && data.notes.length > 0) {
+                     html += `<div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; border-top: 1px solid var(--border-color); padding-top:0.6rem; margin-top:0.6rem; margin-bottom:0.4rem; letter-spacing:0.5px;">Mis notas relacionadas:</div>`;
+                     data.notes.forEach(id => {
+                         const note = reflections.find(r => r.id === id);
+                         if (note) {
+                             const dateStr = new Date(note.date).toLocaleDateString('es-ES', {year:'numeric', month:'short', day:'numeric'});
+                             html += `
+                                 <div style="background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:12px; padding:0.6rem 0.75rem; margin-bottom:0.5rem; text-align:left; cursor:pointer;" onclick="document.querySelector('[data-note-id=\\'${note.id}\\']').click()">
+                                     <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:0.2rem;">${dateStr}</div>
+                                     <h5 style="font-size:0.82rem; font-weight:700; margin:0; color:var(--color-primary);">${note.title}</h5>
+                                 </div>
+                             `;
+                         }
+                     });
+                }
+                appendMessage('bot', html, true);
+            }
         } catch (error) {
             console.error(error);
             removeTypingIndicator();
