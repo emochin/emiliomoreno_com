@@ -13,7 +13,7 @@ module.exports = async function handler(req, res) {
 
     async function sendSuggestionEmail(suggestion) {
         const resendKey = process.env.RESEND_API_KEY;
-        const targetEmail = process.env.CONTACT_EMAIL || 'web@emiliomoreno.com';
+        const targetEmail = process.env.CONTACT_EMAIL || 'emilio.moreno.chinchilla@gmail.com';
         if (resendKey) {
             await fetch('https://api.resend.com/emails', {
                 method: 'POST',
