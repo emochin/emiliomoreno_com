@@ -12,6 +12,28 @@ module.exports = async function handler(req, res) {
     }
 
     try {
+        const queryLower = query.toLowerCase().trim();
+        if (queryLower.startsWith('/sugerir') || queryLower.startsWith('sugerencia:')) {
+            const suggestion = query.replace(/^\/sugerir|sugerencia:/i, '').trim();
+            if (suggestion) {
+                // Send to Telegram
+                const botToken = process.env.TELEGRAM_BOT_TOKEN;
+                const chatId = process.env.TELEGRAM_CHAT_ID;
+                if (botToken && chatId) {
+                    const message = `💡 Nueva sugerencia de tema:\n\n${suggestion}`;
+                    await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: chatId, text: message })
+                    });
+                } else {
+                    console.warn("TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not set.");
+                }
+                return res.status(200).json({ text: "¡Anotado! He guardado esta sugerencia para revisarla más adelante. ¡Gracias por la idea!" });
+            } else {
+                return res.status(200).json({ text: "Por favor, escribe el tema que quieres sugerir después de '/sugerir'." });
+            }
+        }
         // Initialize Gemini
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         

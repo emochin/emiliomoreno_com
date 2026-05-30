@@ -445,6 +445,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') sendMessage();
     });
 
+    const btnSuggestTopic = document.getElementById('btn-suggest-topic');
+    if (btnSuggestTopic) {
+        btnSuggestTopic.addEventListener('click', () => {
+            chatInput.value = '/sugerir ';
+            chatInput.focus();
+        });
+    }
+
     // Pool de etiquetas cortas (quick tags)
     const tagPool = [
         { label: "#IA",          query: "¿Qué opinas sobre la Inteligencia Artificial?" },
