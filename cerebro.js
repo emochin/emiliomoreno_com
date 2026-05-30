@@ -21,6 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Brain Database: Emilio's thoughts & reflections (Chronological Array)
     const reflections = [
         {
+            id: "sistemas-complejos",
+            date: "2026-05-30",
+            title: "La ilusión del aislamiento en sistemas complejos",
+            tag: "#Sistemas",
+            image: null,
+            text: "Una de las mayores trampas al diseñar tecnología, organizaciones o incluso al analizar problemas sociales es pensar que podemos aislar las variables. En los sistemas complejos, nada importante ocurre de manera completamente aislada. Cada decisión, cada cambio, genera efectos de segundo y tercer orden en cascada. El comportamiento del todo emerge de las interacciones constantes entre sus partes, no de las partes analizadas por separado. Ignorar esta red de interdependencia suele llevar a soluciones frágiles y a consecuencias imprevistas.",
+            source: "Teoría de la Complejidad",
+            sourceUrl: "https://es.wikipedia.org/wiki/Sistema_complejo",
+            link: "https://es.wikipedia.org/wiki/Sistema_complejo",
+            linkLabel: "Leer sobre Sistemas Complejos"
+        },
+        {
             id: "ia-consciencia",
             date: "2026-05-29",
             title: "¿Puede la IA ser consciente?",
@@ -512,6 +524,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Tomar buenas decisiones requiere honestidad brutal con uno mismo. No se trata de sumar puntos matemáticos en una balanza, sino de asignar el peso emocional real a cada factor. Por eso me gusta el enfoque asimétrico que propongo con herramientas conceptuales como weigh-up.com."
             ]);
             notesToLink = ['decisiones'];
+        } else if (q.includes('sistema') || q.includes('aislad') || q.includes('complej') || q.includes('red') || q.includes('interact') || q.includes('efecto')) {
+            matchTopic = 'sistemas-complejos';
+            summaryText = randomResponse([
+                "Me gusta mucho hablar de pensamiento sistémico. Mi opinión es clara: en sistemas complejos, nada importante ocurre de manera completamente aislada. Pensar que podemos analizar o cambiar una sola pieza sin afectar al resto es una ilusión que suele salir cara.",
+                "Cuando diseño soluciones, intento aplicar la teoría de sistemas complejos. La clave es entender que no existen eventos aislados; todo está conectado. Si cambias un elemento de la red, inevitablemente generas efectos de segundo y tercer orden en otras partes del sistema.",
+                "El pensamiento sistémico me ha enseñado que tratar de resolver problemas aislando variables casi siempre falla. En redes interconectadas, el comportamiento del todo emerge de las interacciones. Por eso intento diseñar con una visión panorámica y no centrada solo en los detalles locales."
+            ]);
+            notesToLink = ['sistemas-complejos'];
         } else if (q.includes('podcast') || q.includes('escuchar') || q.includes('recomiend') || q.includes('notificac') || q.includes('movil') || q.includes('spotify') || q.includes('neurociencia') || q.includes('ivoox')) {
             matchTopic = 'podcast';
             if (q.includes('recomiend') || q.includes('podcast') || q.includes('escuchar') || q.includes('ivoox')) {
@@ -604,6 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: "#LLMs",        query: "¿Cómo eliges un modelo LLM?" },
         { label: "#Enfoque",     query: "¿Qué opinas de las notificaciones del móvil?" },
         { label: "#Filosofía",   query: "¿Tiene mente la IA?" },
+        { label: "#Sistemas",    query: "¿Qué son los sistemas complejos?" },
     ];
 
     // Pool de ejemplos del bubble de bienvenida (pares)
@@ -611,8 +632,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ["¿Qué opinas del tiempo?",              "Recomiéndame un podcast"],
         ["¿Puede la IA ser consciente?",          "¿Cómo eliges un modelo LLM?"],
         ["¿Cómo gestionas tu atención?",          "¿Qué opinas de las notificaciones?"],
-        ["¿Cómo tomar mejores decisiones?",       "¿Para qué usas la IA en tu trabajo?"],
-        ["¿Qué es RAG y cuándo lo usas?",         "Recomiéndame algo sobre neurociencia"],
+        ["¿Cómo tomar mejores decisiones?",       "¿Qué opinas de los sistemas complejos?"],
+        ["¿Qué es RAG y cuándo lo usas?",         "¿Nada ocurre de manera aislada?"],
     ];
 
     function fireQuestion(q) {
