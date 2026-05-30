@@ -1,0 +1,26 @@
+{
+  "name": "emiliomoreno_com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emochin/emiliomoreno_com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/emochin/emiliomoreno_com/issues"
+  },
+  "homepage": "https://github.com/emochin/emiliomoreno_com#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@upstash/vector": "^1.2.3",
+    "dotenv": "^17.4.2"
+  }
+}

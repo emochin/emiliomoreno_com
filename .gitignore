@@ -17,3 +17,7 @@ dist/
 build/
 .next/
 out/
+
+# Environment variables
+.env
+.env.local
