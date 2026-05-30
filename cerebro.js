@@ -377,6 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let chatHistory = [];
+
     async function sendMessage() {
         const query = chatInput.value.trim();
         if (query === '') return;
@@ -384,6 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Render User Message
         appendMessage('user', query);
         chatInput.value = '';
+
+        // Add to history
+        chatHistory.push({ role: 'user', content: query });
 
         // Simulate Bot thinking
         showTypingIndicator();
@@ -393,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query })
+                body: JSON.stringify({ query, history: chatHistory })
             });
             
             if (!response.ok) {
@@ -423,6 +428,8 @@ document.addEventListener('DOMContentLoaded', () => {
                      });
                 }
                 appendMessage('bot', html, true);
+                // Add to history
+                chatHistory.push({ role: 'model', content: data.text });
             }
         } catch (error) {
             console.error(error);

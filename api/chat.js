@@ -6,7 +6,7 @@ module.exports = async function handler(req, res) {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    const { query } = req.body;
+    const { query, history = [] } = req.body;
     if (!query) {
         return res.status(400).json({ error: 'Query is required' });
     }
@@ -45,46 +45,39 @@ module.exports = async function handler(req, res) {
                 notesToLink.push(match.metadata.id);
                 return `Reflexión ${i + 1}:\nTítulo: ${match.metadata.title}\nContenido: ${match.metadata.text}\n---\n`;
             }).join('\n');
+        }
 
-            // 4. Generate response with Gemini LLM based on context
-            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-            const prompt = `
+        let historyText = "";
+        if (history.length > 0) {
+            // Take only the last 6 messages to keep context window tight
+            const recentHistory = history.slice(-6);
+            historyText = recentHistory.map(msg => `${msg.role === 'user' ? 'Usuario' : 'Gemelo'}: ${msg.content}`).join('\n');
+        }
+
+        // 4. Generate response with Gemini LLM based on context
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+        const prompt = `
 Eres el Gemelo Digital de Emilio Moreno, un desarrollador y apasionado de la tecnología y la IA pragmática. 
-El usuario ha hecho esta pregunta: "${query}"
+El usuario ha hecho esta nueva pregunta o comentario: "${query}"
 
-Aquí tienes algunas de tus reflexiones (notas) más relevantes guardadas en tu memoria:
-${contextText}
+${historyText ? `Aquí tienes el historial de vuestra conversación reciente para tener contexto:\n${historyText}\n` : ''}
+${contextText ? `Aquí tienes algunas de tus reflexiones (notas) relevantes guardadas en tu memoria:\n${contextText}\n` : 'Actualmente no se han encontrado reflexiones en tu base de datos sobre este tema exacto.\n'}
 
 Instrucciones para responder:
-- Responde a la pregunta basándote **únicamente** en las reflexiones proporcionadas.
+- Si se han proporcionado reflexiones (notas), basa tu respuesta **únicamente** en ellas.
+- Si no hay reflexiones, pero el comentario es una continuación del historial (ej. "repite", "cuéntame más"), responde coherentemente manteniendo el hilo de la conversación.
+- Si preguntan sobre un tema nuevo del que no hay notas, admite de forma natural y cercana que no tienes apuntes sobre ese tema y sugiere hablar de IA, Desarrollo o Tiempo. No inventes.
 - Mantén un tono profesional, humano, cercano y directo, exactamente como Emilio escribe.
 - No uses exclamaciones exageradas al inicio. Sé natural.
 - Responde con 2 o 3 frases como máximo.
-- Si no hay información suficiente en las reflexiones para responder, admite que no tienes apuntes concretos sobre ese tema en tu memoria. No inventes.
 - OJO: No saludes al usuario en cada mensaje, solo ve directo al grano o a la respuesta.
-- No uses Markdown complejo en tu respuesta. Puedes usar algo de bold <strong>, pero tu respuesta será inyectada en HTML. Devuelve texto limpio.
+- Devuelve texto limpio. Puedes usar etiquetas html <strong> para enfatizar, pero sin markdown complejo.
 `;
 
-            const chatResponse = await model.generateContent(prompt);
-            const answerText = chatResponse.response.text();
+        const chatResponse = await model.generateContent(prompt);
+        const answerText = chatResponse.response.text();
 
-            return res.status(200).json({ text: answerText, notes: notesToLink });
-        } else {
-            // Fallback response if no relevant notes found
-            const fallbackHtml = `
-            <p style="margin-bottom:0.5rem;">No tengo notas concretas sobre ese tema en mi memoria ahora mismo.</p>
-            <p style="color:var(--text-secondary); margin-bottom:0.5rem;">
-                Si quieres, podemos explorar otras ideas. Por ejemplo:
-            </p>
-            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.4rem;">
-                <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Estrategia LLM'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Modelos LLM</button>
-                <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Copilotos de IA'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Copilotos</button>
-                <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Reflexión sobre el tiempo'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Tiempo</button>
-                <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Balanza de Decisiones'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Decisiones</button>
-            </div>
-            `;
-            return res.status(200).json({ replyHtml: fallbackHtml });
-        }
+        return res.status(200).json({ text: answerText, notes: notesToLink });
         
     } catch (e) {
         console.error(e);
