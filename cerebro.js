@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return sorted;
     }
 
+    window.openModal = openModal; // Expose for inline handlers
     function openModal(noteId) {
         currentModalNoteId = noteId;
         const currentList = getSortedReflections();
@@ -413,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
                          if (note) {
                              const dateStr = new Date(note.date).toLocaleDateString('es-ES', {year:'numeric', month:'short', day:'numeric'});
                              html += `
-                                 <div style="background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:12px; padding:0.6rem 0.75rem; margin-bottom:0.5rem; text-align:left; cursor:pointer;" onclick="document.querySelector('[data-note-id=\\'${note.id}\\']').click()">
+                                 <div style="background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:12px; padding:0.6rem 0.75rem; margin-bottom:0.5rem; text-align:left; cursor:pointer;" onclick="window.openModal('${note.id}')">
                                      <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:0.2rem;">${dateStr}</div>
                                      <h5 style="font-size:0.82rem; font-weight:700; margin:0; color:var(--color-primary);">${note.title}</h5>
                                  </div>
