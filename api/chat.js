@@ -102,7 +102,7 @@ module.exports = async function handler(req, res) {
             historyText = recentHistory.map(msg => `${msg.role === 'user' ? 'Usuario' : 'Gemelo'}: ${msg.content}`).join('\n');
         }
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-flash-lite-latest" });
         const prompt = `
 Eres el Gemelo Digital de Emilio Moreno, un desarrollador y apasionado de la tecnología y la IA pragmática. 
 El usuario ha hecho esta nueva pregunta o comentario: "${query}"
