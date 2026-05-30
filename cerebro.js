@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2026-05-30",
             title: "La ilusión del aislamiento en sistemas complejos",
             tag: "#Sistemas",
-            image: null,
+            image: "img/reflection-sistemas.png",
             text: "Una de las mayores trampas al diseñar tecnología, organizaciones o incluso al analizar problemas sociales es pensar que podemos aislar las variables. En los sistemas complejos, nada importante ocurre de manera completamente aislada. Cada decisión, cada cambio, genera efectos de segundo y tercer orden en cascada. El comportamiento del todo emerge de las interacciones constantes entre sus partes, no de las partes analizadas por separado. Ignorar esta red de interdependencia suele llevar a soluciones frágiles y a consecuencias imprevistas.",
             source: "Teoría de la Complejidad",
             sourceUrl: "https://es.wikipedia.org/wiki/Sistema_complejo",
