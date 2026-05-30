@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getBotResponse(query) {
-        const q = query.toLowerCase();
+        const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         let matchTopic = null;
         let summaryText = "";
         let notesToLink = [];
@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
             matchTopic = 'estrategia-ia';
             summaryText = "Cuando pienso en **arquitectura y selección de modelos de lenguaje (LLMs)**, mi postura es clara: no hay que usar por defecto el modelo comercial más potente. Diseño capas de abstracción para no depender de un único proveedor, y optimizo el contexto mediante técnicas como RAG, evaluando modelos locales o especializados de código abierto para reducir costes, latencia y mejorar la privacidad.";
             notesToLink = ['estrategia-ia'];
-        } else if (q.includes('copiloto') || q.includes('desarrolla') || q.includes('program') || q.includes('código') || q.includes('sintaxis') || q.includes('ingeniería')) {
+        } else if (q.includes('copiloto') || q.includes('desarrolla') || q.includes('program') || q.includes('codigo') || q.includes('sintaxis') || q.includes('ingenieria')) {
             matchTopic = 'desarrollo-ia';
             summaryText = "Sobre el **desarrollo y copilotos de IA**, soy bastante pragmático: uso las herramientas de IA como asistentes de ingeniería de primer nivel. Mi enfoque es delegar la sintaxis repetitiva, tareas mecánicas y pruebas rápidas a la IA, y así liberar ancho de banda mental para concentrarme en lo estratégico: la arquitectura del software y el diseño lógico.";
             notesToLink = ['ia'];
