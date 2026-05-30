@@ -13,6 +13,7 @@ module.exports = async function handler(req, res) {
 
     async function sendSuggestionEmail(suggestion) {
         const resendKey = process.env.RESEND_API_KEY;
+        const targetEmail = process.env.CONTACT_EMAIL || 'web@emiliomoreno.com';
         if (resendKey) {
             await fetch('https://api.resend.com/emails', {
                 method: 'POST',
@@ -22,7 +23,7 @@ module.exports = async function handler(req, res) {
                 },
                 body: JSON.stringify({
                     from: 'onboarding@resend.dev',
-                    to: 'web@emiliomoreno.com',
+                    to: targetEmail,
                     subject: '💡 Nueva sugerencia de tema para tu Gemelo Digital',
                     text: `Alguien ha sugerido este tema:\n\n${suggestion}`
                 })
