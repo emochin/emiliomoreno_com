@@ -84,3 +84,4 @@ Instrucciones para responder:
         return res.status(500).json({ error: 'Internal Server Error', message: e.message, stack: e.stack });
     }
 }
+// Trigger Vercel deploy
