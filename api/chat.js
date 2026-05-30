@@ -11,35 +11,54 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ error: 'Query is required' });
     }
 
+    async function sendSuggestionEmail(suggestion) {
+        const resendKey = process.env.RESEND_API_KEY;
+        if (resendKey) {
+            await fetch('https://api.resend.com/emails', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${resendKey}`
+                },
+                body: JSON.stringify({
+                    from: 'onboarding@resend.dev',
+                    to: 'web@emiliomoreno.com',
+                    subject: '💡 Nueva sugerencia de tema para tu Gemelo Digital',
+                    text: `Alguien ha sugerido este tema:\n\n${suggestion}`
+                })
+            });
+        } else {
+            console.warn("RESEND_API_KEY not set.");
+        }
+    }
+
     try {
         const queryLower = query.toLowerCase().trim();
+        
+        // 1. Check explicit suggestion command
         if (queryLower.startsWith('/sugerir') || queryLower.startsWith('sugerencia:')) {
             const suggestion = query.replace(/^\/sugerir|sugerencia:/i, '').trim();
             if (suggestion) {
-                // Send email via Resend
-                const resendKey = process.env.RESEND_API_KEY;
-                if (resendKey) {
-                    await fetch('https://api.resend.com/emails', {
-                        method: 'POST',
-                        headers: { 
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${resendKey}`
-                        },
-                        body: JSON.stringify({
-                            from: 'onboarding@resend.dev',
-                            to: 'web@emiliomoreno.com',
-                            subject: '💡 Nueva sugerencia de tema para tu Gemelo Digital',
-                            text: `Alguien ha sugerido este tema:\n\n${suggestion}`
-                        })
-                    });
-                } else {
-                    console.warn("RESEND_API_KEY not set.");
-                }
+                await sendSuggestionEmail(suggestion);
                 return res.status(200).json({ text: "¡Anotado! He guardado esta sugerencia y se la he enviado a Emilio por correo. ¡Gracias por la idea!" });
             } else {
                 return res.status(200).json({ text: "Por favor, escribe el tema que quieres sugerir después de '/sugerir'." });
             }
         }
+
+        // 2. Check auto-suggestion confirmation
+        const isAffirmative = /^(s[ií]|claro|vale|ok|por favor|dale)$/i.test(queryLower);
+        if (isAffirmative && history.length >= 2) {
+            const lastBotMessage = history[history.length - 1];
+            const lastUserMessage = history[history.length - 2];
+            
+            if (lastBotMessage.role === 'model' && lastBotMessage.content.includes('¿Te gustaría que se lo anote a Emilio como sugerencia')) {
+                const suggestion = lastUserMessage.content;
+                await sendSuggestionEmail(suggestion);
+                return res.status(200).json({ text: "¡Perfecto! Ya le he enviado el correo a Emilio con tu propuesta. ¡Gracias!" });
+            }
+        }
+
         // Initialize Gemini
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         
@@ -93,7 +112,7 @@ ${contextText ? `Aquí tienes algunas de tus reflexiones (notas) relevantes guar
 Instrucciones para responder:
 - Si se han proporcionado reflexiones (notas), basa tu respuesta **únicamente** en ellas.
 - Si no hay reflexiones, pero el comentario es una continuación del historial (ej. "repite", "cuéntame más"), responde coherentemente manteniendo el hilo de la conversación.
-- Si preguntan sobre un tema nuevo del que no hay notas, admite de forma natural y cercana que no tienes apuntes sobre ese tema y sugiere hablar de IA, Desarrollo o Tiempo. No inventes.
+- Si preguntan sobre un tema nuevo del que no hay notas, admite de forma natural y cercana que no tienes apuntes sobre ese tema. Luego añade EXACTAMENTE esta frase al final: "¿Te gustaría que se lo anote a Emilio como sugerencia para futuras reflexiones?"
 - Mantén un tono profesional, humano, cercano y directo, exactamente como Emilio escribe.
 - No uses exclamaciones exageradas al inicio. Sé natural.
 - Responde con 2 o 3 frases como máximo.
