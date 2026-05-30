@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
                     </div>
                     <h3 class="blog-card-title">${note.title}</h3>
-                    <p class="blog-card-text">"${note.text}"</p>
+                    <p class="blog-card-text">${note.text}</p>
                 </div>
             `;
             // Open modal on card click
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalDate.textContent = formatDate(note.date);
         modalTag.textContent  = note.tag;
         modalTitle.textContent = note.title;
-        modalText.textContent  = '"' + note.text + '"';
+        modalText.textContent  = note.text;
         modalImageWrap.innerHTML = note.image
             ? `<img src="${note.image}" alt="${note.title}">`
             : '';
