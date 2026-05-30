@@ -559,6 +559,13 @@ body {
     transition: var(--transition-smooth);
 }
 
+.project-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+}
+
 .project-card:hover .project-link {
     color: var(--color-primary);
 }
