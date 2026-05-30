@@ -1,7 +1,7 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { Index } from '@upstash/vector';
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+const { Index } = require('@upstash/vector');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
             }).join('\n');
 
             // 4. Generate response with Gemini LLM based on context
-            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
             const prompt = `
 Eres el Gemelo Digital de Emilio Moreno, un desarrollador y apasionado de la tecnología y la IA pragmática. 
 El usuario ha hecho esta pregunta: "${query}"
