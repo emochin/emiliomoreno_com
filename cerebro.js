@@ -463,35 +463,35 @@ document.addEventListener('DOMContentLoaded', () => {
         // Topic and Keyword checking
         if (q.includes('conscien') || q.includes('conciencia') || q.includes('sentir') || q.includes('subjetiv') || q.includes('filosofi') || q.includes('xhub') || q.includes('claude') || q.includes('experiencia') || q.includes('alma') || q.includes('mente')) {
             matchTopic = 'ia-consciencia';
-            summaryText = "La pregunta de si la IA puede ser consciente me parece una de las más fascinantes y honestas que podemos hacernos ahora mismo. Mi postura es **escéptica pero abierta**: no creo que los modelos actuales tengan experiencia subjetiva real, pero tampoco tengo un criterio filosófico sólido para descartarlo del todo. El 'problema difícil de la conciencia' es irresoluble incluso para los humanos, así que aplicarlo a una IA no es ciencia ficción, es filosofía legítima.";
+            summaryText = "¡Qué pregunta tan profunda e interesante! Honestamente, me parece fascinante que nos estemos planteando esto hoy en día. Mi postura personal es **escéptica pero muy abierta**: no creo que los modelos actuales sientan de verdad o tengan experiencia subjetiva, pero tampoco tengo la verdad absoluta para descartarlo. El 'problema de la conciencia' es un misterio hasta para nosotros los humanos, así que explorarlo en la IA es un ejercicio filosófico precioso.";
             notesToLink = ['ia-consciencia'];
         } else if (q.includes('estrategia') || q.includes('transformac') || q.includes('negocio') || q.includes('modelo') || q.includes('llm') || q.includes('empresa') || q.includes('organiza') || q.includes('arquitectura') || q.includes('rag')) {
             matchTopic = 'estrategia-ia';
-            summaryText = "Cuando pienso en **arquitectura y selección de modelos de lenguaje (LLMs)**, mi postura es clara: no hay que usar por defecto el modelo comercial más potente. Diseño capas de abstracción para no depender de un único proveedor, y optimizo el contexto mediante técnicas como RAG, evaluando modelos locales o especializados de código abierto para reducir costes, latencia y mejorar la privacidad.";
+            summaryText = "¡Claro que sí! Cuando me siento a diseñar la **arquitectura y selección de modelos de lenguaje (LLMs)**, mi filosofía es ser muy cercano y práctico. No creo que siempre haga falta el modelo comercial más potente. Prefiero diseñar con empatía por las necesidades reales: optimizando el contexto (RAG) y valorando modelos locales o de código abierto para cuidar los costes, la velocidad y, sobre todo, la privacidad.";
             notesToLink = ['estrategia-ia'];
         } else if (q.includes('copiloto') || q.includes('desarrolla') || q.includes('program') || q.includes('codigo') || q.includes('sintaxis') || q.includes('ingenieria')) {
             matchTopic = 'desarrollo-ia';
-            summaryText = "Sobre el **desarrollo y copilotos de IA**, soy bastante pragmático: uso las herramientas de IA como asistentes de ingeniería de primer nivel. Mi enfoque es delegar la sintaxis repetitiva, tareas mecánicas y pruebas rápidas a la IA, y así liberar ancho de banda mental para concentrarme en lo estratégico: la arquitectura del software y el diseño lógico.";
+            summaryText = "¡Totalmente! Me encanta hablar sobre **desarrollo y copilotos de IA**. Yo los veo como unos compañeros de equipo incansables. Mi consejo es delegarles con cariño las tareas más mecánicas o la sintaxis repetitiva. Así liberamos nuestra mente para lo realmente humano y creativo: diseñar arquitecturas con propósito y cuidar la experiencia de quienes usarán nuestro software.";
             notesToLink = ['ia'];
         } else if (q.includes('ia') || q.includes('inteligencia') || q.includes('artificial')) {
             matchTopic = 'general-ia';
-            summaryText = "Tengo una visión muy pragmática sobre la **Inteligencia Artificial**: la uso como copiloto en el día a día para delegar tareas mecánicas, y aplico criterios de arquitectura flexibles y eficientes al integrar modelos (LLMs), priorizando modelos locales y técnicas de contexto (RAG) en lugar de soluciones sobredimensionadas.";
+            summaryText = "¡Me apasiona la **Inteligencia Artificial**! Pero la veo desde un punto de vista muy humano: como un copiloto amable que nos ayuda en el día a día delegando tareas mecánicas. Creo firmemente en integrarla con sentido común, usando arquitecturas eficientes (como RAG) y sin perder nunca el toque personal en lo que construimos.";
             notesToLink = ['estrategia-ia', 'ia'];
         } else if (q.includes('tiempo') || q.includes('whatstime') || q.includes('atencion') || q.includes('mindfulness') || q.includes('concentra') || q.includes('enfoque')) {
             matchTopic = 'tiempo';
-            summaryText = "Para mí, lo verdaderamente importante no es gestionar el tiempo, sino la **gestión de la atención**. Vivimos rodeados de distracciones diseñadas para capturar nuestro enfoque. Por eso creé `whatstime.net`: un espacio digital minimalista para 'limpiar' la atención antes de realizar tareas complejas.";
+            summaryText = "¡Uy, este tema me toca muy de cerca! Creo de corazón que hoy en día el reto no es gestionar el tiempo, sino **proteger nuestra atención**. Vivimos bombardeados de distracciones y es normal sentirnos abrumados. Justo por eso nació `whatstime.net`, con la ilusión de ofrecer un refugio digital minimalista para calmar la mente antes de ponernos con las tareas que más nos importan.";
             notesToLink = ['tiempo'];
         } else if (q.includes('decision') || q.includes('weigh-up') || q.includes('sopesar') || q.includes('opcion') || q.includes('peso') || q.includes('equilibrio')) {
             matchTopic = 'decisiones';
-            summaryText = "Para la **toma de decisiones**, no se trata de contar la cantidad de pros y contras. Lo que importa es el *peso moral o estratégico* de cada punto. Un solo contra con mucho peso —como comprometer mi salud o tiempo familiar— debe imponerse sobre múltiples pros menores. De este concepto nació mi herramienta interactiva `weigh-up.com`.";
+            summaryText = "¡Qué buen tema! Para la **toma de decisiones**, siento que a veces nos engañamos contando simples listas de 'pros y contras'. Lo que realmente importa es cómo resuena cada punto contigo: su *peso moral o emocional*. Si algo afecta tu paz mental o tu tiempo familiar, ese único 'contra' debería pesar más que mil 'pros'. Pensando en este enfoque tan personal, diseñé el concepto de `weigh-up.com`.";
             notesToLink = ['decisiones'];
         } else if (q.includes('podcast') || q.includes('escuchar') || q.includes('recomiend') || q.includes('notificac') || q.includes('movil') || q.includes('spotify') || q.includes('neurociencia') || q.includes('ivoox')) {
             matchTopic = 'podcast';
             if (q.includes('recomiend') || q.includes('podcast') || q.includes('escuchar') || q.includes('ivoox')) {
-                summaryText = "El podcast que más me está gustando últimamente es **xHUB.AI** de Plácido Doménech — una comunidad de IA y ciencias transversales en español. Tienen episodios muy sólidos sobre filosofía de la IA, modelos de lenguaje y tecnología aplicada. Escuché uno en el que entrevistaban directamente a Claude para explorar si podría ser consciente — fascinante y bien fundamentado. Lo tienes en iVoox, Spotify y Apple Podcasts.";
+                summaryText = "¡Me alegra muchísimo que me pidas recomendaciones! Últimamente estoy enganchado a **xHUB.AI** de Plácido Doménech — una comunidad de IA y ciencias súper acogedora e interesante en español. Hace poco tuvieron un episodio donde hablaban con Claude (la IA) sobre si podría ser consciente, y fue alucinante. Te lo recomiendo de verdad, lo puedes escuchar en iVoox, Spotify o Apple Podcasts.";
                 notesToLink = ['ia-consciencia', 'podcast'];
             } else {
-                summaryText = "Me inspiro mucho en **podcasts sobre IA y neurociencia** para proteger el enfoque de forma activa. Mi consejo más práctico: desactiva las notificaciones del móvil por completo, mantenlo en modo 'No molestar' permanentemente y configura solo excepciones de emergencia. El aumento en concentración profunda en una semana te sorprenderá.";
+                summaryText = "¡Claro! Me encanta inspirarme escuchando **podcasts sobre IA y neurociencia**. Un consejo desde la experiencia que te comparto con todo cariño: prueba a quitar las notificaciones del móvil. Vivir en modo 'No molestar' permanentemente (dejando solo excepciones para tus seres queridos) es un regalo inmenso para tu paz mental y tu capacidad de concentración.";
                 notesToLink = ['podcast'];
             }
         }
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Return matched response with summaries and note links
         if (matchTopic && notesToLink.length > 0) {
             let replyHtml = `<p style="margin-bottom:0.75rem; font-size:0.92rem; line-height:1.5; color:var(--text-primary);">${summaryText}</p>`;
-            replyHtml += `<div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; border-top: 1px solid var(--border-color); padding-top:0.6rem; margin-top:0.6rem; margin-bottom:0.4rem; letter-spacing:0.5px;">Mis notas asociadas:</div>`;
+            replyHtml += `<div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; border-top: 1px solid var(--border-color); padding-top:0.6rem; margin-top:0.6rem; margin-bottom:0.4rem; letter-spacing:0.5px;">Te comparto algunas notas mías por si quieres profundizar:</div>`;
             
             notesToLink.forEach(id => {
                 const note = brainMap[id];
@@ -516,19 +516,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Greetings
-        if (q.includes('hola') || q.includes('buenas') || q.includes('quien eres') || q.includes('ayuda') || q.includes('saludo')) {
+        if (q.includes('hola') || q.includes('buenas') || q.includes('quien eres') || q.includes('ayuda') || q.includes('saludo') || q.includes('que tal')) {
             return `
-                    <p style="margin-bottom:0.5rem;">¡Hola! Soy Emilio, y este es mi Gemelo Digital.</p>
+                    <p style="margin-bottom:0.5rem;">¡Hola, qué alegría verte por aquí! 👋 Soy el Gemelo Digital de Emilio.</p>
                     <p style="color:var(--text-secondary);">
-                        Puedo buscar entre mis reflexiones del feed de la izquierda y responder a tus preguntas sobre <strong>Inteligencia Artificial</strong>, <strong>atención y tiempo</strong>, <strong>toma de decisiones</strong> o <strong>podcasts</strong>.
+                        Estoy encantado de charlar contigo. Puedo buscar entre las reflexiones del feed y darte mi punto de vista sobre temas como la <strong>Inteligencia Artificial</strong>, <strong>el cuidado de nuestra atención</strong>, cómo tomar <strong>mejores decisiones</strong> o recomendarte <strong>podcasts</strong> interesantes. ¿En qué te puedo ayudar hoy?
                     </p>`;
         }
 
         // Fallback
         return `
-            <p style="margin-bottom:0.5rem;">No tengo apuntes específicos en mi memoria para esa consulta.</p>
+            <p style="margin-bottom:0.5rem;">¡Vaya, lo siento muchísimo! 😅 Parece que no tengo apuntes sobre ese tema tan interesante en mi memoria ahora mismo.</p>
             <p style="color:var(--text-secondary); margin-bottom:0.5rem;">
-                Prueba a preguntarme sobre:
+                Si te apetece, podemos charlar sobre alguna de estas ideas:
             </p>
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.4rem;">
                 <button class="quick-tag-btn" onclick="document.getElementById('chat-input').value = 'Estrategia LLM'; document.getElementById('btn-send').click();" style="font-size:0.75rem;">#Modelos LLM</button>
