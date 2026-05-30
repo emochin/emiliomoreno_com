@@ -81,6 +81,6 @@ Instrucciones para responder:
         
     } catch (e) {
         console.error(e);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({ error: 'Internal Server Error', message: e.message, stack: e.stack });
     }
 }
