@@ -18,10 +18,10 @@
         "tag": "#Sistemas",
         "image": "img/reflection-sistemas.png",
         "text": "Una de las mayores trampas al diseñar tecnología, organizaciones o incluso al analizar problemas sociales es pensar que podemos aislar las variables. En los sistemas complejos, nada importante ocurre de manera completamente aislada. Cada decisión, cada cambio, genera efectos de segundo y tercer orden en cascada. El comportamiento del todo emerge de las interacciones constantes entre sus partes, no de las partes analizadas por separado. Ignorar esta red de interdependencia suele llevar a soluciones frágiles y a consecuencias imprevistas.",
-        "source": "Santa Fe Institute",
-        "sourceUrl": "https://www.santafe.edu/about/what-complex-systems-science",
-        "link": "https://www.santafe.edu/about/what-complex-systems-science",
-        "linkLabel": "Explorar Complejidad en el SFI"
+        "source": "P.W. Anderson (Science, 1972)",
+        "sourceUrl": "https://www.science.org/doi/10.1126/science.177.4047.393",
+        "link": "https://www.science.org/doi/10.1126/science.177.4047.393",
+        "linkLabel": "Leer \"More Is Different\""
     },
     {
         "id": "ia-consciencia",
