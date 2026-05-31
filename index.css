@@ -531,6 +531,11 @@ body {
     color: #34d399;
 }
 
+.status-redirected {
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+}
+
 .project-card-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -890,3 +895,159 @@ body {
         text-align: center;
     }
 }
+
+/* ==========================================================================
+   Domain Integration Styles (.es / .com)
+   ========================================================================== */
+
+/* Logo Extension Transitions */
+.logo-ext {
+    display: inline-block;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.logo-ext.transition-out {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+.logo-ext.transition-in {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+/* Domain Selector inside Project Card */
+.domain-selector-container {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 5;
+}
+
+.domain-selector-tabs {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    padding: 3px;
+}
+
+.domain-tab-btn {
+    background: transparent;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.domain-tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.domain-tab-btn.active {
+    background: rgba(139, 92, 246, 0.15);
+    color: #c084fc;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+/* Card details transition styling */
+#emiliomoreno-title, #emiliomoreno-desc, #emiliomoreno-image {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Redirection Toast Notification */
+.toast-notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    max-width: 380px;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    padding: 1.25rem;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(0);
+}
+
+.toast-notification.hidden {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+}
+
+.toast-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+}
+
+.toast-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    flex-shrink: 0;
+}
+
+.toast-icon {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-body {
+    flex-grow: 1;
+    padding-right: 1.5rem;
+}
+
+.toast-body h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.toast-body p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.toast-close {
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    padding: 4px;
+}
+
+.toast-close:hover {
+    color: var(--text-primary);
+}
+
+@media (max-width: 480px) {
+    .toast-notification {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+    }
+}
+

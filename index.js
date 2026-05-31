@@ -93,4 +93,121 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 5. Logo Extension Alternator
+    const logoExt = document.getElementById('logo-extension');
+    if (logoExt) {
+        const extensions = ['.com', '.es'];
+        let currentIdx = 0;
+        setInterval(() => {
+            logoExt.classList.add('transition-out');
+            setTimeout(() => {
+                currentIdx = (currentIdx + 1) % extensions.length;
+                logoExt.textContent = extensions[currentIdx];
+                logoExt.classList.remove('transition-out');
+                logoExt.classList.add('transition-in');
+                // Force reflow
+                void logoExt.offsetWidth;
+                logoExt.classList.remove('transition-in');
+            }, 350);
+        }, 5000);
+    }
+
+    // 6. Redirection Toast Handler
+    const showRedirectionToast = () => {
+        const toast = document.getElementById('domain-toast');
+        const closeBtn = document.getElementById('toast-close');
+        
+        if (!toast) return;
+
+        // Check if user came from emiliomoreno.es or has redirect query param
+        const referrerMatches = document.referrer && document.referrer.includes('emiliomoreno.es');
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryMatches = urlParams.get('from') === 'es' || urlParams.get('ref') === 'es';
+
+        if ((referrerMatches || queryMatches) && !sessionStorage.getItem('domain-toast-shown')) {
+            // Show toast after a small delay for premium entrance feel
+            setTimeout(() => {
+                toast.classList.remove('hidden');
+            }, 1500);
+
+            // Hide automatically after 8 seconds
+            const autoHideTimeout = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 9500);
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    clearTimeout(autoHideTimeout);
+                    toast.classList.add('hidden');
+                });
+            }
+
+            sessionStorage.setItem('domain-toast-shown', 'true');
+        }
+    };
+    showRedirectionToast();
+
+    // 7. Interactive Domain Switcher on Project Card
+    const domainTabButtons = document.querySelectorAll('.domain-tab-btn');
+    const emilioTitle = document.getElementById('emiliomoreno-title');
+    const emilioDesc = document.getElementById('emiliomoreno-desc');
+    const emilioStatus = document.getElementById('emiliomoreno-status');
+    const emilioImg = document.getElementById('emiliomoreno-image');
+
+    const domainData = {
+        com: {
+            title: 'emiliomoreno.com',
+            desc: 'Este sitio web. Un punto de encuentro centralizado y limpio para unificar mis dominios registrados, hablar de mis intereses tecnológicos y ofrecer un canal de comunicación directo.',
+            status: 'Activo',
+            statusClass: 'status-active'
+        },
+        es: {
+            title: 'emiliomoreno.es',
+            desc: 'Mi dominio nacional. Redirigido a la versión global .com para consolidar el tráfico, reservado para proyectos orientados específicamente al mercado de habla hispana y al posicionamiento local.',
+            status: 'Redirigido',
+            statusClass: 'status-redirected'
+        }
+    };
+
+    if (domainTabButtons.length > 0) {
+        domainTabButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const domain = btn.getAttribute('data-domain');
+                if (!domainData[domain]) return;
+
+                // Toggle active class on buttons
+                domainTabButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Apply fade out transition
+                const elements = [emilioTitle, emilioDesc, emilioStatus, emilioImg].filter(el => el !== null);
+                elements.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(4px)';
+                });
+
+                setTimeout(() => {
+                    // Update content
+                    const data = domainData[domain];
+                    if (emilioTitle) emilioTitle.textContent = data.title;
+                    if (emilioDesc) emilioDesc.textContent = data.desc;
+                    
+                    if (emilioStatus) {
+                        emilioStatus.textContent = data.status;
+                        emilioStatus.className = `project-status ${data.statusClass}`;
+                    }
+
+                    // Restore opacity and slide back up
+                    elements.forEach(el => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    });
+                }, 300);
+            });
+        });
+    }
 });

@@ -79,5 +79,16 @@
         "source": "Podcast",
         "link": null,
         "linkLabel": null
+    },
+    {
+        "id": "dominios-personales",
+        "date": "2026-05-31",
+        "title": "La estrategia detrás de emiliomoreno.com y .es",
+        "tag": "#Decisiones",
+        "image": "img/project-emiliomoreno.png",
+        "text": "Poseer tanto emiliomoreno.com como emiliomoreno.es me permite asegurar mi marca personal. He configurado emiliomoreno.es para que redirija automáticamente a emiliomoreno.com, que funciona como mi hub digital global. De esta forma, unifico mi presencia, facilito que personas de España me encuentren de forma natural y centralizo todos mis proyectos e integraciones de IA en un único sitio de alto rendimiento.",
+        "source": "Identidad Personal",
+        "link": "https://emiliomoreno.com#proyectos",
+        "linkLabel": "Ver mis proyectos"
     }
 ]

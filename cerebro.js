@@ -515,4 +515,58 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Layout from Preference
     const savedLayout = localStorage.getItem('cerebro-layout-preference') || 'split';
     setLayoutMode(savedLayout);
+
+    // Logo Extension Alternator
+    const logoExt = document.getElementById('logo-extension');
+    if (logoExt) {
+        const extensions = ['.com', '.es'];
+        let currentIdx = 0;
+        setInterval(() => {
+            logoExt.classList.add('transition-out');
+            setTimeout(() => {
+                currentIdx = (currentIdx + 1) % extensions.length;
+                logoExt.textContent = extensions[currentIdx];
+                logoExt.classList.remove('transition-out');
+                logoExt.classList.add('transition-in');
+                // Force reflow
+                void logoExt.offsetWidth;
+                logoExt.classList.remove('transition-in');
+            }, 350);
+        }, 5000);
+    }
+
+    // Redirection Toast Handler
+    const showRedirectionToast = () => {
+        const toast = document.getElementById('domain-toast');
+        const closeBtn = document.getElementById('toast-close');
+        
+        if (!toast) return;
+
+        // Check if user came from emiliomoreno.es or has redirect query param
+        const referrerMatches = document.referrer && document.referrer.includes('emiliomoreno.es');
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryMatches = urlParams.get('from') === 'es' || urlParams.get('ref') === 'es';
+
+        if ((referrerMatches || queryMatches) && !sessionStorage.getItem('domain-toast-shown')) {
+            // Show toast after a small delay
+            setTimeout(() => {
+                toast.classList.remove('hidden');
+            }, 1500);
+
+            // Hide automatically after 8 seconds
+            const autoHideTimeout = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 9500);
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    clearTimeout(autoHideTimeout);
+                    toast.classList.add('hidden');
+                });
+            }
+
+            sessionStorage.setItem('domain-toast-shown', 'true');
+        }
+    };
+    showRedirectionToast();
 });

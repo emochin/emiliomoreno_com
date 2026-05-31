@@ -38,7 +38,7 @@
     <header id="main-header" class="header">
         <div class="header-container">
             <a href="#" class="logo" id="nav-logo">
-                <span class="logo-dot"></span>emiliomoreno<span class="logo-ext">.com</span>
+                <span class="logo-dot"></span>emiliomoreno<span class="logo-ext" id="logo-extension">.com</span>
             </a>
             
             <nav class="nav-menu" id="nav-menu">
@@ -145,13 +145,22 @@
                         <div class="project-glow" style="--glow-color: rgba(168, 85, 247, 0.15);"></div>
                         <div class="project-header">
                             <span class="project-category">Identidad Personal</span>
-                            <span class="project-status status-active">Activo</span>
+                            <span class="project-status status-active" id="emiliomoreno-status">Activo</span>
                         </div>
+
+                        <!-- Domain Switcher inside Card -->
+                        <div class="domain-selector-container">
+                            <div class="domain-selector-tabs">
+                                <button class="domain-tab-btn active" data-domain="com">emiliomoreno.com</button>
+                                <button class="domain-tab-btn" data-domain="es">emiliomoreno.es</button>
+                            </div>
+                        </div>
+
                         <div class="project-image">
-                            <img src="img/project-emiliomoreno.png" alt="Emiliomoreno.com visual concept" loading="lazy">
+                            <img src="img/project-emiliomoreno.png" alt="Emiliomoreno.com visual concept" id="emiliomoreno-image" loading="lazy">
                         </div>
-                        <h3 class="project-card-title">emiliomoreno.com <span class="card-alias">/ .es</span></h3>
-                        <p class="project-card-desc">
+                        <h3 class="project-card-title" id="emiliomoreno-title">emiliomoreno.com</h3>
+                        <p class="project-card-desc" id="emiliomoreno-desc">
                             Este sitio web. Un punto de encuentro centralizado y limpio para unificar mis dominios registrados, hablar de mis intereses tecnológicos y ofrecer un canal de comunicación directo.
                         </p>
 
@@ -274,6 +283,20 @@
             </div>
         </div>
     </footer>
+
+    <!-- Toast de Redirección -->
+    <div id="domain-toast" class="toast-notification hidden">
+        <div class="toast-content">
+            <div class="toast-icon-wrapper">
+                <span class="toast-icon">🔗</span>
+            </div>
+            <div class="toast-body">
+                <h4>Dominio Redirigido</h4>
+                <p>Has accedido a través de <strong>emiliomoreno.es</strong>, redirigido automáticamente aquí.</p>
+            </div>
+            <button id="toast-close" class="toast-close" aria-label="Cerrar">&times;</button>
+        </div>
+    </div>
 
     <!-- JS Link -->
     <script src="index.js"></script>
