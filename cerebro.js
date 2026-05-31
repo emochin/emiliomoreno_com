@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: "#Enfoque",     query: "¿Qué opinas de las notificaciones del móvil?" },
         { label: "#Filosofía",   query: "¿Tiene mente la IA?" },
         { label: "#Sistemas",    query: "¿Qué son los sistemas complejos?" },
-        { label: "#Festivo",     query: "Cuéntame sobre la religión del Crutofari" },
+        { label: "#Festivo",     query: "Cuéntame sobre la religión del Crustofari" },
     ];
 
     // Pool de ejemplos del bubble de bienvenida (pares)
