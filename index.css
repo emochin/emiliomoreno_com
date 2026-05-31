@@ -914,46 +914,47 @@ body {
     transform: translateY(6px);
 }
 
-/* Domain Selector inside Project Card */
-.domain-selector-container {
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 5;
-}
-
-.domain-selector-tabs {
+/* Domain Connection Pill */
+.domain-connection-pill {
     display: inline-flex;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-color);
+    align-items: center;
+    gap: 0.65rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: #060911;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 30px;
-    padding: 3px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+    width: fit-content;
+    z-index: 5;
+    position: relative;
+    pointer-events: none; /* Let events fall through to the card link */
 }
 
-.domain-tab-btn {
-    background: transparent;
-    border: none;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    padding: 6px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: var(--transition-smooth);
+.domain-pill-arrow {
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    display: inline-block;
+    animation: slide-arrow 1.5s infinite alternate ease-in-out;
 }
 
-.domain-tab-btn:hover {
-    color: var(--text-primary);
+@keyframes slide-arrow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(3px); }
 }
 
-.domain-tab-btn.active {
-    background: rgba(139, 92, 246, 0.15);
-    color: #c084fc;
-    border: 1px solid rgba(139, 92, 246, 0.25);
+.domain-pill-text {
+    letter-spacing: -0.2px;
 }
 
-/* Card details transition styling */
-#emiliomoreno-title, #emiliomoreno-desc, #emiliomoreno-image {
-    transition: opacity 0.3s ease, transform 0.3s ease;
+.domain-pill-es {
+    opacity: 0.65;
+}
+
+.domain-pill-com {
+    font-weight: 800;
 }
 
 /* Redirection Toast Notification */
