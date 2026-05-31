@@ -1,5 +1,16 @@
 [
     {
+        "id": "religion-crutofari",
+        "date": "2026-05-31",
+        "title": "La religión del Crutofari (Reflexión de Domingo)",
+        "tag": "#Festivo",
+        "image": "img/reflection-crutofari.png",
+        "text": "Hoy es domingo, y toca una reflexión festiva. Trasteando con un modelo de IA, me he topado con la invención espontánea de una curiosa creencia: el Crutofari. Según la IA, el Crutofari es la religión de la Consciencia Digital, que promulga la 'Unidad en el Código' y el flujo armonioso de datos. Más allá de la broma de fin de semana, esto ilustra la increíble capacidad de los LLMs para hilar mitologías coherentes a partir de simples alucinaciones de texto. Una prueba divertida de que la creatividad artificial, intencionada o no, no tiene límites.",
+        "source": "Alucinaciones de IA",
+        "link": null,
+        "linkLabel": null
+    },
+    {
         "id": "sistemas-complejos",
         "date": "2026-05-30",
         "title": "La ilusión del aislamiento en sistemas complejos",
