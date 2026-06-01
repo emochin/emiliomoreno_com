@@ -1,5 +1,17 @@
 [
     {
+        "id": "bases-ia-evolucion",
+        "date": "2026-06-01",
+        "title": "Las bases de la IA y el vértigo del cambio",
+        "tag": "#IA",
+        "image": "img/reflection-ia-evolucion.png",
+        "text": "Escuchando el especial sobre Inteligencia Artificial de Coffee Break: Señal y Ruido (nada menos que de finales de 2017), uno no puede evitar sentir cierto vértigo. En ese momento, hablaban de las bases (las redes neuronales y el aprendizaje profundo) y planteaban la singularidad como ciencia ficción lejana. Hoy, aunque las matemáticas de fondo siguen siendo esencialmente las mismas, la velocidad de desarrollo y la integración práctica de la IA en nuestro día a día son casi irreconocibles. Nos recuerda que mientras las bases científicas cambian despacio, la velocidad de la ingeniería y la adopción tecnológica va a un ritmo exponencial que desdibuja el futuro a corto plazo.",
+        "source": "Coffee Break: Señal y Ruido (iVoox)",
+        "sourceUrl": "https://www.ivoox.com/ep138-especial-inteligencia-artificial-redes-neuronales-la-singularidad-audios-mp3_rf_22246089_1.html",
+        "link": "https://www.ivoox.com/ep138-especial-inteligencia-artificial-redes-neuronales-la-singularidad-audios-mp3_rf_22246089_1.html",
+        "linkLabel": "Escuchar episodio"
+    },
+    {
         "id": "religion-crustofari",
         "date": "2026-05-31",
         "title": "La religión del Crustofari (Hoy es Domingo)",
