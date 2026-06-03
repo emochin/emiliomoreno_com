@@ -47,26 +47,23 @@
         <button class="mobile-tab-btn" data-tab="feed">📋 Feed de Notas</button>
     </div>
 
-    <!-- Layout Switcher (Desktop and Tablet) -->
+    <!-- Layout Switcher (Desktop, Tablet, Mobile) -->
     <div class="layout-switcher-container container">
         <div class="layout-switcher">
-            <span class="switcher-label">Modo de vista:</span>
-            <div class="switcher-buttons">
-                <button class="switcher-btn active" id="btn-layout-split" title="Usar el asistente inteligente">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="switcher-icon">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    <span>Asistente IA</span>
-                </button>
-                <button class="switcher-btn" id="btn-layout-blog" title="Ver el feed de reflexiones y notas">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="switcher-icon">
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="18" x2="15" y2="18"></line>
-                    </svg>
-                    <span>Blog de Notas</span>
-                </button>
-            </div>
+            <button class="switcher-btn active" id="btn-layout-split" title="Usar Asistente IA">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="switcher-icon">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Asistente</span>
+            </button>
+            <button class="switcher-btn" id="btn-layout-blog" title="Ver Blog de Notas">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="switcher-icon">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="15" y2="18"></line>
+                </svg>
+                <span>Notas</span>
+            </button>
         </div>
     </div>
 
