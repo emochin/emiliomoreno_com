@@ -1,5 +1,17 @@
 [
     {
+        "id": "anthropic-salida-bolsa",
+        "date": "2026-06-03",
+        "title": "Anthropic y la aceleración bursátil de la IA",
+        "tag": "#IA",
+        "image": "img/reflection-anthropic-ipo.png",
+        "text": "El registro confidencial de la solicitud de salida a bolsa de Anthropic ante la SEC es un golpe estratégico importante, adelantándose a OpenAI en los mercados públicos. Tras alcanzar una valoración de 965.000 millones de dólares en su última ronda de financiación, la batalla por la hegemonía comercial de los modelos de frontera entra de lleno en Wall Street. Más allá de la inyección masiva de capital, este paso forzará un nivel de escrutinio público, auditoría y transparencia financiera inéditos en el sector, marcando el inicio de una era de consolidación donde los ingresos reales y la rentabilidad tendrán que justificar las inmensas expectativas tecnológicas.",
+        "source": "El País",
+        "sourceUrl": "https://elpais.com/economia/2026-06-01/anthropic-se-adelanta-a-openai-y-registra-la-solicitud-para-su-multimillonaria-salida-a-bolsa.html",
+        "link": "https://elpais.com/economia/2026-06-01/anthropic-se-adelanta-a-openai-y-registra-la-solicitud-para-su-multimillonaria-salida-a-bolsa.html",
+        "linkLabel": "Leer artículo en El País"
+    },
+    {
         "id": "bases-ia-evolucion",
         "date": "2026-06-01",
         "title": "Las bases de la IA y el vértigo del cambio",

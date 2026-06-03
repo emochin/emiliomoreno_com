@@ -43,8 +43,8 @@
 
     <!-- Mobile Tabs (Visible only on mobile screens in Dual View) -->
     <div class="mobile-tabs-bar" id="mobile-tabs-navigation">
-        <button class="mobile-tab-btn active" data-tab="feed">📋 Feed de Notas</button>
-        <button class="mobile-tab-btn" data-tab="chat">💬 Asistente IA</button>
+        <button class="mobile-tab-btn active" data-tab="chat">💬 Asistente IA</button>
+        <button class="mobile-tab-btn" data-tab="feed">📋 Feed de Notas</button>
     </div>
 
     <!-- Layout Switcher (Desktop and Tablet) -->
@@ -74,22 +74,8 @@
     <!-- Main Content Layout -->
     <main class="cerebro-layout-container container" id="main-layout-wrapper">
         
-        <!-- Left Column: Blog Feed of Notes -->
-        <section class="feed-column active" id="column-feed">
-            <div class="column-header">
-                <span class="column-tag">Bitácora</span>
-                <h1 class="column-title">Reflexiones <span class="serif-text">& Notas</span></h1>
-                <p class="column-desc">Un historial cronológico de ideas interesantes, recomendaciones y aprendizajes en el camino.</p>
-            </div>
-            
-            <!-- Dynamic Blog Feed Container -->
-            <div class="reflections-feed" id="reflections-feed-list">
-                <!-- Dynamically loaded via JS -->
-            </div>
-        </section>
-
-        <!-- Right Column: Chatbot -->
-        <section class="chat-column" id="column-chat">
+        <!-- Left Column: Chatbot -->
+        <section class="chat-column active" id="column-chat">
             <div class="chat-box">
                 
                 <!-- Chat Header Info -->
@@ -143,6 +129,20 @@
                     </button>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Right Column: Blog Feed of Notes -->
+        <section class="feed-column" id="column-feed">
+            <div class="column-header">
+                <span class="column-tag">Bitácora</span>
+                <h1 class="column-title">Reflexiones <span class="serif-text">& Notas</span></h1>
+                <p class="column-desc">Un historial cronológico de ideas interesantes, recomendaciones y aprendizajes en el camino.</p>
+            </div>
+            
+            <!-- Dynamic Blog Feed Container -->
+            <div class="reflections-feed" id="reflections-feed-list">
+                <!-- Dynamically loaded via JS -->
             </div>
         </section>
 
