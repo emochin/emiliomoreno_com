@@ -246,39 +246,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function setLayoutMode(mode) {
         if (mode === 'blog') {
             document.body.classList.add('layout-mode-blog-active');
+            document.body.classList.remove('layout-mode-ia-active');
             btnLayoutBlog.classList.add('active');
             btnLayoutSplit.classList.remove('active');
             localStorage.setItem('cerebro-layout-preference', 'blog');
             
-            // Ensure the chat is closed initially when entering blog mode
-            columnChat.classList.remove('floating-open');
-            floatingChatFab.classList.remove('fab-hidden');
-            
-            // On mobile, ensure the blog feed column is visible in blog mode
             columnFeed.classList.add('active');
+            columnChat.classList.remove('active');
         } else {
+            document.body.classList.add('layout-mode-ia-active');
             document.body.classList.remove('layout-mode-blog-active');
             btnLayoutSplit.classList.add('active');
             btnLayoutBlog.classList.remove('active');
-            localStorage.setItem('cerebro-layout-preference', 'split');
+            localStorage.setItem('cerebro-layout-preference', 'ia');
             
-            // In split mode, default to displaying whatever mobile tab is active
-            const activeTab = document.querySelector('.mobile-tab-btn.active');
-            if (activeTab) {
-                const tabTarget = activeTab.getAttribute('data-tab');
-                if (tabTarget === 'feed') {
-                    columnFeed.classList.add('active');
-                    columnChat.classList.remove('active');
-                } else {
-                    columnChat.classList.add('active');
-                    columnFeed.classList.remove('active');
-                }
-            }
+            columnChat.classList.add('active');
+            columnFeed.classList.remove('active');
         }
     }
 
     if (btnLayoutSplit && btnLayoutBlog) {
-        btnLayoutSplit.addEventListener('click', () => setLayoutMode('split'));
+        btnLayoutSplit.addEventListener('click', () => setLayoutMode('ia'));
         btnLayoutBlog.addEventListener('click', () => setLayoutMode('blog'));
     }
 
@@ -514,8 +502,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initData();
 
     // Initialize Layout from Preference
-    const savedLayout = localStorage.getItem('cerebro-layout-preference') || 'split';
-    setLayoutMode(savedLayout);
+    const savedLayout = localStorage.getItem('cerebro-layout-preference') || 'ia';
+    setLayoutMode(savedLayout === 'split' ? 'ia' : savedLayout);
 
     // Logo Extension Alternator
     const logoExt = document.getElementById('logo-extension');

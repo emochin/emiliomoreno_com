@@ -685,148 +685,56 @@
     height: 14px;
 }
 
-/* --- Blog Clásico Mode Overrides --- */
-body.layout-mode-blog-active .cerebro-layout-container {
+/* --- IA Mode and Blog Mode Layouts (Non-Dual) --- */
+.cerebro-layout-container {
     grid-template-columns: 1fr !important;
-    max-width: 800px;
-    margin: 0 auto;
     gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+body.layout-mode-ia-active .chat-column {
+    display: flex !important;
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    top: 0;
+    height: calc(100vh - 200px);
+}
+
+body.layout-mode-ia-active .feed-column {
+    display: none !important;
 }
 
 body.layout-mode-blog-active .feed-column {
+    display: flex !important;
+    max-width: 800px;
+    margin: 0 auto;
     width: 100%;
 }
 
 body.layout-mode-blog-active .chat-column {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 380px;
-    height: 520px;
-    max-height: 80vh;
-    z-index: 1000;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    transform: translateY(20px) scale(0.95);
-    opacity: 0;
-    pointer-events: none;
-    display: flex !important; /* Force display in blog mode even if mobile inactive */
-}
-
-body.layout-mode-blog-active .chat-column.floating-open {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-    pointer-events: all;
-}
-
-body.layout-mode-blog-active .chat-column .chat-box {
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-/* Close Button in Chat Header */
-.chat-close-btn {
-    display: none; /* Hidden in Dual View by default */
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition-smooth);
-    margin-left: auto;
-}
-
-.chat-close-btn:hover {
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.15);
-}
-
-.chat-close-btn svg {
-    width: 16px;
-    height: 16px;
-}
-
-body.layout-mode-blog-active .chat-close-btn {
-    display: flex; /* Visible when floating */
-}
-
-/* Floating Action Button (FAB) */
-.floating-chat-fab {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 999;
-    background: var(--gradient-brand);
-    color: white;
-    border: none;
-    padding: 0.85rem 1.65rem;
-    border-radius: 50px;
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.88rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    cursor: pointer;
-    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px) scale(0.85);
-}
-
-body.layout-mode-blog-active .floating-chat-fab {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0) scale(1);
-}
-
-body.layout-mode-blog-active .floating-chat-fab.fab-hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px) scale(0.85);
-}
-
-.floating-chat-fab:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 12px 35px rgba(139, 92, 246, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.25) inset;
-}
-
-.fab-icon {
-    width: 18px;
-    height: 18px;
-}
-
-.fab-text {
-    letter-spacing: -0.2px;
-}
-
-.fab-pulse {
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 10px;
-    height: 10px;
-    background-color: #34d399;
-    border-radius: 50%;
-    border: 2px solid #060911;
-    box-shadow: 0 0 8px #34d399;
-}
-
-/* Hide Mobile Tabs Bar when Blog Mode is Active */
-body.layout-mode-blog-active .mobile-tabs-bar {
     display: none !important;
 }
 
-/* --- Mobile Responsiveness for Blog Mode --- */
+/* Hide FAB since we are not dual */
+.floating-chat-fab {
+    display: none !important;
+}
+
+/* Hide mobile tabs completely */
+.mobile-tabs-bar {
+    display: none !important;
+}
+
+/* --- Mobile Responsiveness --- */
 @media (max-width: 900px) {
     .layout-switcher-container {
         margin-top: calc(var(--header-height) + 1rem);
         justify-content: center;
         margin-bottom: 0rem;
+        padding: 0 1rem;
     }
     
     .layout-switcher {
@@ -841,39 +749,13 @@ body.layout-mode-blog-active .mobile-tabs-bar {
         padding: 0.4rem 0.75rem;
     }
 
-    body.layout-mode-blog-active .cerebro-layout-container {
-        padding-top: 1rem;
-    }
-
-    /* Bottom sheet mobile layout for floating chat */
-    body.layout-mode-blog-active .chat-column {
-        bottom: 0;
-        right: 0;
-        left: 0;
-        width: 100%;
-        height: 80vh;
-        max-height: 80vh;
-        border-radius: 24px 24px 0 0;
-        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
-        transform: translateY(100%);
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    body.layout-mode-blog-active .chat-column.floating-open {
-        transform: translateY(0);
+    .cerebro-layout-container {
+        padding-top: 1rem !important;
     }
     
-    body.layout-mode-blog-active .chat-column .chat-box {
-        border-radius: 24px 24px 0 0;
-        border-bottom: none;
-        border-left: none;
-        border-right: none;
-    }
-
-    body.layout-mode-blog-active .floating-chat-fab {
-        bottom: 1.5rem;
-        right: 1.5rem;
+    body.layout-mode-ia-active .chat-column {
+        height: calc(100vh - 220px);
+        min-height: 500px;
     }
 }
 
