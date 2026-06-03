@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const columnFeed = document.getElementById('column-feed');
     const columnChat = document.getElementById('column-chat');
 
-    // Layout Switcher (Direct Header Buttons)
-    const btnGotoBlog = document.getElementById('btn-goto-blog');
-    const btnGotoChat = document.getElementById('btn-goto-chat');
+    // Layout Switcher & Floating Chat Elements
+    const btnLayoutSplit = document.getElementById('btn-layout-split');
+    const btnLayoutBlog = document.getElementById('btn-layout-blog');
 
     let reflections = [];
     let brainMap = {};
@@ -245,6 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mode === 'blog') {
             document.body.classList.add('layout-mode-blog-active');
             document.body.classList.remove('layout-mode-ia-active');
+            if (btnLayoutBlog) btnLayoutBlog.classList.add('active');
+            if (btnLayoutSplit) btnLayoutSplit.classList.remove('active');
             localStorage.setItem('cerebro-layout-preference', 'blog');
             
             columnFeed.classList.add('active');
@@ -252,6 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             document.body.classList.add('layout-mode-ia-active');
             document.body.classList.remove('layout-mode-blog-active');
+            if (btnLayoutSplit) btnLayoutSplit.classList.add('active');
+            if (btnLayoutBlog) btnLayoutBlog.classList.remove('active');
             localStorage.setItem('cerebro-layout-preference', 'ia');
             
             columnChat.classList.add('active');
@@ -259,11 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (btnGotoBlog) {
-        btnGotoBlog.addEventListener('click', () => setLayoutMode('blog'));
-    }
-    if (btnGotoChat) {
-        btnGotoChat.addEventListener('click', () => setLayoutMode('ia'));
+    if (btnLayoutSplit && btnLayoutBlog) {
+        btnLayoutSplit.addEventListener('click', () => setLayoutMode('ia'));
+        btnLayoutBlog.addEventListener('click', () => setLayoutMode('blog'));
     }
 
     // --- Chatbot Functionality ---

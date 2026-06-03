@@ -43,6 +43,26 @@
 
 
 
+    <!-- Layout Switcher (Desktop, Tablet, Mobile) -->
+    <div class="layout-switcher-container container">
+        <div class="layout-switcher">
+            <button class="switcher-btn active" id="btn-layout-split" title="Usar Asistente IA">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="switcher-icon">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Asistente</span>
+            </button>
+            <button class="switcher-btn" id="btn-layout-blog" title="Ver Blog de Notas">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="switcher-icon">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="15" y2="18"></line>
+                </svg>
+                <span>Notas</span>
+            </button>
+        </div>
+    </div>
+
     <!-- Main Content Layout -->
     <main class="cerebro-layout-container container" id="main-layout-wrapper">
         
@@ -59,14 +79,6 @@
                             <p>Consulta mis reflexiones en lenguaje natural.</p>
                         </div>
                     </div>
-                    <button class="header-action-btn" id="btn-goto-blog" title="Ver Blog de Notas">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="action-icon">
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="18" x2="15" y2="18"></line>
-                        </svg>
-                        <span>Ver Notas</span>
-                    </button>
                 </div>
 
                 <!-- Quick Topics / Tags — generados dinámicamente en cerebro.js -->
@@ -109,18 +121,8 @@
         <!-- Right Column: Blog Feed of Notes -->
         <section class="feed-column" id="column-feed">
             <div class="column-header">
-                <div class="column-header-title-row">
-                    <div>
-                        <span class="column-tag">Bitácora</span>
-                        <h1 class="column-title">Reflexiones <span class="serif-text">& Notas</span></h1>
-                    </div>
-                    <button class="header-action-btn" id="btn-goto-chat" title="Preguntar al Asistente IA">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="action-icon">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                        <span>Asistente IA</span>
-                    </button>
-                </div>
+                <span class="column-tag">Bitácora</span>
+                <h1 class="column-title">Reflexiones <span class="serif-text">& Notas</span></h1>
                 <p class="column-desc">Un historial cronológico de ideas interesantes, recomendaciones y aprendizajes en el camino.</p>
             </div>
             
