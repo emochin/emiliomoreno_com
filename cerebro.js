@@ -12,11 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const columnFeed = document.getElementById('column-feed');
     const columnChat = document.getElementById('column-chat');
 
-    // Layout Switcher & Floating Chat Elements
-    const btnLayoutSplit = document.getElementById('btn-layout-split');
-    const btnLayoutBlog = document.getElementById('btn-layout-blog');
-    const floatingChatFab = document.getElementById('floating-chat-fab');
-    const chatCloseBtn = document.getElementById('chat-close-btn');
+    // Layout Switcher (Direct Header Buttons)
+    const btnGotoBlog = document.getElementById('btn-goto-blog');
+    const btnGotoChat = document.getElementById('btn-goto-chat');
 
     let reflections = [];
     let brainMap = {};
@@ -247,8 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mode === 'blog') {
             document.body.classList.add('layout-mode-blog-active');
             document.body.classList.remove('layout-mode-ia-active');
-            btnLayoutBlog.classList.add('active');
-            btnLayoutSplit.classList.remove('active');
             localStorage.setItem('cerebro-layout-preference', 'blog');
             
             columnFeed.classList.add('active');
@@ -256,8 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             document.body.classList.add('layout-mode-ia-active');
             document.body.classList.remove('layout-mode-blog-active');
-            btnLayoutSplit.classList.add('active');
-            btnLayoutBlog.classList.remove('active');
             localStorage.setItem('cerebro-layout-preference', 'ia');
             
             columnChat.classList.add('active');
@@ -265,45 +259,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (btnLayoutSplit && btnLayoutBlog) {
-        btnLayoutSplit.addEventListener('click', () => setLayoutMode('ia'));
-        btnLayoutBlog.addEventListener('click', () => setLayoutMode('blog'));
+    if (btnGotoBlog) {
+        btnGotoBlog.addEventListener('click', () => setLayoutMode('blog'));
     }
-
-    // --- Floating Chat Control (FAB + Close) ---
-    if (floatingChatFab && chatCloseBtn) {
-        floatingChatFab.addEventListener('click', () => {
-            columnChat.classList.add('floating-open');
-            floatingChatFab.classList.add('fab-hidden');
-            // Allow DOM to adjust before scrolling
-            setTimeout(scrollToBottom, 50);
-        });
-
-        chatCloseBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            columnChat.classList.remove('floating-open');
-            floatingChatFab.classList.remove('fab-hidden');
-        });
+    if (btnGotoChat) {
+        btnGotoChat.addEventListener('click', () => setLayoutMode('ia'));
     }
-
-    // --- Mobile Tabs switching logic (only used in Dual View) ---
-    mobileTabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from buttons
-            mobileTabButtons.forEach(b => b.classList.remove('active'));
-            // Add to clicked
-            btn.classList.add('active');
-
-            const tabTarget = btn.getAttribute('data-tab');
-            if (tabTarget === 'feed') {
-                columnFeed.classList.add('active');
-                columnChat.classList.remove('active');
-            } else {
-                columnChat.classList.add('active');
-                columnFeed.classList.remove('active');
-            }
-        });
-    });
 
     // --- Chatbot Functionality ---
     function scrollToBottom() {
