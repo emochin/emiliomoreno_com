@@ -25,19 +25,25 @@
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
 
-    <!-- Header -->
+    <!-- Header / Navigation -->
     <header id="main-header" class="header">
         <div class="header-container">
             <a href="index.html" class="logo" id="nav-logo">
                 <span class="logo-dot"></span>emiliomoreno<span class="logo-ext" id="logo-extension">.com</span>
             </a>
-            <a href="index.html" class="nav-back-home" id="btn-back-home">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="back-arrow-icon">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                Volver
-            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="cerebro.html" class="nav-link" style="color: var(--color-primary); font-weight:700;">🧠 Mi Gemelo Digital</a>
+                <a href="index.html#proyectos" class="nav-link">Proyectos</a>
+                <a href="index.html#sobre-mi" class="nav-link">Sobre Mí</a>
+                <a href="index.html#contacto" class="nav-link btn-header">Contacto</a>
+            </nav>
+
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
