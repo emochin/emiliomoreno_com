@@ -6,10 +6,10 @@
         "tag": "#Podcasts",
         "image": "img/reflection-horizonte-75.png",
         "text": "El episodio 75 de Horizonte Artificial sintetiza una tendencia imparable: la descentralización de la IA y su transición del cloud a la ejecución puramente local. Con hitos como la integración de OpenClaw en Office por parte de Microsoft, el desarrollo por parte de Nvidia de chips específicos para agentes autónomos en local, y la liberación de Gemma 4 12B de Google, queda claro que ya no necesitamos superordenadores remotos para exprimir la inteligencia artificial. La posibilidad de correr agentes potentes y modelos avanzados directamente en nuestros portátiles de uso diario redefine la privacidad, la latencia y la autonomía del software moderno.",
-        "source": "Horizonte Artificial (Amazon Music)",
-        "sourceUrl": "https://music.amazon.es/podcasts/c14e8ade-fd85-44b9-98d7-2e3af5daabd7/episodes/2ec5d90e-be80-4242-9335-d0aeafc6e87a/horizonte-artificial-75-microsoft-mete-openclaw-en-office-nvidia-lanza-el-chip-para-agentes-y-google-libera-gemma-4-12b-la-ia-ya-vive-en-tu-port%C3%A1til",
-        "link": "https://music.amazon.es/podcasts/c14e8ade-fd85-44b9-98d7-2e3af5daabd7/episodes/2ec5d90e-be80-4242-9335-d0aeafc6e87a/horizonte-artificial-75-microsoft-mete-openclaw-en-office-nvidia-lanza-el-chip-para-agentes-y-google-libera-gemma-4-12b-la-ia-ya-vive-en-tu-port%C3%A1til",
-        "linkLabel": "Escuchar en Amazon Music"
+        "source": "Horizonte Artificial (iVoox)",
+        "sourceUrl": "https://go.ivoox.com/rf/175006724",
+        "link": "https://go.ivoox.com/rf/175006724",
+        "linkLabel": "Escuchar en iVoox"
     },
     {
         "id": "anthropic-salida-bolsa",
