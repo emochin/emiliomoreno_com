@@ -273,6 +273,14 @@ document.addEventListener('DOMContentLoaded', () => {
         chatLog.scrollTop = chatLog.scrollHeight;
     }
 
+    function scrollToMessage(messageDiv) {
+        const relativeTop = messageDiv.getBoundingClientRect().top - chatLog.getBoundingClientRect().top + chatLog.scrollTop;
+        chatLog.scrollTo({
+            top: relativeTop - 10,
+            behavior: 'smooth'
+        });
+    }
+
     function appendMessage(sender, content, isHtml = false) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `chat-message ${sender}-message`;
@@ -288,7 +296,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         messageDiv.appendChild(bubble);
         chatLog.appendChild(messageDiv);
-        scrollToBottom();
+        
+        if (sender === 'bot') {
+            scrollToMessage(messageDiv);
+        } else {
+            scrollToBottom();
+        }
 
         // Wire up note-link clicks: open detail modal directly (works regardless of pagination)
         if (isHtml) {
