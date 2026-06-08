@@ -638,21 +638,37 @@
 }
 
 /* --- IA Mode and Blog Mode Layouts (Non-Dual) --- */
+html {
+    scrollbar-gutter: stable;
+}
+
 .cerebro-layout-container {
     grid-template-columns: 1fr !important;
     gap: 0;
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
+}
+
+@keyframes column-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 body.layout-mode-ia-active .chat-column {
     display: flex !important;
-    max-width: 720px;
+    max-width: 800px;
     margin: 0 auto;
     width: 100%;
     position: relative;
     top: 0;
     height: calc(100vh - 200px);
+    animation: column-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 body.layout-mode-ia-active .feed-column {
@@ -664,6 +680,7 @@ body.layout-mode-blog-active .feed-column {
     max-width: 800px;
     margin: 0 auto;
     width: 100%;
+    animation: column-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 body.layout-mode-blog-active .chat-column {

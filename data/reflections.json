@@ -1,5 +1,17 @@
 [
     {
+        "id": "sesgo-cognitivo-ia",
+        "date": "2026-06-08",
+        "title": "La IA y el sesgo cognitivo de la fluidez verbal",
+        "tag": "#Podcasts",
+        "image": "img/reflection-sesgo-ia.png",
+        "text": "En el episodio 1141 del podcast de Juan Merodio, se analiza cómo la IA generativa explota la 'fluidez del lenguaje', uno de los sesgos cognitivos más antiguos del cerebro: tender a creer más a quien habla bien que a quien tiene razón. El riesgo de delegar nuestro juicio y dejar de cuestionar las respuestas convincentes y estructuradas de los LLMs es real. Al igual que externalizamos tareas usando calculadoras o el GPS (donde delegamos la ruta pero nunca el destino), con la IA debemos separar el trabajo técnico de la toma de decisiones críticas. Delegar el pensamiento es dejar que otro diseñe nuestra casa mental.",
+        "source": "Juan Merodio (iVoox)",
+        "sourceUrl": "https://www.ivoox.com/1141-como-ia-usa-sesgo-cognitivo-audios-mp3_rf_174121497_1.html",
+        "link": "https://www.ivoox.com/1141-como-ia-usa-sesgo-cognitivo-audios-mp3_rf_174121497_1.html",
+        "linkLabel": "Escuchar en iVoox"
+    },
+    {
         "id": "horizonte-artificial-75",
         "date": "2026-06-05",
         "title": "La IA ya vive en tu portátil (Horizonte Artificial 75)",
