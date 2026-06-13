@@ -957,3 +957,20 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
         background: var(--bg-card);
     }
 }
+
+/* Chatbot response reflection image styling */
+.chat-message-image {
+    transition: border-color 0.2s ease;
+}
+
+.chat-message-image img {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chat-message-image:hover {
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.chat-message-image:hover img {
+    transform: scale(1.025);
+}
