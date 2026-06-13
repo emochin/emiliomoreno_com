@@ -85,6 +85,7 @@
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+    min-width: 0;
 }
 
 .column-header {
@@ -338,6 +339,7 @@
     height: calc(100vh - 180px);
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .chat-box {
@@ -584,6 +586,8 @@
     font-family: var(--font-sans);
     font-size: 0.9rem;
     padding: 0.4rem 0;
+    width: 100%;
+    min-width: 0;
 }
 
 #chat-input:focus { outline: none; }
@@ -995,4 +999,48 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
 
 .chat-message-image:hover img {
     transform: scale(1.025);
+}
+
+/* --- Responsive fixes for mobile layout overflow, zoom, and font sizing --- */
+@media (max-width: 600px) {
+    .container.cerebro-layout-container {
+        padding: 0 1rem; /* Extra breathing space on smaller screens */
+    }
+    .chat-column, .feed-column {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+    .chat-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+    .column-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    .column-title {
+        font-size: 1.85rem; /* Reduces size to comfortably fit portrait widths */
+    }
+    .layout-switcher {
+        align-self: flex-start;
+    }
+    .chat-box-header {
+        padding: 1rem 1rem;
+    }
+    .quick-tags-container {
+        padding: 0.5rem 1rem 0.65rem 1rem;
+    }
+    .chat-log {
+        padding: 1.25rem 1rem;
+    }
+    .chat-input-bar {
+        padding: 1rem 1rem 1.25rem 1rem;
+    }
+    #chat-input {
+        font-size: 16px; /* Prevents iOS auto-zooming viewport on input focus */
+    }
 }
