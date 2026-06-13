@@ -390,11 +390,29 @@
 /* Quick Tags */
 .quick-tags-container {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.75rem 1.75rem;
     background: #111115;
     border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    -ms-overflow-style: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.quick-tags-container::-webkit-scrollbar {
+    height: 4px;
+    display: block;
+}
+
+.quick-tags-container::-webkit-scrollbar-track {
+    background: #111115;
+}
+
+.quick-tags-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
 }
 
 .quick-tag-btn {
@@ -408,7 +426,19 @@
     font-family: var(--font-mono);
     cursor: pointer;
     white-space: nowrap;
+    flex-shrink: 0;
     transition: var(--transition-smooth);
+}
+
+/* Related Note Item inside Chatbot Bubble */
+.related-note-item {
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.related-note-item:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-1px);
 }
 
 .quick-tag-btn:hover {

@@ -377,39 +377,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.replyHtml) {
                 appendMessage('bot', data.replyHtml, true);
             } else if (data.text) {
-                let html = '';
+                let html = `<p style="margin-bottom:0.75rem; font-size:0.92rem; line-height:1.5; color:var(--text-primary);">${data.text}</p>`;
                 
-                // Find if there is a matching reflection image to show
-                let bestNote = null;
-                if (data.notes && data.notes.length > 0) {
-                    bestNote = reflections.find(r => r.id === data.notes[0]);
-                }
-
-                if (bestNote && bestNote.image) {
-                    html += `
-                        <div style="display: block; overflow: auto; margin-bottom: 0.75rem;">
-                            <div class="chat-message-image" onclick="window.openModal('${bestNote.id}')" style="cursor: pointer; float: right; margin-left: 1.2rem; margin-bottom: 0.6rem; width: 120px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-color); background: #111115;">
-                                <img src="${bestNote.image}" alt="${bestNote.title}" style="width: 100%; height: auto; display: block;">
-                            </div>
-                            <p style="margin: 0; font-size: 0.92rem; line-height: 1.5; color: var(--text-primary);">${data.text}</p>
-                        </div>
-                    `;
-                } else {
-                    html += `<p style="margin-bottom:0.75rem; font-size:0.92rem; line-height:1.5; color:var(--text-primary);">${data.text}</p>`;
-                }
                 if (data.notes && data.notes.length > 0) {
                      html += `<div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; border-top: 1px solid var(--border-color); padding-top:0.6rem; margin-top:0.6rem; margin-bottom:0.4rem; letter-spacing:0.5px;">Mis notas relacionadas:</div>`;
                      data.notes.forEach(id => {
-                         const note = reflections.find(r => r.id === id);
-                         if (note) {
-                             const dateStr = new Date(note.date).toLocaleDateString('es-ES', {year:'numeric', month:'short', day:'numeric'});
-                             html += `
-                                 <div style="background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:12px; padding:0.6rem 0.75rem; margin-bottom:0.5rem; text-align:left; cursor:pointer;" onclick="window.openModal('${note.id}')">
-                                     <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:0.2rem;">${dateStr}</div>
-                                     <h5 style="font-size:0.82rem; font-weight:700; margin:0; color:var(--color-primary);">${note.title}</h5>
-                                 </div>
-                             `;
-                         }
+                          const note = reflections.find(r => r.id === id);
+                          if (note) {
+                              const dateStr = new Date(note.date).toLocaleDateString('es-ES', {year:'numeric', month:'short', day:'numeric'});
+                              html += `
+                                  <div class="related-note-item" style="display: flex; gap: 0.75rem; align-items: center; background:rgba(255, 255, 255, 0.02); border:1px solid var(--border-color); border-radius:6px; padding:0.5rem 0.75rem; margin-bottom:0.5rem; text-align:left; cursor:pointer;" onclick="window.openModal('${note.id}')">
+                                      ${note.image ? `
+                                      <div style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 4px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #111115;">
+                                          <img src="${note.image}" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                                      </div>
+                                      ` : ''}
+                                      <div style="flex: 1; min-width: 0;">
+                                          <div style="font-size:0.68rem; color:var(--text-muted); margin-bottom:0.15rem;">${dateStr}</div>
+                                          <h5 style="font-size:0.8rem; font-weight:700; margin:0; color:var(--color-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${note.title}</h5>
+                                      </div>
+                                  </div>
+                              `;
+                          }
                      });
                 }
                 appendMessage('bot', html, true);
