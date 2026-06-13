@@ -389,9 +389,9 @@
     color: var(--text-secondary);
 }
 
-/* Quick Tags */
 .quick-tags-container {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
     padding: 0.65rem 1.75rem 0.85rem 1.75rem;
     background: #111115;
@@ -1002,7 +1002,7 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
 }
 
 /* --- Responsive fixes for mobile layout overflow, zoom, and font sizing --- */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .container.cerebro-layout-container {
         padding: 0 1rem; /* Extra breathing space on smaller screens */
     }
@@ -1032,7 +1032,7 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
         padding: 1rem 1rem;
     }
     .quick-tags-container {
-        padding: 0.5rem 1rem 0.65rem 1rem;
+        padding: 0.65rem 1rem 0.85rem 1rem; /* Restored safe vertical padding to prevent scrollbar clipping */
     }
     .chat-log {
         padding: 1.25rem 1rem;
