@@ -1016,6 +1016,18 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
         max-width: 100% !important;
         min-width: 0 !important;
     }
+    /* Maximize vertical height for the chat view on mobile */
+    body.layout-mode-ia-active .chat-column {
+        height: calc(100vh - 130px) !important;
+        min-height: 520px !important;
+    }
+    /* Hide chatbot description on mobile to save ~50px of vertical space */
+    .chat-column .column-desc {
+        display: none !important;
+    }
+    .chat-column .column-header {
+        margin-bottom: 0.25rem;
+    }
     .column-header-row {
         flex-direction: column;
         align-items: flex-start;
@@ -1029,7 +1041,7 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
         align-self: flex-start;
     }
     .chat-box-header {
-        padding: 1rem 1rem;
+        padding: 0.85rem 1rem;
     }
     .quick-tags-container {
         padding: 0.65rem 1rem 0.85rem 1rem; /* Restored safe vertical padding to prevent scrollbar clipping */
@@ -1037,8 +1049,9 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
     .chat-log {
         padding: 1.25rem 1rem;
     }
+    /* Compact input bar padding on mobile to save vertical space */
     .chat-input-bar {
-        padding: 1rem 1rem 1.25rem 1rem;
+        padding: 0.75rem 1rem 1rem 1rem;
     }
     #chat-input {
         font-size: 16px; /* Prevents iOS auto-zooming viewport on input focus */
