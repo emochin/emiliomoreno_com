@@ -34,28 +34,19 @@
             
             <nav class="nav-menu" id="nav-menu">
                 <a href="cerebro.html" class="nav-link" style="color: var(--color-primary); font-weight:700; display: inline-flex; align-items: center; gap: 6px;">
-                    <svg viewBox="0 0 100 100" fill="none" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle;">
-                        <!-- Symmetrical Hair -->
-                        <path d="M 24,35 L 19,18 L 36,10 L 50,18 L 64,10 L 81,18 L 76,35 L 63,31 L 50,34 L 37,31 Z" fill="var(--color-primary)"/>
-                        <!-- Left Cheek/Jaw -->
-                        <path d="M 23,45 L 14,53 L 20,63 L 17,73 L 29,89 H 35 L 25,75 L 27,64 L 21,54 L 27,45 Z" fill="var(--color-primary)"/>
-                        <!-- Right Cheek/Jaw -->
-                        <path d="M 77,45 L 86,53 L 80,63 L 83,73 L 71,89 H 65 L 75,75 L 73,64 L 79,54 L 73,45 Z" fill="var(--color-primary)"/>
-                        <!-- Glasses Frame -->
-                        <circle cx="36" cy="56" r="11" stroke="var(--color-primary)" stroke-width="2.2" />
-                        <circle cx="64" cy="56" r="11" stroke="var(--color-primary)" stroke-width="2.2" />
-                        <line x1="47" y1="56" x2="53" y2="56" stroke="var(--color-primary)" stroke-width="2.2" />
-                        <line x1="12" y1="56" x2="25" y2="56" stroke="var(--color-primary)" stroke-width="2.2" />
-                        <line x1="75" y1="56" x2="88" y2="56" stroke="var(--color-primary)" stroke-width="2.2" />
-                        <!-- Crosshairs -->
-                        <line x1="36" y1="43" x2="36" y2="69" stroke="var(--color-primary)" stroke-width="2.2" />
-                        <line x1="64" y1="43" x2="64" y2="69" stroke="var(--color-primary)" stroke-width="2.2" />
-                        <!-- Left Eye Quadrants -->
-                        <path d="M 36,56 L 27,56 A 9 9 0 0 1 36,47 Z" fill="var(--color-primary)"/>
-                        <path d="M 36,56 L 45,56 A 9 9 0 0 1 36,65 Z" fill="var(--color-primary)"/>
-                        <!-- Right Eye Quadrants -->
-                        <path d="M 64,56 L 55,56 A 9 9 0 0 1 64,47 Z" fill="var(--color-primary)"/>
-                        <path d="M 64,56 L 73,56 A 9 9 0 0 1 64,65 Z" fill="var(--color-primary)"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle;">
+                        <!-- Robot head base -->
+                        <path d="M6 10v7a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-7" stroke-linejoin="round"/>
+                        <!-- Exposed brain dome -->
+                        <path d="M6 10c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+                        <!-- Stylized brain circuits -->
+                        <path d="M12 4v6M9 6.5a3 3 0 0 1 3 3M15 6.5a3 3 0 0 0-3 3" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.8"/>
+                        <!-- Eyes -->
+                        <path d="M9 13.5h1.5M13.5 13.5H15" stroke-linecap="round"/>
+                        <!-- Mouth -->
+                        <path d="M11 17h2" stroke-linecap="round"/>
+                        <!-- Antennas -->
+                        <path d="M4 13h2M18 13h2"/>
                     </svg>
                     Mi Gemelo Digital
                 </a>
@@ -114,28 +105,19 @@
                 <div class="chat-box-header">
                     <div class="bot-info">
                         <span class="bot-avatar">
-                            <svg viewBox="0 0 100 100" fill="none" style="width: 32px; height: 32px; display: block;">
-                                <!-- Symmetrical Hair -->
-                                <path d="M 24,35 L 19,18 L 36,10 L 50,18 L 64,10 L 81,18 L 76,35 L 63,31 L 50,34 L 37,31 Z" fill="rgba(255, 255, 255, 0.85)"/>
-                                <!-- Left Cheek/Jaw -->
-                                <path d="M 23,45 L 14,53 L 20,63 L 17,73 L 29,89 H 35 L 25,75 L 27,64 L 21,54 L 27,45 Z" fill="rgba(255, 255, 255, 0.85)"/>
-                                <!-- Right Cheek/Jaw -->
-                                <path d="M 77,45 L 86,53 L 80,63 L 83,73 L 71,89 H 65 L 75,75 L 73,64 L 79,54 L 73,45 Z" fill="rgba(255, 255, 255, 0.85)"/>
-                                <!-- Glasses Frame -->
-                                <circle cx="36" cy="56" r="11" stroke="rgba(255, 255, 255, 0.85)" stroke-width="2.2" />
-                                <circle cx="64" cy="56" r="11" stroke="rgba(255, 255, 255, 0.85)" stroke-width="2.2" />
-                                <line x1="47" y1="56" x2="53" y2="56" stroke="rgba(255, 255, 255, 0.85)" stroke-width="2.2" />
-                                <line x1="12" y1="56" x2="25" y2="56" stroke="rgba(255, 255, 255, 0.85)" stroke-width="2.2" />
-                                <line x1="75" y1="56" x2="88" y2="56" stroke="rgba(255, 255, 255, 0.85)" stroke-width="2.2" />
-                                <!-- Crosshairs -->
-                                <line x1="36" y1="43" x2="36" y2="69" stroke="var(--color-primary)" stroke-width="2.2" />
-                                <line x1="64" y1="43" x2="64" y2="69" stroke="var(--color-primary)" stroke-width="2.2" />
-                                <!-- Left Eye Quadrants (White-translucent) -->
-                                <path d="M 36,56 L 27,56 A 9 9 0 0 1 36,47 Z" fill="rgba(255, 255, 255, 0.85)"/>
-                                <path d="M 36,56 L 45,56 A 9 9 0 0 1 36,65 Z" fill="rgba(255, 255, 255, 0.85)"/>
-                                <!-- Right Eye Quadrants (Electric Orange) -->
-                                <path d="M 64,56 L 55,56 A 9 9 0 0 1 64,47 Z" fill="var(--color-primary)"/>
-                                <path d="M 64,56 L 73,56 A 9 9 0 0 1 64,65 Z" fill="var(--color-primary)"/>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="2" style="width: 28px; height: 28px; display: block;">
+                                <!-- Robot head base -->
+                                <path d="M6 10v7a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-7" stroke-linejoin="round"/>
+                                <!-- Exposed brain dome -->
+                                <path d="M6 10c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+                                <!-- Stylized brain circuits -->
+                                <path d="M12 4v6M9 6.5a3 3 0 0 1 3 3M15 6.5a3 3 0 0 0-3 3" stroke="var(--color-primary)" stroke-width="1.8"/>
+                                <!-- Eyes -->
+                                <path d="M9 13.5h1.5M13.5 13.5H15" stroke-linecap="round"/>
+                                <!-- Mouth -->
+                                <path d="M11 17h2" stroke-linecap="round"/>
+                                <!-- Antennas -->
+                                <path d="M4 13h2M18 13h2"/>
                             </svg>
                         </span>
                         <div>
