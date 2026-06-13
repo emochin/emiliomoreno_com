@@ -1,5 +1,17 @@
 [
     {
+        "id": "apagon-claude-usa",
+        "date": "2026-06-13",
+        "title": "Geopolítica del software: el apagón de Fable 5 y Mythos 5",
+        "tag": "#IA",
+        "image": "img/reflection-apagon-claude.png",
+        "text": "La orden de la Casa Blanca a Anthropic para suspender el acceso de ciudadanos no estadounidenses a Fable 5 y Mythos 5 marca un precedente histórico y preocupante: la transición de vetar hardware (chips) a prohibir directamente el uso de software de acceso general por motivos de seguridad nacional. La justificación de seguridad, basada en vulnerabilidades menores que Anthropic asegura que ya existían en otros modelos sin restringir como GPT-5.5, desvela una preocupante asimetría regulatoria. Si el estándar gubernamental para suspender un modelo es el hallazgo de cualquier fallo de seguridad, la innovación en modelos de frontera se verá gravemente lastrada por procesos de depuración infinitos, un personal diezmado y mercados comerciales fragmentados. Al final, esta política del miedo estadounidense no frena el avance tecnológico; más bien actúa como catalizador para que China acelere su propia independencia tecnológica.",
+        "source": "Xataka",
+        "sourceUrl": "https://www.xataka.com/servicios/estados-unidos-pulsa-boton-miedo-claude-mythos-fable-5-apagon-claro-beneficiado-china",
+        "link": "https://www.xataka.com/servicios/estados-unidos-pulsa-boton-miedo-claude-mythos-fable-5-apagon-claro-beneficiado-china",
+        "linkLabel": "Leer artículo en Xataka"
+    },
+    {
         "id": "sesgo-cognitivo-ia",
         "date": "2026-06-08",
         "title": "La IA y el sesgo cognitivo de la fluidez verbal",
