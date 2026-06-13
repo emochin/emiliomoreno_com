@@ -390,19 +390,11 @@
 /* Quick Tags */
 .quick-tags-container {
     display: flex;
-    gap: 0.4rem;
-    padding: 0.6rem 1.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
     background: #111115;
     border-bottom: 1px solid var(--border-color);
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-}
-
-.quick-tags-container::-webkit-scrollbar {
-    display: none;
-    height: 0px;
 }
 
 .quick-tag-btn {

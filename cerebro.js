@@ -387,13 +387,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (bestNote && bestNote.image) {
                     html += `
-                        <div style="display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 0.75rem;">
-                            <div style="flex: 1;">
-                                <p style="margin: 0; font-size: 0.92rem; line-height: 1.5; color: var(--text-primary);">${data.text}</p>
-                            </div>
-                            <div class="chat-message-image" onclick="window.openModal('${bestNote.id}')" style="cursor: pointer; flex-shrink: 0; width: 140px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-color); background: #111115;">
+                        <div style="display: block; overflow: auto; margin-bottom: 0.75rem;">
+                            <div class="chat-message-image" onclick="window.openModal('${bestNote.id}')" style="cursor: pointer; float: right; margin-left: 1.2rem; margin-bottom: 0.6rem; width: 120px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-color); background: #111115;">
                                 <img src="${bestNote.image}" alt="${bestNote.title}" style="width: 100%; height: auto; display: block;">
                             </div>
+                            <p style="margin: 0; font-size: 0.92rem; line-height: 1.5; color: var(--text-primary);">${data.text}</p>
                         </div>
                     `;
                 } else {
