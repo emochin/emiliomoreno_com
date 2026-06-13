@@ -21,9 +21,10 @@
     gap: 0.5rem;
     transition: var(--transition-smooth);
     padding: 0.5rem 1.25rem;
-    border-radius: 30px;
+    border-radius: 4px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
+    font-family: var(--font-mono);
 }
 
 .nav-back-home:hover {
@@ -137,14 +138,15 @@
 
 /* Blog Note Card */
 .blog-card {
-    background: rgba(15, 23, 42, 0.3);
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 6px;
     overflow: hidden;
     transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
     animation: card-appear 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.04);
 }
 
 .blog-card-image {
@@ -153,6 +155,7 @@
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .blog-card-image img {
@@ -180,22 +183,22 @@
 }
 
 .blog-card:hover {
-    border-color: rgba(139, 92, 246, 0.3);
-    background: rgba(15, 23, 42, 0.45);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-color: var(--color-primary);
+    background: var(--bg-card-hover);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--color-primary);
 }
 
 .blog-card.card-highlight {
-    border-color: rgba(139, 92, 246, 0.8);
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25), 0 10px 40px rgba(139, 92, 246, 0.15);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 95, 31, 0.25), 6px 6px 0px var(--color-primary);
     animation: highlight-pulse 2s ease-out forwards;
 }
 
 @keyframes highlight-pulse {
-    0%   { box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.5), 0 10px 40px rgba(139, 92, 246, 0.2); }
-    70%  { box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2), 0 10px 30px rgba(139, 92, 246, 0.1); }
-    100% { box-shadow: none; }
+    0%   { box-shadow: 0 0 0 4px rgba(255, 95, 31, 0.5), 6px 6px 0px var(--color-primary); }
+    70%  { box-shadow: 0 0 0 4px rgba(255, 95, 31, 0.2), 6px 6px 0px var(--color-primary); }
+    100% { box-shadow: 6px 6px 0px var(--color-primary); }
 }
 
 .blog-card-meta {
@@ -338,22 +341,20 @@
 
 .chat-box {
     flex-grow: 1;
-    background: rgba(15, 23, 42, 0.45);
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 24px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
 }
 
 /* Chat Header */
 .chat-box-header {
     padding: 1.25rem 1.75rem;
     border-bottom: 1px solid var(--border-color);
-    background: rgba(6, 9, 17, 0.4);
+    background: #15151b;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -390,7 +391,7 @@
     display: flex;
     gap: 0.4rem;
     padding: 0.6rem 1.75rem;
-    background: rgba(255, 255, 255, 0.01);
+    background: #111115;
     border-bottom: 1px solid var(--border-color);
     overflow-x: auto;
     overflow-y: hidden;
@@ -404,13 +405,14 @@
 }
 
 .quick-tag-btn {
-    background: rgba(255, 255, 255, 0.02);
+    background: #15151b;
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
     padding: 0.3rem 0.75rem;
-    border-radius: 16px;
+    border-radius: 4px;
     font-size: 0.75rem;
     font-weight: 600;
+    font-family: var(--font-mono);
     cursor: pointer;
     white-space: nowrap;
     transition: var(--transition-smooth);
@@ -418,8 +420,8 @@
 
 .quick-tag-btn:hover {
     color: var(--text-primary);
-    border-color: rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-primary);
+    background: rgba(255, 95, 31, 0.05);
 }
 
 /* Chat Log */
@@ -463,7 +465,7 @@
 .message-bubble {
     max-width: 85%;
     padding: 0.85rem 1.25rem;
-    border-radius: 18px;
+    border-radius: 4px;
     font-size: 0.9rem;
     line-height: 1.45;
     word-break: break-word;
@@ -471,23 +473,27 @@
 }
 
 .user-message .message-bubble {
-    background: var(--gradient-brand);
-    color: white;
+    background: var(--color-primary);
+    color: #08080c;
     border-bottom-right-radius: 4px;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+    font-weight: 600;
 }
 
 .bot-message .message-bubble {
-    background: rgba(30, 41, 59, 0.45);
+    background: #15151b;
     border: 1px solid var(--border-color);
     color: var(--text-primary);
     border-bottom-left-radius: 4px;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-bubble {
-    background: rgba(30, 41, 59, 0.2) !important;
-    border-radius: 18px !important;
+    background: #111115 !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 4px !important;
     max-width: 100%;
+    box-shadow: none !important;
 }
 
 .welcome-bubble h3 {
@@ -515,20 +521,20 @@
     font-style: normal;
     font-weight: 600;
     text-decoration: none;
-    border-bottom: 1px dashed rgba(139, 92, 246, 0.5);
+    border-bottom: 1px dashed var(--color-primary);
     transition: border-color 0.2s ease, opacity 0.2s ease;
     cursor: pointer;
 }
 
 .bubble-link:hover {
-    border-bottom-color: var(--color-primary);
+    border-bottom-color: var(--text-primary);
     opacity: 0.85;
 }
 
 /* Input Bar */
 .chat-input-bar {
     padding: 1.25rem 1.75rem 1.5rem;
-    background: rgba(6, 9, 17, 0.4);
+    background: #15151b;
     border-top: 1px solid var(--border-color);
 }
 
@@ -537,13 +543,13 @@
     align-items: center;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border-color);
-    border-radius: 14px;
+    border-radius: 4px;
     padding: 0.25rem 0.4rem 0.25rem 1rem;
     transition: var(--transition-smooth);
 }
 
 .input-wrapper:focus-within {
-    border-color: rgba(139, 92, 246, 0.3);
+    border-color: var(--color-primary);
     background: rgba(255, 255, 255, 0.04);
 }
 
@@ -715,12 +721,10 @@ body.layout-mode-blog-active .chat-column {
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    background: rgba(15, 23, 42, 0.4);
+    background: #111115;
     border: 1px solid var(--border-color);
     padding: 0.25rem;
-    border-radius: 30px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    border-radius: 4px;
 }
 
 .switcher-btn {
@@ -728,10 +732,10 @@ body.layout-mode-blog-active .chat-column {
     border: 1px solid transparent;
     color: var(--text-secondary);
     padding: 0.45rem 1.15rem;
-    border-radius: 20px;
+    border-radius: 4px;
     font-size: 0.85rem;
     font-weight: 600;
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -745,10 +749,10 @@ body.layout-mode-blog-active .chat-column {
 }
 
 .switcher-btn.active {
-    color: var(--text-primary);
-    background: rgba(139, 92, 246, 0.12);
-    border-color: rgba(139, 92, 246, 0.25);
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
+    color: var(--color-primary);
+    background: rgba(255, 95, 31, 0.12);
+    border-color: rgba(255, 95, 31, 0.25);
+    box-shadow: none;
 }
 
 .switcher-icon {
@@ -776,7 +780,7 @@ body.layout-mode-blog-active .chat-column {
     }
     .switcher-btn {
         padding: 0.5rem;
-        border-radius: 50% !important;
+        border-radius: 4px !important;
         width: 36px;
         height: 36px;
         flex-grow: 0 !important;
@@ -812,9 +816,9 @@ body.layout-mode-blog-active .chat-column {
     pointer-events: all;
 }
 .reflection-modal {
-    background: #0f1729;
+    background: #111115;
     border: 1px solid var(--border-color);
-    border-radius: 24px;
+    border-radius: 6px;
     max-width: 620px;
     width: 100%;
     max-height: 90vh;
@@ -822,7 +826,7 @@ body.layout-mode-blog-active .chat-column {
     position: relative;
     transform: translateY(24px) scale(0.97);
     transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
 }
 .reflection-modal-overlay.open .reflection-modal {
     transform: translateY(0) scale(1);
