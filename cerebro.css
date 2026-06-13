@@ -183,10 +183,10 @@
 }
 
 .blog-card:hover {
-    border-color: var(--color-primary);
+    border-color: rgba(255, 255, 255, 0.35);
     background: var(--bg-card-hover);
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--color-primary);
+    box-shadow: 6px 6px 0px rgba(255, 255, 255, 0.15);
 }
 
 .blog-card.card-highlight {

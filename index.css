@@ -463,9 +463,9 @@ h1, h2, h3, h4, h5, h6, .logo {
 
 .project-card:hover {
     background: var(--bg-card-hover);
-    border-color: var(--color-primary);
+    border-color: rgba(255, 255, 255, 0.35);
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--color-primary);
+    box-shadow: 6px 6px 0px rgba(255, 255, 255, 0.15);
 }
 
 .project-glow {
