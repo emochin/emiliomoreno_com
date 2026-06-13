@@ -221,7 +221,7 @@
     align-items: center;
     gap: 0.15rem;
     transition: var(--transition-smooth);
-    border-bottom: 1px dashed rgba(139, 92, 246, 0.3);
+    border-bottom: 1px dashed var(--color-primary);
 }
 
 .blog-card-source-link:hover {
@@ -237,18 +237,19 @@
 
 .blog-card-tag {
     color: var(--color-primary);
-    background: rgba(139, 92, 246, 0.08);
+    background: rgba(255, 95, 31, 0.08);
     padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    border: 1px solid rgba(139, 92, 246, 0.15);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 95, 31, 0.15);
     cursor: pointer;
     transition: var(--transition-smooth);
     user-select: none;
+    font-family: var(--font-mono);
 }
 
 .blog-card-tag:hover {
-    background: rgba(139, 92, 246, 0.18);
-    border-color: rgba(139, 92, 246, 0.35);
+    background: rgba(255, 95, 31, 0.18);
+    border-color: rgba(255, 95, 31, 0.35);
     color: var(--text-primary);
     transform: translateY(-1px);
 }
@@ -258,10 +259,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(139, 92, 246, 0.04);
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    background: rgba(255, 95, 31, 0.04);
+    border: 1px solid rgba(255, 95, 31, 0.2);
     padding: 0.8rem 1.4rem;
-    border-radius: 16px;
+    border-radius: 4px;
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
@@ -854,18 +855,18 @@ body.layout-mode-blog-active .chat-column {
 .modal-close-btn:hover {
     background: var(--color-primary);
     border-color: var(--color-primary);
-    color: white;
+    color: #08080c;
     transform: scale(1.08) rotate(90deg);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
 }
 .modal-close-btn svg { width: 16px; height: 16px; stroke-width: 2.5; }
-.modal-image-wrap { width: 100%; height: 220px; overflow: hidden; border-radius: 24px 24px 0 0; flex-shrink: 0; }
+.modal-image-wrap { width: 100%; height: 220px; overflow: hidden; border-radius: 4px 4px 0 0; flex-shrink: 0; border-bottom: 1px solid var(--border-color); }
 .modal-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .modal-image-wrap:empty { display: none; }
 .modal-body { padding: 1.75rem 2rem 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .modal-meta { display: flex; align-items: center; gap: 0.75rem; }
 .modal-date { font-size: 0.78rem; color: var(--text-muted); }
-.modal-tag { font-size: 0.7rem; font-weight: 700; color: var(--color-primary); background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.25); padding: 0.2rem 0.6rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+.modal-tag { font-size: 0.7rem; font-weight: 700; color: var(--color-primary); background: rgba(255,95,31,0.12); border: 1px solid rgba(255,95,31,0.25); padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-mono); }
 .modal-title { font-size: 1.3rem; font-weight: 700; line-height: 1.35; color: var(--text-primary); margin: 0; }
 .modal-text { font-size: 0.95rem; line-height: 1.75; color: var(--text-secondary); margin: 0; }
 .modal-source-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: var(--color-primary); text-decoration: none; margin-top: 0.25rem; opacity: 0.85; transition: opacity 0.2s; }
@@ -876,8 +877,8 @@ body.layout-mode-blog-active .chat-column {
    LOAD MORE BUTTON
    ===================== */
 .load-more-container { text-align: center; padding: 1.5rem 0 0.5rem; }
-.btn-load-more { background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 0.65rem 1.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s; font-family: inherit; }
-.btn-load-more:hover { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.4); color: var(--color-primary); }
+.btn-load-more { background: #111115; border: 1px solid var(--border-color); color: var(--text-secondary); padding: 0.65rem 1.75rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s; font-family: var(--font-mono); box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.04); }
+.btn-load-more:hover { background: var(--bg-card-hover); border-color: var(--color-primary); color: var(--color-primary); transform: translate(-1px, -1px); box-shadow: 3px 3px 0px var(--color-primary); }
 
 /* ====================================================
    MODAL UX IMPROVEMENTS (Blur, Nav buttons & Highlight)
@@ -885,7 +886,7 @@ body.layout-mode-blog-active .chat-column {
 
 /* Blur background container when modal is open */
 body:has(.reflection-modal-overlay.open) .dual-column-layout {
-    filter: blur(4px);
+    filter: blur(2px);
     transition: filter 0.25s ease;
 }
 .dual-column-layout {
@@ -907,27 +908,31 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.04);
+    background: #111115;
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
     padding: 0.5rem 1rem;
-    border-radius: 12px;
+    border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
-    font-family: inherit;
+    font-family: var(--font-mono);
+    box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.04);
 }
 
 .modal-nav-btn:hover:not(:disabled) {
-    background: rgba(139, 92, 246, 0.1);
-    border-color: rgba(139, 92, 246, 0.4);
+    background: var(--bg-card-hover);
+    border-color: var(--color-primary);
     color: var(--color-primary);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--color-primary);
 }
 
 .modal-nav-btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 .modal-nav-btn svg {
@@ -942,12 +947,12 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
 
 @keyframes pulseHighlight {
     0% {
-        box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.4);
+        box-shadow: 0 0 0 4px rgba(255, 95, 31, 0.4);
         border-color: var(--color-primary);
-        background: rgba(139, 92, 246, 0.08);
+        background: rgba(255, 95, 31, 0.08);
     }
     100% {
-        box-shadow: 0 0 0 0px rgba(139, 92, 246, 0);
+        box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.04);
         border-color: var(--border-color);
         background: var(--bg-card);
     }

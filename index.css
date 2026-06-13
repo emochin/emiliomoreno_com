@@ -672,25 +672,17 @@ h1, h2, h3, h4, h5, h6, .logo {
 
 .contact-card {
     position: relative;
-    background: radial-gradient(ellipse at top right, rgba(139, 92, 246, 0.15) 0%, rgba(6, 9, 17, 0.6) 80%);
+    background: radial-gradient(ellipse at top right, rgba(255, 95, 31, 0.08) 0%, #111115 80%);
     border: 1px solid var(--border-color);
-    border-radius: 32px;
+    border-radius: 6px;
     padding: 4.5rem;
     text-align: center;
     overflow: hidden;
+    box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.04);
 }
 
 .contact-glow {
-    position: absolute;
-    bottom: -150px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
-    filter: blur(50px);
-    pointer-events: none;
+    display: none; /* Hide glow circles */
 }
 
 .contact-content {
