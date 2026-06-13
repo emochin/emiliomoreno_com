@@ -379,19 +379,26 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (data.text) {
                 let html = '';
                 
-                // Add the most relevant reflection image if present
+                // Find if there is a matching reflection image to show
+                let bestNote = null;
                 if (data.notes && data.notes.length > 0) {
-                    const bestNote = reflections.find(r => r.id === data.notes[0]);
-                    if (bestNote && bestNote.image) {
-                        html += `
-                            <div class="chat-message-image" onclick="window.openModal('${bestNote.id}')" style="cursor: pointer; margin-bottom: 0.8rem; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-color); max-height: 180px; width: 100%;">
-                                <img src="${bestNote.image}" alt="${bestNote.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                            </div>
-                        `;
-                    }
+                    bestNote = reflections.find(r => r.id === data.notes[0]);
                 }
-                
-                html += `<p style="margin-bottom:0.75rem; font-size:0.92rem; line-height:1.5; color:var(--text-primary);">${data.text}</p>`;
+
+                if (bestNote && bestNote.image) {
+                    html += `
+                        <div style="display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 0.75rem;">
+                            <div style="flex: 1;">
+                                <p style="margin: 0; font-size: 0.92rem; line-height: 1.5; color: var(--text-primary);">${data.text}</p>
+                            </div>
+                            <div class="chat-message-image" onclick="window.openModal('${bestNote.id}')" style="cursor: pointer; flex-shrink: 0; width: 140px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-color); background: #111115;">
+                                <img src="${bestNote.image}" alt="${bestNote.title}" style="width: 100%; height: auto; display: block;">
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `<p style="margin-bottom:0.75rem; font-size:0.92rem; line-height:1.5; color:var(--text-primary);">${data.text}</p>`;
+                }
                 if (data.notes && data.notes.length > 0) {
                      html += `<div style="font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; border-top: 1px solid var(--border-color); padding-top:0.6rem; margin-top:0.6rem; margin-bottom:0.4rem; letter-spacing:0.5px;">Mis notas relacionadas:</div>`;
                      data.notes.forEach(id => {
