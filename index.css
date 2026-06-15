@@ -4,17 +4,17 @@
     --bg-card: #111115; /* Solid dark carbon card */
     --bg-card-hover: #15151b;
     --border-color: rgba(255, 255, 255, 0.12); /* Brighter solid borders */
-    --border-color-hover: #ff5f1f; /* Neon Orange border on hover */
+    --border-color-hover: #00ff66; /* Neon Classic Green border on hover */
     
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1; /* Slightly brighter for readability */
     --text-muted: #64748b;
     
-    --color-primary: #ff5f1f; /* Neo-Brutalist Electric Orange */
+    --color-primary: #00ff66; /* Neo-Brutalist Classic Green */
     --color-secondary: #ffffff;
     --color-accent: #e2e8f0;
     
-    --gradient-brand: linear-gradient(135deg, var(--color-primary), #ff8a50);
+    --gradient-brand: linear-gradient(135deg, var(--color-primary), #66ffb3);
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-header: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -231,9 +231,9 @@ h1, h2, h3, h4, h5, h6, .logo {
 .hero-tag {
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 95, 31, 0.08);
-    border: 1px solid rgba(255, 95, 31, 0.2);
-    color: #ff8a50;
+    background: rgba(0, 255, 102, 0.08);
+    border: 1px solid rgba(0, 255, 102, 0.2);
+    color: #66ffb3;
     padding: 0.5rem 1.25rem;
     border-radius: 4px;
     font-size: 0.85rem;
@@ -299,7 +299,7 @@ h1, h2, h3, h4, h5, h6, .logo {
 }
 
 .btn-primary {
-    background: var(--color-primary); /* Orange solid */
+    background: var(--color-primary); /* Green solid */
     color: #08080a; /* Black text */
     border: 1px solid var(--color-primary);
     box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.1);
@@ -328,11 +328,11 @@ h1, h2, h3, h4, h5, h6, .logo {
     background: #111115;
     border: 1px solid var(--color-primary);
     color: var(--color-primary);
-    box-shadow: 4px 4px 0px rgba(255, 95, 31, 0.1);
+    box-shadow: 4px 4px 0px rgba(0, 255, 102, 0.1);
 }
 
 .btn-cerebro:hover {
-    background: rgba(255, 95, 31, 0.05);
+    background: rgba(0, 255, 102, 0.05);
     border-color: var(--color-primary);
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0px var(--color-primary);
@@ -672,7 +672,7 @@ h1, h2, h3, h4, h5, h6, .logo {
 
 .contact-card {
     position: relative;
-    background: radial-gradient(ellipse at top right, rgba(255, 95, 31, 0.08) 0%, #111115 80%);
+    background: radial-gradient(ellipse at top right, rgba(0, 255, 102, 0.08) 0%, #111115 80%);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 4.5rem;
@@ -983,8 +983,8 @@ h1, h2, h3, h4, h5, h6, .logo {
     width: 36px;
     height: 36px;
     border-radius: 4px;
-    background: rgba(255, 95, 31, 0.15);
-    border: 1px solid rgba(255, 95, 31, 0.3);
+    background: rgba(0, 255, 102, 0.15);
+    border: 1px solid rgba(0, 255, 102, 0.3);
     flex-shrink: 0;
 }
 

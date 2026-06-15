@@ -192,13 +192,13 @@
 
 .blog-card.card-highlight {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(255, 95, 31, 0.25), 6px 6px 0px var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.25), 6px 6px 0px var(--color-primary);
     animation: highlight-pulse 2s ease-out forwards;
 }
 
 @keyframes highlight-pulse {
-    0%   { box-shadow: 0 0 0 4px rgba(255, 95, 31, 0.5), 6px 6px 0px var(--color-primary); }
-    70%  { box-shadow: 0 0 0 4px rgba(255, 95, 31, 0.2), 6px 6px 0px var(--color-primary); }
+    0%   { box-shadow: 0 0 0 4px rgba(0, 255, 102, 0.5), 6px 6px 0px var(--color-primary); }
+    70%  { box-shadow: 0 0 0 4px rgba(0, 255, 102, 0.2), 6px 6px 0px var(--color-primary); }
     100% { box-shadow: 6px 6px 0px var(--color-primary); }
 }
 
@@ -238,10 +238,10 @@
 
 .blog-card-tag {
     color: var(--color-primary);
-    background: rgba(255, 95, 31, 0.08);
+    background: rgba(0, 255, 102, 0.08);
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
-    border: 1px solid rgba(255, 95, 31, 0.15);
+    border: 1px solid rgba(0, 255, 102, 0.15);
     cursor: pointer;
     transition: var(--transition-smooth);
     user-select: none;
@@ -249,8 +249,8 @@
 }
 
 .blog-card-tag:hover {
-    background: rgba(255, 95, 31, 0.18);
-    border-color: rgba(255, 95, 31, 0.35);
+    background: rgba(0, 255, 102, 0.18);
+    border-color: rgba(0, 255, 102, 0.35);
     color: var(--text-primary);
     transform: translateY(-1px);
 }
@@ -260,8 +260,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 95, 31, 0.04);
-    border: 1px solid rgba(255, 95, 31, 0.2);
+    background: rgba(0, 255, 102, 0.04);
+    border: 1px solid rgba(0, 255, 102, 0.2);
     padding: 0.8rem 1.4rem;
     border-radius: 4px;
     font-size: 0.9rem;
@@ -446,7 +446,7 @@
 .quick-tag-btn:hover {
     color: var(--text-primary);
     border-color: var(--color-primary);
-    background: rgba(255, 95, 31, 0.05);
+    background: rgba(0, 255, 102, 0.05);
 }
 
 /* Chat Log */
@@ -777,8 +777,8 @@ body.layout-mode-blog-active .chat-column {
 
 .switcher-btn.active {
     color: var(--color-primary);
-    background: rgba(255, 95, 31, 0.12);
-    border-color: rgba(255, 95, 31, 0.25);
+    background: rgba(0, 255, 102, 0.12);
+    border-color: rgba(0, 255, 102, 0.25);
     box-shadow: none;
 }
 
@@ -892,7 +892,7 @@ body.layout-mode-blog-active .chat-column {
 .modal-body { padding: 1.75rem 2rem 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .modal-meta { display: flex; align-items: center; gap: 0.75rem; }
 .modal-date { font-size: 0.78rem; color: var(--text-muted); }
-.modal-tag { font-size: 0.7rem; font-weight: 700; color: var(--color-primary); background: rgba(255,95,31,0.12); border: 1px solid rgba(255,95,31,0.25); padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-mono); }
+.modal-tag { font-size: 0.7rem; font-weight: 700; color: var(--color-primary); background: rgba(0,255,102,0.12); border: 1px solid rgba(0,255,102,0.25); padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-mono); }
 .modal-title { font-size: 1.3rem; font-weight: 700; line-height: 1.35; color: var(--text-primary); margin: 0; }
 .modal-text { font-size: 0.95rem; line-height: 1.75; color: var(--text-secondary); margin: 0; }
 .modal-source-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: var(--color-primary); text-decoration: none; margin-top: 0.25rem; opacity: 0.85; transition: opacity 0.2s; }
@@ -973,9 +973,9 @@ body:has(.reflection-modal-overlay.open) .dual-column-layout {
 
 @keyframes pulseHighlight {
     0% {
-        box-shadow: 0 0 0 4px rgba(255, 95, 31, 0.4);
+        box-shadow: 0 0 0 4px rgba(0, 255, 102, 0.4);
         border-color: var(--color-primary);
-        background: rgba(255, 95, 31, 0.08);
+        background: rgba(0, 255, 102, 0.08);
     }
     100% {
         box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.04);
