@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             renderBlogFeed();
             renderSuggestions();
+            checkHashOnLoad();
         } catch (e) {
             console.error("Error loading reflections:", e);
         }
@@ -96,7 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${formatDate(note.date)} —
                             ${targetUrl ? `vía <a href="${targetUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source} <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : `vía ${note.source}`}
                         </span>
-                        <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
+                        <div class="blog-card-actions">
+                            <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
+                            <button class="share-card-btn" title="Copiar enlace directo" data-note-id="${note.id}">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="share-icon-svg">
+                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                    <polyline points="16 6 12 2 8 6"></polyline>
+                                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <h3 class="blog-card-title">${note.title}</h3>
                     <p class="blog-card-text">${note.text}</p>
@@ -104,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             // Open modal on card click
             card.addEventListener('click', (e) => {
-                if (e.target.closest('a')) return; // let source links work normally
+                if (e.target.closest('a') || e.target.closest('.share-card-btn')) return; // let source and share links work normally
                 openModal(note.id);
             });
             card.style.cursor = 'pointer';
@@ -157,6 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index === -1) return;
         const note = currentList[index];
 
+        // Update URL hash without jumping/scrolling
+        history.replaceState(null, null, `#nota-${noteId}`);
+
         modalDate.textContent = formatDate(note.date);
         modalTag.textContent  = note.tag;
         modalTitle.textContent = note.title;
@@ -205,6 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
         document.body.style.paddingRight = '';
 
+        // Clear hash from URL
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+
         // Flash target card in the feed for visual feedback
         if (currentModalNoteId) {
             const targetCard = document.getElementById(`nota-${currentModalNoteId}`);
@@ -221,6 +237,96 @@ document.addEventListener('DOMContentLoaded', () => {
     btnPrev.addEventListener('click', () => navigateModal(-1));
     btnNext.addEventListener('click', () => navigateModal(1));
     modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+
+    // --- Share Button Event Listeners & Hash Routing Logic ---
+    
+    // Copy link logic inside modal
+    const modalShareBtn = document.getElementById('modal-share-btn');
+    if (modalShareBtn) {
+        modalShareBtn.addEventListener('click', () => {
+            if (!currentModalNoteId) return;
+            const shareUrl = `${window.location.origin}${window.location.pathname}#nota-${currentModalNoteId}`;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const originalHtml = modalShareBtn.innerHTML;
+                modalShareBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="share-icon-svg" style="color: var(--color-primary);">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                `;
+                modalShareBtn.style.borderColor = 'var(--color-primary)';
+                modalShareBtn.title = "¡Enlace copiado!";
+                
+                setTimeout(() => {
+                    modalShareBtn.innerHTML = originalHtml;
+                    modalShareBtn.style.borderColor = '';
+                    modalShareBtn.title = "Copiar enlace directo";
+                }, 1500);
+            });
+        });
+    }
+
+    // Event delegation for share button clicks inside reflectionsFeedList
+    reflectionsFeedList.addEventListener('click', (e) => {
+        const shareBtn = e.target.closest('.share-card-btn');
+        if (shareBtn) {
+            e.stopPropagation(); // prevent opening the modal
+            const noteId = shareBtn.getAttribute('data-note-id');
+            const shareUrl = `${window.location.origin}${window.location.pathname}#nota-${noteId}`;
+            
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const originalHtml = shareBtn.innerHTML;
+                shareBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="share-icon-svg" style="color: var(--color-primary);">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                `;
+                shareBtn.style.borderColor = 'var(--color-primary)';
+                shareBtn.title = "¡Enlace copiado!";
+                
+                setTimeout(() => {
+                    shareBtn.innerHTML = originalHtml;
+                    shareBtn.style.borderColor = '';
+                    shareBtn.title = "Copiar enlace directo";
+                }, 1500);
+            }).catch(err => {
+                console.error("Could not copy text: ", err);
+            });
+        }
+    });
+
+    // Hash-based routing functions
+    function checkHashOnLoad() {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#nota-')) {
+            const noteId = hash.replace('#nota-', '');
+            const note = reflections.find(r => r.id === noteId);
+            if (note) {
+                const isMobile = window.innerWidth <= 900;
+                if (isMobile) {
+                    setLayoutMode('blog');
+                }
+                setTimeout(() => {
+                    openModal(noteId);
+                    const card = document.getElementById(`nota-${noteId}`);
+                    if (card) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 200);
+            }
+        }
+    }
+
+    window.addEventListener('hashchange', () => {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#nota-')) {
+            const noteId = hash.replace('#nota-', '');
+            if (currentModalNoteId !== noteId) {
+                openModal(noteId);
+            }
+        } else if (!hash && modalOverlay.classList.contains('open')) {
+            closeModal();
+        }
+    });
     
     document.addEventListener('keydown', (e) => {
         if (!modalOverlay.classList.contains('open')) return;

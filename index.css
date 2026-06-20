@@ -794,6 +794,60 @@ h1, h2, h3, h4, h5, h6, .logo {
     font-weight: 500;
 }
 
+/* Custom Footer Additions */
+.footer-nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+
+.footer-nav-links a:hover {
+    color: var(--color-primary);
+}
+
+.footer-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-brand-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-brand-logo .logo-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+.footer-brand-logo .logo-ext {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+
 /* Responsive Styles */
 @media (max-width: 992px) {
     .hero-title {
