@@ -1,5 +1,17 @@
 [
     {
+        "id": "nadie-sabe-nada-humor",
+        "date": "2026-06-20",
+        "title": "La genialidad de la improvisación (Nadie Sabe Nada)",
+        "tag": "#Podcasts",
+        "image": "img/reflection-nadie-sabe-nada.png",
+        "text": "El podcast 'Nadie Sabe Nada', presentado por Andreu Buenafuente y Berto Romero, es una lección magistral de improvisación y complicidad. Partiendo de la base de que 'nadie sabe nada', convierten las preguntas y propuestas absurdas de los oyentes en oro humorístico. Su capacidad para hilvanar historias delirantes, debatir sobre minucias cotidianas o reírse de sus propios errores con total naturalidad demuestra que, en el humor, la espontaneidad y la conexión genuina con el público a menudo superan a cualquier guion preestablecido.",
+        "source": "Nadie sabe nada (iVoox)",
+        "sourceUrl": "https://www.ivoox.com/podcast-nadie-sabe-nada-buenafuente-berto_sq_f173407_1.html",
+        "link": "https://www.ivoox.com/podcast-nadie-sabe-nada-buenafuente-berto_sq_f173407_1.html",
+        "linkLabel": "Escuchar en iVoox"
+    },
+    {
         "id": "apagon-claude-usa",
         "date": "2026-06-13",
         "title": "Geopolítica del software: el apagón de Fable 5 y Mythos 5",
