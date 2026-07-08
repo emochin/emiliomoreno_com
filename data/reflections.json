@@ -1,5 +1,17 @@
 [
     {
+        "id": "moonshots-google-x",
+        "date": "2026-07-08",
+        "title": "La cultura del Moonshooting (Inteligencia Artificial con Jon Hernandez)",
+        "tag": "#Podcasts",
+        "image": "img/reflection-moonshots.png",
+        "text": "En este episodio del podcast de Jon Hernandez, conversando con Fernando Domínguez (ex Google X), se profundiza en el concepto de 'Moonshooting' y la mentalidad 10X que define la innovación en Silicon Valley. Un moonshot no busca mejorar un 10% lo que ya existe, sino multiplicarlo por diez, abordando un problema masivo con una solución radical y tecnología disruptiva. A través de ejemplos como Waymo (conducción autónoma) o Project Loon (globos de conectividad), queda claro que innovar de verdad exige tolerar el fracaso y replantear las bases desde cero. En la era de la inteligencia artificial, el moonshooting nos invita a dejar de ser incrementales y a atrevernos a diseñar el futuro a lo grande.",
+        "source": "Jon Hernandez (iVoox)",
+        "sourceUrl": "https://go.ivoox.com/rf/176676798",
+        "link": "https://go.ivoox.com/rf/176676798",
+        "linkLabel": "Escuchar en iVoox"
+    },
+    {
         "id": "nadie-sabe-nada-humor",
         "date": "2026-06-20",
         "title": "La genialidad de la improvisación (Nadie Sabe Nada)",
