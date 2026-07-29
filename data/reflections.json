@@ -14,7 +14,7 @@
     {
         "id": "moonshots-google-x",
         "date": "2026-07-08",
-        "title": "La cultura del Moonshooting (Inteligencia Artificial con Jon Hernandez)",
+        "title": "La cultura del Moonshooting",
         "tag": "#Podcasts",
         "image": "img/reflection-moonshots.png",
         "text": "En este episodio del podcast de Jon Hernandez, conversando con Fernando Domínguez (ex Google X), se profundiza en el concepto de 'Moonshooting' y la mentalidad 10X que define la innovación en Silicon Valley. Un moonshot no busca mejorar un 10% lo que ya existe, sino multiplicarlo por diez, abordando un problema masivo con una solución radical y tecnología disruptiva. A través de ejemplos como Waymo (conducción autónoma) o Project Loon (globos de conectividad), queda claro que innovar de verdad exige tolerar el fracaso y replantear las bases desde cero. En la era de la inteligencia artificial, el moonshooting nos invita a dejar de ser incrementales y a atrevernos a diseñar el futuro a lo grande.",
@@ -26,7 +26,7 @@
     {
         "id": "nadie-sabe-nada-humor",
         "date": "2026-06-20",
-        "title": "La genialidad de la improvisación (Nadie Sabe Nada)",
+        "title": "La genialidad de la improvisación",
         "tag": "#Podcasts",
         "image": "img/reflection-nadie-sabe-nada.png",
         "text": "El podcast 'Nadie Sabe Nada', presentado por Andreu Buenafuente y Berto Romero, es una lección magistral de improvisación y complicidad. Partiendo de la base de que 'nadie sabe nada', convierten las preguntas y propuestas absurdas de los oyentes en oro humorístico. Su capacidad para hilvanar historias delirantes, debatir sobre minucias cotidianas o reírse de sus propios errores con total naturalidad demuestra que, en el humor, la espontaneidad y la conexión genuina con el público a menudo superan a cualquier guion preestablecido.",
@@ -62,7 +62,7 @@
     {
         "id": "horizonte-artificial-75",
         "date": "2026-06-05",
-        "title": "La IA ya vive en tu portátil (Horizonte Artificial 75)",
+        "title": "La IA ya vive en tu portátil",
         "tag": "#Podcasts",
         "image": "img/reflection-horizonte-75.png",
         "text": "El episodio 75 de Horizonte Artificial sintetiza una tendencia imparable: la descentralización de la IA y su transición del cloud a la ejecución puramente local. Con hitos como la integración de OpenClaw en Office por parte de Microsoft, el desarrollo por parte de Nvidia de chips específicos para agentes autónomos en local, y la liberación de Gemma 4 12B de Google, queda claro que ya no necesitamos superordenadores remotos para exprimir la inteligencia artificial. La posibilidad de correr agentes potentes y modelos avanzados directamente en nuestros portátiles de uso diario redefine la privacidad, la latencia y la autonomía del software moderno.",
