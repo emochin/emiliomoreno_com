@@ -64,23 +64,24 @@
         </div>
     </header>
 
-    <!-- Global Hero -->
-    <section class="unified-hero">
-        <div class="container unified-hero-content">
-            <h1 class="hero-title animate-slide-up">Hola, soy Emilio. Explorando la <span class="gradient-text">tecnología</span>.</h1>
-            <p class="hero-subtitle animate-slide-up-delayed">
-                Este es mi espacio personal. Aquí comparto ideas sobre Inteligencia Artificial, sistemas complejos y desarrollo. 
-                Si lo prefieres, puedes <a href="#" id="link-open-chat" style="color:var(--color-primary);">conversar con mi Gemelo Digital</a>.
-            </p>
-        </div>
-    </section>
+
 
     <!-- Main Content Layout (Blog Only now) -->
-    <main class="container blog-landing-container" id="feed">
+    <main class="container blog-landing-container" id="feed" style="padding-top: calc(var(--header-height) + 4rem);">
         
-        <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
-            <span class="section-tag" style="margin-bottom: 0.25rem;">Pensamientos en voz alta</span>
-            <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 0;">Reflexión <span class="gradient-text">Reciente</span></h2>
+        <div class="section-header" style="text-align: left; margin-bottom: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem;">
+            <div>
+                <span class="section-tag" style="margin-bottom: 0.25rem;">Pensamientos en voz alta</span>
+                <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 0;">Reflexión <span class="gradient-text">Reciente</span></h2>
+            </div>
+            <button id="link-open-chat" class="btn-premium-ai" style="font-size: 0.9rem; padding: 0.5rem 1rem; margin-bottom: 0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;">
+                    <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10a9.96 9.96 0 0 1-5.01-1.353L2 22l1.353-4.99A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2z"/>
+                    <circle cx="9" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="15" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+                Hablar con mi Gemelo Digital
+            </button>
         </div>
 
         <!-- Blog Hero Section (1 Big + 2 Small) -->
