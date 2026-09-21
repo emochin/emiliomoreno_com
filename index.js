@@ -130,9 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let itemsToPaginate = displayReflections;
 
-        // If landing page, render top 3 in hero and that's it.
+        // If landing page, render top 1 in hero and that's it.
         if (!isBlogPage && blogHeroContainer) {
-            const heroItems = displayReflections.slice(0, 3);
+            const heroItems = displayReflections.slice(0, 1);
             heroItems.forEach((note, index) => {
                 const card = document.createElement('article');
                 card.className = 'blog-card';
