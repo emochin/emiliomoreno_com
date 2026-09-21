@@ -452,4 +452,16 @@ h1, h2, h3, h4, h5, h6, .logo { font-family: var(--font-header) !important; font
     
     .unified-hero-content { padding: 0 1rem; }
     .hero-title { font-size: 2.2rem; }
+    
+    .contact-title { font-size: 2.2rem; letter-spacing: -1px; word-wrap: break-word; hyphens: auto; }
+    .contact-card { padding: 3rem 1.5rem; }
+    .section-title { font-size: 2rem; }
+    .projects-section, .about-section, .contact-section { padding: 5rem 0; }
+}
+
+@media (max-width: 480px) {
+    .contact-title { font-size: 1.8rem; }
+    .contact-card { padding: 2rem 1rem; }
+    .contact-desc { font-size: 1rem; }
+    .btn-primary { width: 100%; padding: 0.8rem 1rem; text-align: center; font-size: 0.95rem; }
 }
