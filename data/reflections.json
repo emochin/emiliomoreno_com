@@ -9,7 +9,11 @@
         "source": "El Abrazo del Oso (iVoox)",
         "sourceUrl": "https://go.ivoox.com/rf/180751211",
         "link": "https://go.ivoox.com/rf/180751211",
-        "linkLabel": "Escuchar en iVoox"
+        "linkLabel": "Escuchar en iVoox",
+        "author": "Francisco J. García",
+        "duration": "01:55:20",
+        "type": "Podcast",
+        "keywords": ["filosofía", "lenguaje", "inteligencia artificial", "LLMs", "consciencia"]
     },
     {
         "id": "hal-conciencia-2001",
