@@ -241,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnsLayoutSplit.forEach(btn => btn.classList.add('active'));
             btnsLayoutBlog.forEach(btn => btn.classList.remove('active'));
         }
+        localStorage.setItem('cerebro-layout-preference', mode);
     }
 
     btnsLayoutSplit.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); setLayoutMode('ia'); }));
@@ -362,6 +363,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initData();
+    const savedLayout = localStorage.getItem('cerebro-layout-preference') || 'blog';
+    setLayoutMode(savedLayout);
 
     // Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobile-menu-toggle');

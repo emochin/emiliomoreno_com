@@ -41,10 +41,10 @@
             </a>
             
             <nav class="nav-menu" id="nav-menu">
-                <a href="#chat" class="nav-link btn-layout-split" style="color: var(--color-primary); font-weight:700; display: inline-flex; align-items: center; gap: 6px;">
+                <a href="#chat" class="nav-link" style="color: var(--color-primary); font-weight:700; display: inline-flex; align-items: center; gap: 6px;">
                     Gemelo Digital
                 </a>
-                <a href="#feed" class="nav-link btn-layout-blog">Bitácora</a>
+                <a href="#feed" class="nav-link">Bitácora</a>
                 <a href="#proyectos-sidebar" class="nav-link">Proyectos</a>
                 <a href="mailto:web@emiliomoreno.com" class="nav-link btn-header">Contacto</a>
             </nav>
@@ -182,7 +182,12 @@
                     </div>
                     
                     <div class="layout-switcher mobile-only" style="display:none;">
-                        <!-- Controlled via JS in mobile view -->
+                        <button class="switcher-btn btn-layout-split" title="Usar Asistente IA">
+                            <span>Asistente</span>
+                        </button>
+                        <button class="switcher-btn btn-layout-blog active" title="Ver Blog">
+                            <span>Bitácora</span>
+                        </button>
                     </div>
                 </div>
             </div>
