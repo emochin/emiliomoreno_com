@@ -1,18 +1,24 @@
-/* index.js - Unified Logic (Chatbot + Feed + Layout) */
+/* index.js - Landing Blog Logic & Offcanvas Chat */
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
+    // DOM Elements - Chat
     const chatLog = document.getElementById('chat-log');
     const chatInput = document.getElementById('chat-input');
     const btnSend = document.getElementById('btn-send');
     const quickTagsContainer = document.getElementById('quick-tags-container');
-    const reflectionsFeedList = document.getElementById('reflections-feed-list');
     
-    const columnFeed = document.getElementById('column-feed');
-    const columnChat = document.getElementById('column-chat');
+    // DOM Elements - Offcanvas Chat
+    const chatOffcanvas = document.getElementById('chat-offcanvas');
+    const chatOverlay = document.getElementById('chat-offcanvas-overlay');
+    const btnsOpenChat = [
+        document.getElementById('btn-open-chat'),
+        document.getElementById('link-open-chat'),
+        document.getElementById('footer-btn-chat')
+    ];
+    const btnCloseChat = document.getElementById('chat-close-btn');
 
-    // Layout Switcher (Mobile)
-    const btnsLayoutSplit = document.querySelectorAll('.btn-layout-split');
-    const btnsLayoutBlog = document.querySelectorAll('.btn-layout-blog');
+    // DOM Elements - Blog
+    const blogHeroContainer = document.getElementById('blog-hero-container');
+    const reflectionsFeedList = document.getElementById('reflections-feed-list');
 
     let reflections = [];
     let brainMap = {};
@@ -34,12 +40,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Tag Filtering Logic State ---
+    // --- Offcanvas Chat Logic ---
+    function openChat(e) {
+        if(e) e.preventDefault();
+        chatOffcanvas.classList.add('open');
+        chatOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeChat() {
+        chatOffcanvas.classList.remove('open');
+        chatOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    btnsOpenChat.forEach(btn => {
+        if(btn) btn.addEventListener('click', openChat);
+    });
+    if(btnCloseChat) btnCloseChat.addEventListener('click', closeChat);
+    if(chatOverlay) chatOverlay.addEventListener('click', closeChat);
+
+    // --- Render Blog Feed (1+2 Hero and the rest) ---
+    const PAGE_SIZE = 6;
+    let currentPage = 1;
     let currentTagFilter = null;
 
-    reflectionsFeedList.addEventListener('click', (e) => {
+    document.addEventListener('click', (e) => {
         const tagElement = e.target.closest('.blog-card-tag');
-        if (tagElement) {
+        if (tagElement && !e.target.closest('#reflection-modal')) {
             e.stopPropagation();
             const tagText = tagElement.textContent.trim();
             filterByTag(tagText);
@@ -49,15 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterByTag(tag) {
         currentTagFilter = tag;
         renderBlogFeed();
-        columnFeed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('feed').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // --- Render Blog Feed (Chronological, Bento Grid) ---
-    const PAGE_SIZE = 6; // Better for a 2-col grid
-    let currentPage = 1;
+    function buildCardHTML(note) {
+        const targetUrl = note.sourceUrl || note.link;
+        return `
+            ${note.image ? `<div class="blog-card-image"><img src="${note.image}" alt="${note.title}" loading="lazy"></div>` : ''}
+            <div class="blog-card-body">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">
+                        ${formatDate(note.date)} —
+                        ${targetUrl ? `<a href="${targetUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source}</a>` : `${note.source}`}
+                    </span>
+                    <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
+                </div>
+                <h3 class="blog-card-title">${note.title}</h3>
+                <div class="blog-card-text">${note.text}</div>
+            </div>
+        `;
+    }
 
     function renderBlogFeed(resetPage = true) {
         if (resetPage) currentPage = 1;
+        blogHeroContainer.innerHTML = '';
         reflectionsFeedList.innerHTML = '';
 
         const sortedReflections = [...reflections].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -67,45 +110,61 @@ document.addEventListener('DOMContentLoaded', () => {
             displayReflections = sortedReflections.filter(note => note.tag.toLowerCase() === currentTagFilter.toLowerCase());
             const filterBar = document.createElement('div');
             filterBar.className = 'filter-status-bar';
+            filterBar.style.gridColumn = '1 / -1';
+            filterBar.style.marginBottom = '2rem';
             filterBar.innerHTML = `
                 <span>Filtrado por: <strong>${currentTagFilter}</strong> (${displayReflections.length} ${displayReflections.length === 1 ? 'nota' : 'notas'})</span>
                 <button class="clear-filter-btn" id="btn-clear-filter">Ver todas</button>
             `;
-            reflectionsFeedList.appendChild(filterBar);
+            blogHeroContainer.appendChild(filterBar);
             filterBar.querySelector('#btn-clear-filter').addEventListener('click', () => {
                 currentTagFilter = null;
                 renderBlogFeed();
             });
         }
 
-        const paginated = displayReflections.slice(0, currentPage * PAGE_SIZE);
-        const hasMore = paginated.length < displayReflections.length;
+        // Split into Hero (top 3) and Rest
+        // If filtering by tag, we still use the 1+2 layout if there are enough items.
+        const heroItems = displayReflections.slice(0, 3);
+        const restItems = displayReflections.slice(3);
 
-        paginated.forEach((note, index) => {
+        heroItems.forEach((note, index) => {
             const card = document.createElement('article');
             card.className = 'blog-card';
             
-            // Bento logic: Make first item or items with big images 'featured'
-            if (index === 0 || (note.image && index % 3 === 0)) {
-                card.classList.add('featured');
+            if (index === 0) {
+                card.classList.add('blog-hero-main');
+            } else {
+                card.classList.add('blog-hero-sub');
             }
 
             card.id = `nota-${note.id}`;
-            const targetUrl = note.sourceUrl || note.link;
-            card.innerHTML = `
-                ${note.image ? `<div class="blog-card-image"><img src="${note.image}" alt="${note.title}" loading="lazy"></div>` : ''}
-                <div class="blog-card-body">
-                    <div class="blog-card-meta">
-                        <span class="blog-card-date">
-                            ${formatDate(note.date)} —
-                            ${targetUrl ? `<a href="${targetUrl}" target="_blank" rel="noopener" class="blog-card-source-link">${note.source}</a>` : `${note.source}`}
-                        </span>
-                        <span class="blog-card-tag" title="Filtrar por esta etiqueta">${note.tag}</span>
-                    </div>
-                    <h3 class="blog-card-title">${note.title}</h3>
-                    <div class="blog-card-text">${note.text}</div>
-                </div>
-            `;
+            card.innerHTML = buildCardHTML(note);
+            
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a') || e.target.closest('.share-card-btn') || e.target.closest('.blog-card-tag')) return; 
+                openModal(note.id);
+            });
+            blogHeroContainer.appendChild(card);
+        });
+
+        // Hide "Rest" section if there are no more items
+        const restContainerElement = reflectionsFeedList.parentElement;
+        if (restItems.length === 0) {
+            restContainerElement.style.display = 'none';
+            return;
+        } else {
+            restContainerElement.style.display = 'block';
+        }
+
+        const paginated = restItems.slice(0, currentPage * PAGE_SIZE);
+        const hasMore = paginated.length < restItems.length;
+
+        paginated.forEach(note => {
+            const card = document.createElement('article');
+            card.className = 'blog-card';
+            card.id = `nota-${note.id}`;
+            card.innerHTML = buildCardHTML(note);
             
             card.addEventListener('click', (e) => {
                 if (e.target.closest('a') || e.target.closest('.share-card-btn') || e.target.closest('.blog-card-tag')) return; 
@@ -119,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadMoreWrap.className = 'load-more-container';
             const loadMoreBtn = document.createElement('button');
             loadMoreBtn.className = 'btn-load-more';
-            const remaining = displayReflections.length - paginated.length;
+            const remaining = restItems.length - paginated.length;
             loadMoreBtn.textContent = `Ver ${Math.min(remaining, PAGE_SIZE)} más`;
             loadMoreBtn.addEventListener('click', () => {
                 currentPage++;
@@ -210,14 +269,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btnNext.addEventListener('click', () => navigateModal(1));
     modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
 
-    // Hash-based routing functions
     function checkHashOnLoad() {
         const hash = window.location.hash;
         if (hash && hash.startsWith('#nota-')) {
             const noteId = hash.replace('#nota-', '');
             const note = reflections.find(r => r.id === noteId);
             if (note) {
-                if (window.innerWidth <= 900) setLayoutMode('blog');
                 setTimeout(() => openModal(noteId), 200);
             }
         }
@@ -227,25 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateStr).toLocaleDateString('es-ES', options);
     }
-
-    // --- Layout Switching Logic (Mobile Only Mostly) ---
-    function setLayoutMode(mode) {
-        if (mode === 'blog') {
-            document.body.classList.add('layout-mode-blog-active');
-            document.body.classList.remove('layout-mode-ia-active');
-            btnsLayoutBlog.forEach(btn => btn.classList.add('active'));
-            btnsLayoutSplit.forEach(btn => btn.classList.remove('active'));
-        } else {
-            document.body.classList.add('layout-mode-ia-active');
-            document.body.classList.remove('layout-mode-blog-active');
-            btnsLayoutSplit.forEach(btn => btn.classList.add('active'));
-            btnsLayoutBlog.forEach(btn => btn.classList.remove('active'));
-        }
-        localStorage.setItem('cerebro-layout-preference', mode);
-    }
-
-    btnsLayoutSplit.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); setLayoutMode('ia'); }));
-    btnsLayoutBlog.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); setLayoutMode('blog'); }));
 
     // --- Chatbot Functionality ---
     function scrollToBottom() { chatLog.scrollTop = chatLog.scrollHeight; }
@@ -356,15 +394,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const btn = document.createElement('button');
                 btn.className = 'quick-tag-btn';
                 btn.textContent = label;
-                btn.addEventListener('click', () => sendMessage(query));
+                btn.addEventListener('click', () => {
+                    sendMessage(query);
+                    // No cierro el chat, solo envío el mensaje.
+                });
                 container.appendChild(btn);
             });
         }
     }
 
     initData();
-    const savedLayout = localStorage.getItem('cerebro-layout-preference') || 'blog';
-    setLayoutMode(savedLayout);
 
     // Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobile-menu-toggle');

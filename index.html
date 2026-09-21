@@ -41,11 +41,11 @@
             </a>
             
             <nav class="nav-menu" id="nav-menu">
-                <a href="#chat" class="nav-link" style="color: var(--color-primary); font-weight:700; display: inline-flex; align-items: center; gap: 6px;">
+                <button id="btn-open-chat" class="nav-link btn-chat-toggle" style="background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-size:0.95rem; color: var(--color-primary); font-weight:700; display: inline-flex; align-items: center; gap: 6px;">
                     Gemelo Digital
-                </a>
+                </button>
                 <a href="#feed" class="nav-link">Bitácora</a>
-                <a href="#proyectos-sidebar" class="nav-link">Proyectos</a>
+                <a href="#proyectos-footer" class="nav-link">Proyectos</a>
                 <a href="mailto:web@emiliomoreno.com" class="nav-link btn-header">Contacto</a>
             </nav>
 
@@ -57,88 +57,97 @@
         </div>
     </header>
 
-    <!-- Global Hero -->
+    <!-- Global Hero (Shortened) -->
     <section class="unified-hero">
         <div class="container unified-hero-content">
             <h1 class="hero-title animate-slide-up">Hola, soy Emilio. Explorando la <span class="gradient-text">tecnología</span>.</h1>
             <p class="hero-subtitle animate-slide-up-delayed">
-                Este es mi espacio personal. Puedes conversar con mi Gemelo Digital interactivo a la izquierda, o leer mi bitácora con ideas sobre Inteligencia Artificial, sistemas complejos y desarrollo a la derecha.
+                Este es mi espacio personal. Aquí comparto ideas sobre Inteligencia Artificial, sistemas complejos y desarrollo. 
+                Si lo prefieres, puedes <a href="#" id="link-open-chat" style="color:var(--color-primary);">conversar con mi Gemelo Digital</a>.
             </p>
         </div>
     </section>
 
-    <!-- Main Content Layout -->
-    <main class="cerebro-layout-container container" id="main-layout-wrapper">
+    <!-- Main Content Layout (Blog Only now) -->
+    <main class="container blog-landing-container" id="feed">
         
-        <!-- Left Column: Chatbot + Profile/Projects -->
-        <section class="left-sidebar-column active" id="column-chat">
+        <!-- Blog Hero Section (1 Big + 2 Small) -->
+        <section class="blog-hero-section" id="blog-hero-container">
+            <!-- Dynamically loaded via JS -->
+        </section>
+
+        <!-- The Rest of the Feed -->
+        <section class="feed-column active">
+            <div class="column-header" style="margin-top: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+                <h2 class="column-title" style="font-size: 1.5rem;">Más <span class="serif-text">reflexiones</span></h2>
+            </div>
             
-            <!-- Chatbot -->
-            <div class="chat-box animate-fade-in" id="chat">
-                <div class="chat-box-header">
-                    <div class="bot-info">
-                        <span class="bot-avatar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 40px; height: 40px; display: block;">
-                                <!-- Connection bridge between twins -->
-                                <line x1="9" y1="11.5" x2="15" y2="11.5" stroke="rgba(255, 255, 255, 0.25)" stroke-dasharray="2 2"/>
-                                <!-- Left Twin (Physical) -->
-                                <rect x="2" y="6" width="8.5" height="11" rx="2" stroke="rgba(255, 255, 255, 0.75)" stroke-width="1.8"/>
-                                <circle cx="4.5" cy="11" r="0.85" fill="rgba(255, 255, 255, 0.75)"/>
-                                <circle cx="8" cy="11" r="0.85" fill="rgba(255, 255, 255, 0.75)"/>
-                                <!-- Right Twin (Digital) -->
-                                <rect x="13.5" y="6" width="8.5" height="11" rx="2" stroke="var(--color-primary)" stroke-width="1.8"/>
-                                <circle cx="16" cy="11" r="0.85" fill="var(--color-primary)"/>
-                                <circle cx="19.5" cy="11" r="0.85" fill="var(--color-primary)"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h2 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
-                                Gemelo Activo
-                                <span class="status-dot" style="display:inline-block; width:8px; height:8px; background-color:#34d399; border-radius:50%; box-shadow:0 0 8px #34d399;"></span>
-                            </h2>
-                            <p style="font-size: 0.75rem; color: var(--text-muted);">Basado en mi conocimiento</p>
-                        </div>
+            <!-- Dynamic Blog Feed Container -->
+            <div class="reflections-feed-bento" id="reflections-feed-list">
+                <!-- Dynamically loaded via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Chat Off-canvas Modal -->
+    <div class="chat-offcanvas-overlay" id="chat-offcanvas-overlay"></div>
+    <aside class="chat-offcanvas" id="chat-offcanvas">
+        <div class="chat-box" id="chat">
+            <div class="chat-box-header">
+                <div class="bot-info">
+                    <span class="bot-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 32px; height: 32px; display: block;">
+                            <rect x="13.5" y="6" width="8.5" height="11" rx="2" stroke="var(--color-primary)" stroke-width="1.8"/>
+                            <circle cx="16" cy="11" r="0.85" fill="var(--color-primary)"/>
+                            <circle cx="19.5" cy="11" r="0.85" fill="var(--color-primary)"/>
+                        </svg>
+                    </span>
+                    <div>
+                        <h2 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
+                            Gemelo Activo
+                            <span class="status-dot" style="display:inline-block; width:8px; height:8px; background-color:#34d399; border-radius:50%; box-shadow:0 0 8px #34d399;"></span>
+                        </h2>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Conocimiento interactivo</p>
                     </div>
                 </div>
+                <button class="chat-close-btn" id="chat-close-btn" aria-label="Cerrar chat">&times;</button>
+            </div>
 
-                <div class="chat-log" id="chat-log">
-                    <div class="chat-message bot-message">
-                        <div class="message-bubble welcome-bubble">
-                            <p id="bubble-examples">
-                                Pregúntame cosas como: <em>"¿Qué opinas de la IA?"</em> y responderé basándome en mis notas.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Input area with floating tags -->
-                <div class="chat-input-area">
-                    <div class="floating-tags-container" id="quick-tags-container">
-                        <!-- Quick tags injected here -->
-                    </div>
-                    <div class="input-wrapper">
-                        <input type="text" id="chat-input" placeholder="Pregúntame cualquier cosa..." autocomplete="off">
-                        <button id="btn-send" aria-label="Enviar mensaje">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
-                                <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                            </svg>
-                        </button>
+            <div class="chat-log" id="chat-log">
+                <div class="chat-message bot-message">
+                    <div class="message-bubble welcome-bubble">
+                        <p id="bubble-examples">
+                            ¡Hola! Soy el gemelo digital de Emilio. Pregúntame sobre sus artículos, proyectos o visión sobre IA.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Profile & Projects Sidebar Block -->
-            <div class="sidebar-block animate-slide-up-delayed" id="proyectos-sidebar">
-                <div class="sidebar-header">
-                    <span class="column-tag">Perfil & Proyectos</span>
+            <!-- Input area with floating tags -->
+            <div class="chat-input-area">
+                <div class="floating-tags-container" id="quick-tags-container">
+                    <!-- Quick tags injected here -->
                 </div>
-                
-                <p class="sidebar-text">
-                    La tecnología es mi profesión y principal afición. Dedico mi tiempo libre a explorar la <strong>Inteligencia Artificial</strong> y construir herramientas con enfoque pragmático.
-                </p>
+                <div class="input-wrapper">
+                    <input type="text" id="chat-input" placeholder="Pregúntame cualquier cosa..." autocomplete="off">
+                    <button id="btn-send" aria-label="Enviar mensaje">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
 
-                <div class="sidebar-projects-list">
+    <!-- Footer & Projects -->
+    <footer class="footer" id="proyectos-footer" style="margin-top: 5rem;">
+        <div class="container">
+            <div class="footer-projects-row" style="margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 3rem;">
+                <h3 style="font-size:1.2rem; margin-bottom: 1.5rem; color:var(--text-secondary);">Proyectos Destacados</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                     <a href="https://weigh-up.com" target="_blank" rel="noopener" class="mini-project-card">
                         <div class="mini-project-icon" style="background: rgba(99, 102, 241, 0.1); color: #818cf8;">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -148,7 +157,6 @@
                             <p>Crecimiento personal y decisiones</p>
                         </div>
                     </a>
-
                     <a href="https://whatstime.net" target="_blank" rel="noopener" class="mini-project-card">
                         <div class="mini-project-icon" style="background: rgba(6, 182, 212, 0.1); color: #22d3ee;">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -159,56 +167,14 @@
                         </div>
                     </a>
                 </div>
-
-                <div class="sidebar-social">
-                    <a href="https://github.com/emochin" target="_blank" rel="noopener" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    </a>
-                    <a href="https://linkedin.com/in/emiliomorenochinchilla" target="_blank" rel="noopener" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    </a>
-                </div>
             </div>
 
-        </section>
-
-        <!-- Right Column: Blog Feed (Bento Box Grid) -->
-        <section class="feed-column active" id="column-feed">
-            <div class="column-header">
-                <div class="column-header-row">
-                    <div>
-                        <span class="column-tag">Bitácora</span>
-                        <h1 class="column-title">Reflexiones <span class="serif-text">& Notas</span></h1>
-                    </div>
-                    
-                    <div class="layout-switcher mobile-only" style="display:none;">
-                        <button class="switcher-btn btn-layout-split" title="Usar Asistente IA">
-                            <span>Asistente</span>
-                        </button>
-                        <button class="switcher-btn btn-layout-blog active" title="Ver Blog">
-                            <span>Bitácora</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Dynamic Blog Feed Container (Bento Grid) -->
-            <div class="reflections-feed-bento" id="reflections-feed-list">
-                <!-- Dynamically loaded via JS -->
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
             <div class="footer-container">
                 <a href="#" class="footer-brand-logo">
                     <span class="logo-dot"></span>emiliomoreno<span class="logo-ext">.com</span>
                 </a>
                 <nav class="footer-nav-links">
-                    <a href="#chat">Gemelo Digital</a>
+                    <button id="footer-btn-chat" style="background:transparent; border:none; color:var(--text-secondary); cursor:pointer; font-size:0.9rem; font-family:var(--font-sans);">Gemelo Digital</button>
                     <a href="mailto:web@emiliomoreno.com">Contacto</a>
                 </nav>
             </div>
@@ -223,14 +189,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Floating Chat Button (Mobile FAB) -->
-    <button class="floating-chat-fab" id="floating-chat-fab" aria-label="Preguntar al Gemelo Digital">
-        <span class="fab-pulse"></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="fab-icon">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-    </button>
 
     <!-- Reflection Detail Modal -->
     <div class="reflection-modal-overlay" id="reflection-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -264,8 +222,6 @@
             </div>
         </div>
     </div>
-
-
 
     <!-- JS Link -->
     <script src="index.js"></script>
