@@ -41,12 +41,16 @@
             </a>
             
             <nav class="nav-menu" id="nav-menu">
-                <button id="btn-open-chat" class="nav-link btn-chat-toggle" style="background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-size:0.95rem; color: var(--color-primary); font-weight:700; display: inline-flex; align-items: center; gap: 6px;">
-                    Gemelo Digital
-                </button>
-                <a href="#feed" class="nav-link">Bitácora</a>
                 <a href="#proyectos-footer" class="nav-link">Proyectos</a>
-                <a href="mailto:web@emiliomoreno.com" class="nav-link btn-header">Contacto</a>
+                <a href="mailto:web@emiliomoreno.com" class="nav-link">Contacto</a>
+                <button id="btn-open-chat" class="btn-premium-ai">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px; height:18px;">
+                        <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10a9.96 9.96 0 0 1-5.01-1.353L2 22l1.353-4.99A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2z"/>
+                        <circle cx="9" cy="12" r="1.5" fill="currentColor"/>
+                        <circle cx="15" cy="12" r="1.5" fill="currentColor"/>
+                    </svg>
+                    Hablar con mi IA
+                </button>
             </nav>
 
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
@@ -76,14 +80,21 @@
             <!-- Dynamically loaded via JS -->
         </section>
 
-        <!-- The Rest of the Feed -->
-        <section class="feed-column active">
-            <div class="column-header" style="margin-top: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                <h2 class="column-title" style="font-size: 1.5rem;">Más <span class="serif-text">reflexiones</span></h2>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button id="btn-reveal-archive" class="btn-load-more" style="font-size: 1.1rem; padding: 1rem 2.5rem; display: inline-flex; align-items: center; gap: 8px;">
+                Ver archivo completo
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px; height:20px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+
+        <!-- The Rest of the Feed (Hidden initially) -->
+        <section class="feed-column active" id="archive-section" style="display: none; margin-top: 4rem; opacity: 0; transition: opacity 0.5s ease;">
+            <div class="column-header" style="border-top: 1px dashed var(--border-color); padding-top: 2rem;">
+                <h2 class="column-title" style="font-size: 1.5rem;">Archivo de <span class="serif-text">reflexiones</span></h2>
             </div>
             
             <!-- Dynamic Blog Feed Container -->
-            <div class="reflections-feed-bento" id="reflections-feed-list">
+            <div class="reflections-feed-bento" id="reflections-feed-list" style="margin-top: 2rem;">
                 <!-- Dynamically loaded via JS -->
             </div>
         </section>

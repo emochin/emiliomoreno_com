@@ -60,6 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if(btnCloseChat) btnCloseChat.addEventListener('click', closeChat);
     if(chatOverlay) chatOverlay.addEventListener('click', closeChat);
 
+    // --- Archive Reveal Logic ---
+    const btnRevealArchive = document.getElementById('btn-reveal-archive');
+    const archiveSection = document.getElementById('archive-section');
+    if(btnRevealArchive && archiveSection) {
+        btnRevealArchive.addEventListener('click', () => {
+            archiveSection.style.display = 'block';
+            setTimeout(() => archiveSection.style.opacity = '1', 10);
+            btnRevealArchive.style.display = 'none';
+            archiveSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
     // --- Render Blog Feed (1+2 Hero and the rest) ---
     const PAGE_SIZE = 6;
     let currentPage = 1;
