@@ -273,6 +273,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (note) {
                 setTimeout(() => openModal(noteId), 200);
             }
+        } else if (hash && hash.length > 1) {
+            setTimeout(() => {
+                const el = document.querySelector(hash);
+                if (el) el.scrollIntoView();
+            }, 150);
         }
     }
 
