@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emilio Moreno — Blog y Reflexiones</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Archivo completo de reflexiones, artículos y notas de Emilio Moreno sobre tecnología e inteligencia artificial.">
+    <meta name="keywords" content="Emilio Moreno, blog, reflexiones, inteligencia artificial, tecnología, artículos">
+    <meta name="author" content="Emilio Moreno">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://emiliomoreno.com/blog.html">
+    <meta property="og:title" content="Emilio Moreno — Blog y Reflexiones">
+    <meta property="og:description" content="Archivo de reflexiones sobre IA, desarrollo y sistemas complejos.">
+    <meta property="og:image" content="https://emiliomoreno.com/assets/og-image.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Vercel Web Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+    <!-- Background Grid Effect -->
+    <div class="bg-grid"></div>
+
+    <!-- Header / Navigation -->
+    <header id="main-header" class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo" id="nav-logo">
+                <span class="logo-dot"></span>emiliomoreno<span class="logo-ext" id="logo-extension">.com</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="blog.html" class="nav-link" style="color: var(--text-primary);">Blog</a>
+                <a href="index.html#proyectos" class="nav-link">Proyectos</a>
+                <a href="index.html#sobre-mi" class="nav-link">Sobre Mí</a>
+                <a href="index.html#contacto" class="nav-link">Contacto</a>
+                <button id="btn-open-chat" class="btn-premium-ai">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px; height:18px;">
+                        <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10a9.96 9.96 0 0 1-5.01-1.353L2 22l1.353-4.99A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2z"/>
+                        <circle cx="9" cy="12" r="1.5" fill="currentColor"/>
+                        <circle cx="15" cy="12" r="1.5" fill="currentColor"/>
+                    </svg>
+                    Hablar con mi IA
+                </button>
+            </nav>
+
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Blog Archive Section -->
+    <main class="container" style="padding-top: calc(var(--header-height) + 4rem); padding-bottom: 6rem; min-height: 80vh;" id="feed">
+        
+        <div class="section-header" style="text-align: left; margin-bottom: 3rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 2rem;">
+            <h1 class="hero-title" style="font-size: 3rem; letter-spacing: -1px; margin-bottom: 0.5rem;">Archivo de <span class="gradient-text">Reflexiones</span></h1>
+            <p class="section-desc" style="margin: 0; max-width: 650px;">
+                Notas, ideas y artículos sobre Inteligencia Artificial, tecnología y desarrollo.
+            </p>
+        </div>
+        
+        <!-- The Full Feed -->
+        <section class="feed-column active" id="archive-section">
+            <div id="blog-hero-container" style="display: none;"></div> <!-- Hidden container to make index.js happy with layout detection if needed, or we just rely on presence of list -->
+            <!-- Dynamic Blog Feed Container -->
+            <div class="reflections-feed-bento" id="reflections-feed-list">
+                <!-- Dynamically loaded via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Chat Off-canvas Modal -->
+    <div class="chat-offcanvas-overlay" id="chat-offcanvas-overlay"></div>
+    <aside class="chat-offcanvas" id="chat-offcanvas">
+        <div class="chat-box" id="chat">
+            <div class="chat-box-header">
+                <div class="bot-info">
+                    <span class="bot-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 32px; height: 32px; display: block;">
+                            <rect x="13.5" y="6" width="8.5" height="11" rx="2" stroke="var(--color-primary)" stroke-width="1.8"/>
+                            <circle cx="16" cy="11" r="0.85" fill="var(--color-primary)"/>
+                            <circle cx="19.5" cy="11" r="0.85" fill="var(--color-primary)"/>
+                        </svg>
+                    </span>
+                    <div>
+                        <h2 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
+                            Gemelo Activo
+                            <span class="status-dot" style="display:inline-block; width:8px; height:8px; background-color:#34d399; border-radius:50%; box-shadow:0 0 8px #34d399;"></span>
+                        </h2>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Conocimiento interactivo</p>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="chat-close-btn" aria-label="Cerrar chat">&times;</button>
+            </div>
+
+            <div class="chat-log" id="chat-log">
+                <div class="chat-message bot-message">
+                    <div class="message-bubble welcome-bubble">
+                        <p id="bubble-examples">
+                            ¡Hola! Soy el gemelo digital de Emilio. Pregúntame sobre sus artículos, proyectos o visión sobre IA.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input area with floating tags -->
+            <div class="chat-input-area">
+                <div class="floating-tags-container" id="quick-tags-container">
+                    <!-- Quick tags injected here -->
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" id="chat-input" placeholder="Pregúntame cualquier cosa..." autocomplete="off">
+                    <button id="btn-send" aria-label="Enviar mensaje">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <a href="index.html" class="footer-brand-logo">
+                    <span class="logo-dot"></span>emiliomoreno<span class="logo-ext">.com</span>
+                </a>
+                <nav class="footer-nav-links">
+                    <button id="footer-btn-chat" style="background:transparent; border:none; color:var(--text-secondary); cursor:pointer; font-size:0.9rem; font-family:var(--font-sans);">Gemelo Digital</button>
+                    <a href="index.html#contacto">Contacto</a>
+                </nav>
+            </div>
+            <div class="footer-bottom-row">
+                <div class="footer-left">
+                    <p>&copy; 2026 Emilio Moreno. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-right">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Disponible para nuevos proyectos</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reflection Detail Modal -->
+    <div class="reflection-modal-overlay" id="reflection-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="reflection-modal" id="reflection-modal">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="modal-image-wrap" id="modal-image-wrap"></div>
+            <div class="modal-body">
+                <div class="modal-meta" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="modal-date" id="modal-date"></span>
+                        <span class="modal-tag" id="modal-tag"></span>
+                    </div>
+                    <button class="share-card-btn" id="modal-share-btn" title="Copiar enlace directo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="share-icon-svg"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                    </button>
+                </div>
+                <h2 class="modal-title" id="modal-title"></h2>
+                <div class="modal-text" id="modal-text" style="max-width: 70ch; font-size:1.05rem; line-height:1.7;"></div>
+                <a class="modal-source-link" id="modal-source-link" target="_blank" rel="noopener"></a>
+                
+                <div class="modal-nav-buttons">
+                    <button class="modal-nav-btn" id="modal-prev-btn" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg><span>Anterior</span>
+                    </button>
+                    <button class="modal-nav-btn" id="modal-next-btn" aria-label="Siguiente">
+                        <span>Siguiente</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Link -->
+    <script src="index.js"></script>
+</body>
+</html>

@@ -60,20 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(btnCloseChat) btnCloseChat.addEventListener('click', closeChat);
     if(chatOverlay) chatOverlay.addEventListener('click', closeChat);
 
-    // --- Archive Reveal Logic ---
-    const btnRevealArchive = document.getElementById('btn-reveal-archive');
-    const archiveSection = document.getElementById('archive-section');
-    if(btnRevealArchive && archiveSection) {
-        btnRevealArchive.addEventListener('click', () => {
-            archiveSection.style.display = 'block';
-            setTimeout(() => archiveSection.style.opacity = '1', 10);
-            btnRevealArchive.style.display = 'none';
-            archiveSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
-
-    // --- Render Blog Feed (1+2 Hero and the rest) ---
-    const PAGE_SIZE = 6;
+    // --- Render Blog Feed ---
+    const PAGE_SIZE = 9;
     let currentPage = 1;
     let currentTagFilter = null;
 
@@ -112,11 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderBlogFeed(resetPage = true) {
         if (resetPage) currentPage = 1;
-        blogHeroContainer.innerHTML = '';
-        reflectionsFeedList.innerHTML = '';
+        if(blogHeroContainer) blogHeroContainer.innerHTML = '';
+        if(reflectionsFeedList) reflectionsFeedList.innerHTML = '';
 
         const sortedReflections = [...reflections].sort((a, b) => new Date(b.date) - new Date(a.date));
         let displayReflections = sortedReflections;
+        const isBlogPage = document.getElementById('archive-section') !== null;
 
         if (currentTagFilter) {
             displayReflections = sortedReflections.filter(note => note.tag.toLowerCase() === currentTagFilter.toLowerCase());
@@ -128,76 +117,71 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span>Filtrado por: <strong>${currentTagFilter}</strong> (${displayReflections.length} ${displayReflections.length === 1 ? 'nota' : 'notas'})</span>
                 <button class="clear-filter-btn" id="btn-clear-filter">Ver todas</button>
             `;
-            blogHeroContainer.appendChild(filterBar);
-            filterBar.querySelector('#btn-clear-filter').addEventListener('click', () => {
-                currentTagFilter = null;
-                renderBlogFeed();
-            });
-        }
-
-        // Split into Hero (top 3) and Rest
-        // If filtering by tag, we still use the 1+2 layout if there are enough items.
-        const heroItems = displayReflections.slice(0, 3);
-        const restItems = displayReflections.slice(3);
-
-        heroItems.forEach((note, index) => {
-            const card = document.createElement('article');
-            card.className = 'blog-card';
-            
-            if (index === 0) {
-                card.classList.add('blog-hero-main');
-            } else {
-                card.classList.add('blog-hero-sub');
+            const containerToUse = isBlogPage ? reflectionsFeedList : blogHeroContainer;
+            if(containerToUse) {
+                containerToUse.parentElement.insertBefore(filterBar, containerToUse);
+                filterBar.querySelector('#btn-clear-filter').addEventListener('click', () => {
+                    currentTagFilter = null;
+                    filterBar.remove();
+                    renderBlogFeed();
+                });
             }
-
-            card.id = `nota-${note.id}`;
-            card.innerHTML = buildCardHTML(note);
-            
-            card.addEventListener('click', (e) => {
-                if (e.target.closest('a') || e.target.closest('.share-card-btn') || e.target.closest('.blog-card-tag')) return; 
-                openModal(note.id);
-            });
-            blogHeroContainer.appendChild(card);
-        });
-
-        // Hide "Rest" section if there are no more items
-        const restContainerElement = reflectionsFeedList.parentElement;
-        if (restItems.length === 0) {
-            restContainerElement.style.display = 'none';
-            return;
-        } else {
-            restContainerElement.style.display = 'block';
         }
 
-        const paginated = restItems.slice(0, currentPage * PAGE_SIZE);
-        const hasMore = paginated.length < restItems.length;
+        let itemsToPaginate = displayReflections;
 
-        paginated.forEach(note => {
-            const card = document.createElement('article');
-            card.className = 'blog-card';
-            card.id = `nota-${note.id}`;
-            card.innerHTML = buildCardHTML(note);
-            
-            card.addEventListener('click', (e) => {
-                if (e.target.closest('a') || e.target.closest('.share-card-btn') || e.target.closest('.blog-card-tag')) return; 
-                openModal(note.id);
+        // If landing page, render top 3 in hero and that's it.
+        if (!isBlogPage && blogHeroContainer) {
+            const heroItems = displayReflections.slice(0, 3);
+            heroItems.forEach((note, index) => {
+                const card = document.createElement('article');
+                card.className = 'blog-card';
+                if (index === 0) card.classList.add('blog-hero-main');
+                else card.classList.add('blog-hero-sub');
+                
+                card.id = `nota-${note.id}`;
+                card.innerHTML = buildCardHTML(note);
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('a') || e.target.closest('.share-card-btn') || e.target.closest('.blog-card-tag')) return; 
+                    openModal(note.id);
+                });
+                blogHeroContainer.appendChild(card);
             });
-            reflectionsFeedList.appendChild(card);
-        });
+            return; // Stop here, no archive section on landing page anymore.
+        }
 
-        if (hasMore) {
-            const loadMoreWrap = document.createElement('div');
-            loadMoreWrap.className = 'load-more-container';
-            const loadMoreBtn = document.createElement('button');
-            loadMoreBtn.className = 'btn-load-more';
-            const remaining = restItems.length - paginated.length;
-            loadMoreBtn.textContent = `Ver ${Math.min(remaining, PAGE_SIZE)} más`;
-            loadMoreBtn.addEventListener('click', () => {
-                currentPage++;
-                renderBlogFeed(false);
+        // If blog page, render everything with pagination
+        if (isBlogPage && reflectionsFeedList) {
+            const paginated = itemsToPaginate.slice(0, currentPage * PAGE_SIZE);
+            const hasMore = paginated.length < itemsToPaginate.length;
+
+            paginated.forEach(note => {
+                const card = document.createElement('article');
+                card.className = 'blog-card';
+                card.id = `nota-${note.id}`;
+                card.innerHTML = buildCardHTML(note);
+                
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('a') || e.target.closest('.share-card-btn') || e.target.closest('.blog-card-tag')) return; 
+                    openModal(note.id);
+                });
+                reflectionsFeedList.appendChild(card);
             });
-            loadMoreWrap.appendChild(loadMoreBtn);
-            reflectionsFeedList.appendChild(loadMoreWrap);
+
+            if (hasMore) {
+                const loadMoreWrap = document.createElement('div');
+                loadMoreWrap.className = 'load-more-container';
+                const loadMoreBtn = document.createElement('button');
+                loadMoreBtn.className = 'btn-load-more';
+                const remaining = itemsToPaginate.length - paginated.length;
+                loadMoreBtn.textContent = `Ver ${Math.min(remaining, PAGE_SIZE)} más`;
+                loadMoreBtn.addEventListener('click', () => {
+                    currentPage++;
+                    renderBlogFeed(false);
+                });
+                loadMoreWrap.appendChild(loadMoreBtn);
+                reflectionsFeedList.appendChild(loadMoreWrap);
+            }
         }
     }
 

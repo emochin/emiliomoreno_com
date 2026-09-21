@@ -41,6 +41,7 @@
             </a>
             
             <nav class="nav-menu" id="nav-menu">
+                <a href="blog.html" class="nav-link">Blog</a>
                 <a href="#proyectos" class="nav-link">Proyectos</a>
                 <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
                 <a href="#contacto" class="nav-link">Contacto</a>
@@ -82,23 +83,11 @@
         </section>
 
         <div style="text-align: center; margin-top: 3rem;">
-            <button id="btn-reveal-archive" class="btn-load-more" style="font-size: 1.1rem; padding: 1rem 2.5rem; display: inline-flex; align-items: center; gap: 8px;">
+            <a href="blog.html" class="btn-load-more" style="font-size: 1.1rem; padding: 1rem 2.5rem; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
                 Ver archivo completo
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px; height:20px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px; height:20px;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
         </div>
-
-        <!-- The Rest of the Feed (Hidden initially) -->
-        <section class="feed-column active" id="archive-section" style="display: none; margin-top: 4rem; opacity: 0; transition: opacity 0.5s ease;">
-            <div class="column-header" style="border-top: 1px dashed var(--border-color); padding-top: 2rem;">
-                <h2 class="column-title" style="font-size: 1.5rem;">Archivo de <span class="serif-text">reflexiones</span></h2>
-            </div>
-            
-            <!-- Dynamic Blog Feed Container -->
-            <div class="reflections-feed-bento" id="reflections-feed-list" style="margin-top: 2rem;">
-                <!-- Dynamically loaded via JS -->
-            </div>
-        </section>
 
     </main>
 
