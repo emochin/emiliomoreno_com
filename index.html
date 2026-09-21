@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emilio Moreno — Tecnología & Proyectos Digitales</title>
+    <title>Emilio Moreno — Tecnología, Inteligencia Artificial & Ideas</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Sitio personal de Emilio Moreno. Explorando la tecnología, proyectos personales como weigh-up.com y whatstime.net, y los avances pragmáticos en Inteligencia Artificial.">
-    <meta name="keywords" content="Emilio Moreno, tecnología, inteligencia artificial, dominios, weigh-up, whatstime">
+    <meta name="description" content="Chatea con mi Gemelo Digital o lee mi bitácora sobre tecnología, inteligencia artificial, proyectos y productividad.">
+    <meta name="keywords" content="Emilio Moreno, blog, chatbot, gemelo digital, inteligencia artificial, tecnología, dominios">
     <meta name="author" content="Emilio Moreno">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://emiliomoreno.com/">
-    <meta property="og:title" content="Emilio Moreno — Tecnología & Proyectos Digitales">
-    <meta property="og:description" content="Sitio personal de Emilio Moreno. Tecnología, proyectos de dominios e interés en Inteligencia Artificial.">
+    <meta property="og:title" content="Emilio Moreno — Tecnología & Ideas">
+    <meta property="og:description" content="Sitio personal de Emilio Moreno. Chatea con el Gemelo Digital y lee sobre Inteligencia Artificial.">
     <meta property="og:image" content="https://emiliomoreno.com/assets/og-image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-    <!-- CSS Link -->
+    <!-- CSS Links -->
     <link rel="stylesheet" href="index.css">
 
     <!-- Vercel Web Analytics -->
@@ -32,34 +32,21 @@
 
     <!-- Background Grid Effect -->
     <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
 
     <!-- Header / Navigation -->
     <header id="main-header" class="header">
         <div class="header-container">
-            <a href="#" class="logo" id="nav-logo">
+            <a href="index.html" class="logo" id="nav-logo">
                 <span class="logo-dot"></span>emiliomoreno<span class="logo-ext" id="logo-extension">.com</span>
             </a>
             
             <nav class="nav-menu" id="nav-menu">
-                <a href="cerebro.html" class="nav-link" style="color: var(--color-primary); font-weight:700; display: inline-flex; align-items: center; gap: 6px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle;">
-                        <!-- Connection bridge between twins -->
-                        <line x1="9" y1="11.5" x2="15" y2="11.5" stroke="rgba(255, 255, 255, 0.25)" stroke-dasharray="2 2"/>
-                        <!-- Left Twin (Physical - White/Gray) -->
-                        <rect x="2" y="6" width="8.5" height="11" rx="2" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1.8"/>
-                        <circle cx="4.5" cy="11" r="0.85" fill="rgba(255, 255, 255, 0.6)"/>
-                        <circle cx="8" cy="11" r="0.85" fill="rgba(255, 255, 255, 0.6)"/>
-                        <!-- Right Twin (Digital - Electric Green) -->
-                        <rect x="13.5" y="6" width="8.5" height="11" rx="2" stroke="var(--color-primary)" stroke-width="1.8"/>
-                        <circle cx="16" cy="11" r="0.85" fill="var(--color-primary)"/>
-                        <circle cx="19.5" cy="11" r="0.85" fill="var(--color-primary)"/>
-                    </svg>
-                    Mi Gemelo Digital
+                <a href="#chat" class="nav-link btn-layout-split" style="color: var(--color-primary); font-weight:700; display: inline-flex; align-items: center; gap: 6px;">
+                    Gemelo Digital
                 </a>
-                <a href="#proyectos" class="nav-link">Proyectos</a>
-                <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
-                <a href="#contacto" class="nav-link btn-header">Contacto</a>
+                <a href="#feed" class="nav-link btn-layout-blog">Bitácora</a>
+                <a href="#proyectos-sidebar" class="nav-link">Proyectos</a>
+                <a href="mailto:web@emiliomoreno.com" class="nav-link btn-header">Contacto</a>
             </nav>
 
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
@@ -70,233 +57,139 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
+    <!-- Global Hero -->
+    <section class="unified-hero">
+        <div class="container unified-hero-content">
+            <h1 class="hero-title animate-slide-up">Hola, soy Emilio. Explorando la <span class="gradient-text">tecnología</span>.</h1>
+            <p class="hero-subtitle animate-slide-up-delayed">
+                Este es mi espacio personal. Puedes conversar con mi Gemelo Digital interactivo a la izquierda, o leer mi bitácora con ideas sobre Inteligencia Artificial, sistemas complejos y desarrollo a la derecha.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <main class="cerebro-layout-container container" id="main-layout-wrapper">
         
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="container hero-container">
-                <div class="hero-tag animate-fade-in">Tecnología, Inteligencia Artificial & Ideas</div>
-                <h1 class="hero-title animate-slide-up" id="hero-main-title">
-                    Explorando la tecnología y el <span class="gradient-text">desarrollo de ideas.</span>
-                </h1>
-                <p class="hero-subtitle animate-slide-up-delayed">
-                    Hola, soy Emilio Moreno. Considero la tecnología tanto mi profesión como mi principal afición. Disfruto construyendo soluciones, analizando los avances prácticos de la Inteligencia Artificial y conceptualizando proyectos a través de marcas con potencial.
+        <!-- Left Column: Chatbot + Profile/Projects -->
+        <section class="left-sidebar-column active" id="column-chat">
+            
+            <!-- Chatbot -->
+            <div class="chat-box animate-fade-in" id="chat">
+                <div class="chat-box-header">
+                    <div class="bot-info">
+                        <span class="bot-avatar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 40px; height: 40px; display: block;">
+                                <!-- Connection bridge between twins -->
+                                <line x1="9" y1="11.5" x2="15" y2="11.5" stroke="rgba(255, 255, 255, 0.25)" stroke-dasharray="2 2"/>
+                                <!-- Left Twin (Physical) -->
+                                <rect x="2" y="6" width="8.5" height="11" rx="2" stroke="rgba(255, 255, 255, 0.75)" stroke-width="1.8"/>
+                                <circle cx="4.5" cy="11" r="0.85" fill="rgba(255, 255, 255, 0.75)"/>
+                                <circle cx="8" cy="11" r="0.85" fill="rgba(255, 255, 255, 0.75)"/>
+                                <!-- Right Twin (Digital) -->
+                                <rect x="13.5" y="6" width="8.5" height="11" rx="2" stroke="var(--color-primary)" stroke-width="1.8"/>
+                                <circle cx="16" cy="11" r="0.85" fill="var(--color-primary)"/>
+                                <circle cx="19.5" cy="11" r="0.85" fill="var(--color-primary)"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h2 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
+                                Gemelo Activo
+                                <span class="status-dot" style="display:inline-block; width:8px; height:8px; background-color:#34d399; border-radius:50%; box-shadow:0 0 8px #34d399;"></span>
+                            </h2>
+                            <p style="font-size: 0.75rem; color: var(--text-muted);">Basado en mi conocimiento</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-log" id="chat-log">
+                    <div class="chat-message bot-message">
+                        <div class="message-bubble welcome-bubble">
+                            <p id="bubble-examples">
+                                Pregúntame cosas como: <em>"¿Qué opinas de la IA?"</em> y responderé basándome en mis notas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input area with floating tags -->
+                <div class="chat-input-area">
+                    <div class="floating-tags-container" id="quick-tags-container">
+                        <!-- Quick tags injected here -->
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="chat-input" placeholder="Pregúntame cualquier cosa..." autocomplete="off">
+                        <button id="btn-send" aria-label="Enviar mensaje">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile & Projects Sidebar Block -->
+            <div class="sidebar-block animate-slide-up-delayed" id="proyectos-sidebar">
+                <div class="sidebar-header">
+                    <span class="column-tag">Perfil & Proyectos</span>
+                </div>
+                
+                <p class="sidebar-text">
+                    La tecnología es mi profesión y principal afición. Dedico mi tiempo libre a explorar la <strong>Inteligencia Artificial</strong> y construir herramientas con enfoque pragmático.
                 </p>
-                <div class="hero-actions animate-slide-up-delayed-more">
-                    <a href="cerebro.html" class="btn btn-primary" id="btn-hero-cerebro" style="display: inline-flex; align-items: center; gap: 8px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 22px; height: 22px; display: inline-block; vertical-align: middle;">
-                            <!-- Connection bridge between twins -->
-                            <line x1="9" y1="11.5" x2="15" y2="11.5" stroke="currentColor" stroke-width="1.8" stroke-dasharray="2 2"/>
-                            
-                            <!-- Left Twin (Physical) -->
-                            <rect x="2" y="6" width="8.5" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/>
-                            <circle cx="4.5" cy="11" r="0.85" fill="currentColor"/>
-                            <circle cx="8" cy="11" r="0.85" fill="currentColor"/>
-                            
-                            <!-- Right Twin (Digital) -->
-                            <rect x="13.5" y="6" width="8.5" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/>
-                            <circle cx="16" cy="11" r="0.85" fill="currentColor"/>
-                            <circle cx="19.5" cy="11" r="0.85" fill="currentColor"/>
-                        </svg>
-                        Mi Gemelo Digital
+
+                <div class="sidebar-projects-list">
+                    <a href="https://weigh-up.com" target="_blank" rel="noopener" class="mini-project-card">
+                        <div class="mini-project-icon" style="background: rgba(99, 102, 241, 0.1); color: #818cf8;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="mini-project-info">
+                            <h4>weigh-up.com</h4>
+                            <p>Crecimiento personal y decisiones</p>
+                        </div>
                     </a>
-                    <a href="#proyectos" class="btn btn-secondary" id="btn-hero-projects">Explorar Proyectos</a>
-                    <a href="#contacto" class="btn btn-secondary" id="btn-hero-contact">Escribirme</a>
+
+                    <a href="https://whatstime.net" target="_blank" rel="noopener" class="mini-project-card">
+                        <div class="mini-project-icon" style="background: rgba(6, 182, 212, 0.1); color: #22d3ee;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div class="mini-project-info">
+                            <h4>whatstime.net</h4>
+                            <p>Desarrollo mental y tiempo</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="sidebar-social">
+                    <a href="https://github.com/emochin" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/emiliomorenochinchilla" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
                 </div>
             </div>
-            <div class="scroll-indicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-            </div>
+
         </section>
 
-        <!-- Dominios / Projects Section -->
-        <section id="proyectos" class="projects-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Portafolio</span>
-                    <h2 class="section-title">Proyectos & Dominios</h2>
-                    <p class="section-desc">Algunos de los conceptos y nombres que mantengo registrados. Están reservados para futuros desarrollos personales o abiertos a propuestas interesantes que encajen con su propósito.</p>
-                </div>
-
-                <div class="projects-grid">
-                    <!-- Project 1: Weigh-up.com -->
-                    <article class="project-card" id="card-weigh-up">
-                        <div class="project-glow" style="--glow-color: rgba(99, 102, 241, 0.15);"></div>
-                        <div class="project-header">
-                            <span class="project-category">Crecimiento Personal</span>
-                            <span class="project-status status-active">En cartera</span>
-                        </div>
-                        <div class="project-image">
-                            <img src="img/reflection-decisiones.png" alt="Weigh-up.com visual concept" loading="lazy">
-                        </div>
-                        <h3 class="project-card-title">weigh-up.com</h3>
-                        <p class="project-card-desc">
-                            Una marca conceptualizada en torno al crecimiento personal y la toma de decisiones consciente. Pensado para herramientas o diarios digitales que ayuden a sopesar opciones, reflexionar sobre prioridades y evaluar el progreso individual de manera equilibrada.
-                        </p>
-
-                        <a href="https://weigh-up.com" target="_blank" rel="noopener" class="project-link" id="link-weigh-up">
-                            Visitar weigh-up.com
-                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </article>
-
-                    <!-- Project 2: Whatstime.net -->
-                    <article class="project-card" id="card-whatstime">
-                        <div class="project-glow" style="--glow-color: rgba(6, 182, 212, 0.15);"></div>
-                        <div class="project-header">
-                            <span class="project-category">Desarrollo Mental &amp; Tiempo</span>
-                            <span class="project-status status-active">En cartera</span>
-                        </div>
-                        <div class="project-image">
-                            <img src="img/reflection-tiempo.png" alt="Whatstime.net visual concept" loading="lazy">
-                        </div>
-                        <h3 class="project-card-title">whatstime.net</h3>
-                        <p class="project-card-desc">
-                            Concepto orientado al enfoque, el crecimiento mental y el aprovechamiento consciente del tiempo. Ideado para albergar herramientas de mindfulness, diarios de concentración cognitiva o planificadores diarios que ayuden a maximizar la atención.
-                        </p>
-
-                        <a href="https://whatstime.net" target="_blank" rel="noopener" class="project-link" id="link-whatstime">
-                            Visitar whatstime.net
-                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </article>
-
-                    <!-- Project 3: emiliomoreno.com / .es -->
-                    <article class="project-card" id="card-emiliomoreno">
-                        <div class="project-glow" style="--glow-color: rgba(168, 85, 247, 0.15);"></div>
-                        <div class="project-header">
-                            <span class="project-category">Identidad Personal</span>
-                            <span class="project-status status-active">Activo</span>
-                        </div>
-
-                        <div class="project-image">
-                            <img src="img/project-emiliomoreno.png" alt="Emiliomoreno.com visual concept" loading="lazy">
-                        </div>
-                        <h3 class="project-card-title">emiliomoreno.com</h3>
-                        <p class="project-card-desc">
-                            Mi punto de encuentro digital unificado. Centralizo mis contenidos y proyectos bajo el dominio global <strong>emiliomoreno.com</strong>, manteniendo el dominio local <strong>emiliomoreno.es</strong> redirigido automáticamente.
-                        </p>
-
-                        <!-- Domain Connection Pill -->
-                        <div style="margin-bottom: 1.5rem; position: relative; z-index: 5;">
-                            <div class="domain-connection-pill">
-                                <span class="domain-pill-text domain-pill-es">emiliomoreno.es</span>
-                                <span class="domain-pill-arrow">➔</span>
-                                <span class="domain-pill-text domain-pill-com">emiliomoreno.com</span>
-                            </div>
-                        </div>
-
-                        <a href="#sobre-mi" class="project-link" id="link-emiliomoreno-self">
-                            Más sobre mí
-                            <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="sobre-mi" class="about-section">
-            <div class="container about-container">
-                <div class="about-content">
-                    <span class="section-tag">Perfil</span>
-                    <h2 class="section-title">Sobre Mí & Intereses</h2>
-                    <p class="about-text">
-                        Para mí, la tecnología no es solo un trabajo, sino también una afición. Dedico mi tiempo profesional a la creación de productos y soluciones digitales, pero también paso mi tiempo libre experimentando con herramientas, explorando nuevos lenguajes y construyendo ideas de forma independiente.
-                    </p>
-                    <p class="about-text">
-                        Me entusiasma de manera especial el desarrollo actual de la Inteligencia Artificial. Lejos de la visión superficial o del entusiasmo ingenuo por la moda pasajera, me interesa su aplicación práctica: cómo la IA integrada con criterio puede redefinir la arquitectura del software, automatizar tareas complejas de forma real y aportar un valor sustancial a las experiencias de usuario modernas.
-                    </p>
+        <!-- Right Column: Blog Feed (Bento Box Grid) -->
+        <section class="feed-column active" id="column-feed">
+            <div class="column-header">
+                <div class="column-header-row">
+                    <div>
+                        <span class="column-tag">Bitácora</span>
+                        <h1 class="column-title">Reflexiones <span class="serif-text">& Notas</span></h1>
+                    </div>
                     
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <span class="skill-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                                    <rect x="9" y="9" width="6" height="6"></rect>
-                                    <line x1="9" y1="1" x2="9" y2="4"></line>
-                                    <line x1="15" y1="1" x2="15" y2="4"></line>
-                                    <line x1="9" y1="20" x2="9" y2="23"></line>
-                                    <line x1="15" y1="20" x2="15" y2="23"></line>
-                                    <line x1="20" y1="9" x2="23" y2="9"></line>
-                                    <line x1="20" y1="15" x2="23" y2="15"></line>
-                                    <line x1="1" y1="9" x2="4" y2="9"></line>
-                                    <line x1="1" y1="15" x2="4" y2="15"></line>
-                                </svg>
-                            </span>
-                            <div>
-                                <h4>Inteligencia Artificial</h4>
-                                <p>Interés y estudio práctico de integraciones con LLMs, automatización y agentes inteligentes.</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                            </span>
-                            <div>
-                                <h4>Proyectos e Ideas</h4>
-                                <p>Conceptualización de marcas y almacenamiento de nombres con potencial tecnológico.</p>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                            </span>
-                            <div>
-                                <h4>Charlas & Propuestas</h4>
-                                <p>Abierto a dialogar sobre desarrollo, IA o propuestas específicas sobre mis dominios.</p>
-                            </div>
-                        </div>
+                    <div class="layout-switcher mobile-only" style="display:none;">
+                        <!-- Controlled via JS in mobile view -->
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contacto" class="contact-section">
-            <div class="container">
-                <div class="contact-card">
-                    <div class="contact-glow"></div>
-                    <div class="contact-content">
-                        <h2 class="contact-title">¿Hablamos?</h2>
-                        <p class="contact-desc">
-                            Si compartes mi interés por la tecnología y la Inteligencia Artificial, tienes una propuesta de colaboración, o estás interesado en alguno de mis dominios, ponte en contacto conmigo.
-                        </p>
-                        <div class="contact-actions">
-                            <a href="mailto:web@emiliomoreno.com" class="btn btn-primary" id="link-email">
-                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                                Enviar Correo Electrónico
-                            </a>
-                            <div class="social-links">
-                                <a href="https://github.com/emochin" target="_blank" rel="noopener" aria-label="GitHub" id="social-github">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                                <a href="https://linkedin.com/in/emiliomorenochinchilla" target="_blank" rel="noopener" aria-label="LinkedIn" id="social-linkedin">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
+            <!-- Dynamic Blog Feed Container (Bento Grid) -->
+            <div class="reflections-feed-bento" id="reflections-feed-list">
+                <!-- Dynamically loaded via JS -->
             </div>
         </section>
 
@@ -310,11 +203,8 @@
                     <span class="logo-dot"></span>emiliomoreno<span class="logo-ext">.com</span>
                 </a>
                 <nav class="footer-nav-links">
-                    <a href="index.html">Inicio</a>
-                    <a href="cerebro.html">Mi Gemelo Digital</a>
-                    <a href="index.html#proyectos">Proyectos</a>
-                    <a href="index.html#sobre-mi">Sobre Mí</a>
-                    <a href="index.html#contacto">Contacto</a>
+                    <a href="#chat">Gemelo Digital</a>
+                    <a href="mailto:web@emiliomoreno.com">Contacto</a>
                 </nav>
             </div>
             <div class="footer-bottom-row">
@@ -329,19 +219,56 @@
         </div>
     </footer>
 
+    <!-- Floating Chat Button (Mobile FAB) -->
+    <button class="floating-chat-fab" id="floating-chat-fab" aria-label="Preguntar al Gemelo Digital">
+        <span class="fab-pulse"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="fab-icon">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </button>
 
+    <!-- Reflection Detail Modal -->
+    <div class="reflection-modal-overlay" id="reflection-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="reflection-modal" id="reflection-modal">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="modal-image-wrap" id="modal-image-wrap"></div>
+            <div class="modal-body">
+                <div class="modal-meta" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="modal-date" id="modal-date"></span>
+                        <span class="modal-tag" id="modal-tag"></span>
+                    </div>
+                    <button class="share-card-btn" id="modal-share-btn" title="Copiar enlace directo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="share-icon-svg"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                    </button>
+                </div>
+                <h2 class="modal-title" id="modal-title"></h2>
+                <div class="modal-text" id="modal-text" style="max-width: 70ch; font-size:1.05rem; line-height:1.7;"></div>
+                <a class="modal-source-link" id="modal-source-link" target="_blank" rel="noopener"></a>
+                
+                <div class="modal-nav-buttons">
+                    <button class="modal-nav-btn" id="modal-prev-btn" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg><span>Anterior</span>
+                    </button>
+                    <button class="modal-nav-btn" id="modal-next-btn" aria-label="Siguiente">
+                        <span>Siguiente</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Toast de Redirección -->
+    <!-- Redirection Toast -->
     <div id="domain-toast" class="toast-notification hidden">
         <div class="toast-content">
-            <div class="toast-icon-wrapper">
-                <span class="toast-icon">🔗</span>
-            </div>
+            <span class="toast-icon">🔗</span>
             <div class="toast-body">
                 <h4>Dominio Redirigido</h4>
-                <p>Has accedido a través de <strong>emiliomoreno.es</strong>, redirigido automáticamente aquí.</p>
+                <p>Has accedido a través de <strong>emiliomoreno.es</strong>.</p>
             </div>
-            <button id="toast-close" class="toast-close" aria-label="Cerrar">&times;</button>
+            <button id="toast-close" class="toast-close">&times;</button>
         </div>
     </div>
 
