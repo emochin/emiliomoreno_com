@@ -1,5 +1,17 @@
 [
     {
+        "id": "mapa-filosofia-ia",
+        "date": "2026-09-21",
+        "title": "Filosofía, lenguaje y el auge de la Inteligencia Artificial",
+        "tag": "#Filosofía",
+        "image": "img/reflection-filosofia.png",
+        "text": "Escuchando el episodio 'El mapa de la filosofía actual' del podcast El Abrazo del Oso, resulta fascinante establecer una conexión directa entre las últimas corrientes filosóficas y los avances en el tratamiento del lenguaje para la Inteligencia Artificial. La filosofía contemporánea, alejándose de los grandes sistemas del pasado, pone un foco intenso en el lenguaje, la interpretación y la incertidumbre humana. Esto nos proporciona un marco extraordinario para entender a los grandes modelos de lenguaje (LLMs): sistemas que no operan desde una 'consciencia' o razón abstracta, sino desde la pura fluidez sintáctica y la inmensa red de significados de nuestra cultura. Comprender estas corrientes filosóficas nos ayuda a desmitificar la IA, recordándonos que la magia de estos modelos reside en su capacidad sin precedentes para simular y dominar el lenguaje, el cristal a través del cual interpretamos nuestro mundo.",
+        "source": "El Abrazo del Oso (iVoox)",
+        "sourceUrl": "https://go.ivoox.com/rf/180751211",
+        "link": "https://go.ivoox.com/rf/180751211",
+        "linkLabel": "Escuchar en iVoox"
+    },
+    {
         "id": "hal-conciencia-2001",
         "date": "2026-07-29",
         "title": "¿HAL es auto-consciente?",
