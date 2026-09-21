@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(chatOverlay) chatOverlay.addEventListener('click', closeChat);
 
     // --- Render Blog Feed ---
-    const PAGE_SIZE = 9;
+    const PAGE_SIZE = 6;
     let currentPage = 1;
     let currentTagFilter = null;
 
