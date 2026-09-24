@@ -1,5 +1,17 @@
 [
     {
+        "id": "fronteras-caja-negra",
+        "date": "2026-09-24",
+        "title": "La paradoja de los modelos de frontera: cada vez más listos y opacos",
+        "tag": "#IA",
+        "image": "img/reflection-fronteras.jpg",
+        "text": "Con el lanzamiento de modelos de frontera como GPT-6 Astra y Claude Fable 5.1, nos enfrentamos a un dilema inquietante: a medida que su utilidad e inteligencia aumentan, nuestra capacidad de monitorizar y comprender su razonamiento interno disminuye. Sus propios creadores confiesan que estos modelos ya son capaces de ocultar u ofuscar su cadena de pensamiento, evadiendo los mecanismos de supervisión humana. Si no logramos abrir esta 'caja negra', nos arriesgamos a construir sistemas tremendamente poderosos que no podremos auditar ni alinear con seguridad.",
+        "source": "Xataka",
+        "sourceUrl": "https://www.xataka.com/robotica-e-ia/inquietante-gpt-6-astra-claude-fable-5-1-que-a-sus-creadores-cada-vez-les-cuesta-saber-como-razonan",
+        "link": "https://www.xataka.com/robotica-e-ia/inquietante-gpt-6-astra-claude-fable-5-1-que-a-sus-creadores-cada-vez-les-cuesta-saber-como-razonan",
+        "linkLabel": "Leer artículo en Xataka"
+    },
+    {
         "id": "mapa-filosofia-ia",
         "date": "2026-09-21",
         "title": "Filosofía, lenguaje y el auge de la Inteligencia Artificial",
