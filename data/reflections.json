@@ -1,5 +1,17 @@
 [
     {
+        "id": "altman-riesgo-recompensa",
+        "date": "2026-10-07",
+        "title": "Sam Altman: El frágil equilibrio entre riesgo y recompensa en la IA",
+        "tag": "#IA",
+        "image": "img/reflection-altman-risk.jpg",
+        "text": "El debate sobre los riesgos existenciales frente a los beneficios transformadores de la inteligencia artificial sigue intensificándose. Nos encontramos en un punto de inflexión donde la aceleración tecnológica promete recompensas inmensas (como avances médicos y científicos), pero también exige medidas de seguridad sin precedentes frente a los riesgos. La gran incógnita no es si la tecnología seguirá avanzando rápidamente, sino si seremos capaces de alinear este progreso con la seguridad humana de forma efectiva y responsable. El verdadero reto para los líderes tecnológicos como Sam Altman radica en equilibrar el ritmo de la innovación con las precauciones necesarias.",
+        "source": "Reuters",
+        "sourceUrl": "https://www.youtube.com/watch?v=E1LvcHlf8UQ",
+        "link": "https://www.youtube.com/watch?v=E1LvcHlf8UQ",
+        "linkLabel": "Ver vídeo en YouTube"
+    },
+    {
         "id": "fronteras-caja-negra",
         "date": "2026-09-24",
         "title": "La paradoja de los modelos de frontera: cada vez más listos y opacos",
