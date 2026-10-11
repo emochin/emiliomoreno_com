@@ -1,5 +1,17 @@
 [
     {
+        "id": "ia-privada-local",
+        "date": "2026-10-11",
+        "title": "IA privada y local: el poder de no ceder nuestros datos",
+        "tag": "#IA",
+        "image": "img/reflection-ia-privada.jpg",
+        "text": "Aunque este análisis tiene ya un tiempo, sigue siendo una realidad que muchas empresas y profesionales aún desconocen: no es obligatorio enviar datos confidenciales o código propietario a la nube de terceros para beneficiarse de la inteligencia artificial. Frente a las prohibiciones corporativas de herramientas como ChatGPT por motivos de seguridad o fuga de información, la alternativa natural no es frenar la innovación, sino adoptar modelos locales y privados. Con la rápida evolución del hardware y herramientas accesibles de ejecución local, hoy es completamente viable desplegar modelos altamente capaces en nuestros propios equipos o servidores, manteniendo la soberanía absoluta de los datos sin renunciar a la productividad.",
+        "source": "Inteligencia Artificial (iVoox)",
+        "sourceUrl": "https://go.ivoox.com/rf/175699039",
+        "link": "https://go.ivoox.com/rf/175699039",
+        "linkLabel": "Escuchar en iVoox"
+    },
+    {
         "id": "altman-riesgo-recompensa",
         "date": "2026-10-07",
         "title": "Sam Altman: El frágil equilibrio entre riesgo y recompensa en la IA",
