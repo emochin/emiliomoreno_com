@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 acc[current.id] = current;
                 return acc;
             }, {});
+
+            // Check if tag filter is passed in URL query
+            const urlParams = new URLSearchParams(window.location.search);
+            const tagParam = urlParams.get('tag');
+            if (tagParam) {
+                currentTagFilter = tagParam;
+            }
             
             renderBlogFeed();
             renderSuggestions();
@@ -65,20 +72,45 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     let currentTagFilter = null;
 
+    function isMatchingTag(noteTag, filterTag) {
+        if (!noteTag || !filterTag) return false;
+        const cleanNoteTag = noteTag.trim().toLowerCase().replace(/^#/, '');
+        const cleanFilterTag = filterTag.trim().toLowerCase().replace(/^#/, '');
+        return cleanNoteTag === cleanFilterTag;
+    }
+
     document.addEventListener('click', (e) => {
-        const tagElement = e.target.closest('.blog-card-tag');
-        if (tagElement && !e.target.closest('#reflection-modal')) {
+        const tagElement = e.target.closest('.blog-card-tag, #modal-tag, .modal-tag');
+        if (tagElement) {
             e.stopPropagation();
             const tagText = tagElement.textContent.trim();
+            if (e.target.closest('#reflection-modal')) {
+                closeModal();
+            }
             filterByTag(tagText);
         }
     });
 
     function filterByTag(tag) {
+        if (!tag) return;
         currentTagFilter = tag;
+        const isBlogPage = document.getElementById('archive-section') !== null;
+        if (!isBlogPage) {
+            // Si estamos en la portada, navegar al archivo completo con el filtro de etiqueta
+            window.location.href = `blog.html?tag=${encodeURIComponent(tag)}`;
+            return;
+        }
+        history.pushState(null, '', `?tag=${encodeURIComponent(tag)}`);
         renderBlogFeed();
-        document.getElementById('feed').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const feedEl = document.getElementById('feed');
+        if (feedEl) feedEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    window.addEventListener('popstate', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        currentTagFilter = urlParams.get('tag') || null;
+        renderBlogFeed();
+    });
 
     function buildCardHTML(note) {
         const targetUrl = note.sourceUrl || note.link;
@@ -103,18 +135,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if(blogHeroContainer) blogHeroContainer.innerHTML = '';
         if(reflectionsFeedList) reflectionsFeedList.innerHTML = '';
 
+        // Limpiar barras de filtro previas para evitar duplicados
+        document.querySelectorAll('.filter-status-bar').forEach(el => el.remove());
+
         const sortedReflections = [...reflections].sort((a, b) => new Date(b.date) - new Date(a.date));
         let displayReflections = sortedReflections;
         const isBlogPage = document.getElementById('archive-section') !== null;
 
         if (currentTagFilter) {
-            displayReflections = sortedReflections.filter(note => note.tag.toLowerCase() === currentTagFilter.toLowerCase());
+            displayReflections = sortedReflections.filter(note => isMatchingTag(note.tag, currentTagFilter));
+            const displayTag = currentTagFilter.startsWith('#') ? currentTagFilter : `#${currentTagFilter}`;
             const filterBar = document.createElement('div');
             filterBar.className = 'filter-status-bar';
             filterBar.style.gridColumn = '1 / -1';
             filterBar.style.marginBottom = '2rem';
             filterBar.innerHTML = `
-                <span>Filtrado por: <strong>${currentTagFilter}</strong> (${displayReflections.length} ${displayReflections.length === 1 ? 'nota' : 'notas'})</span>
+                <span>Filtrado por: <strong>${displayTag}</strong> (${displayReflections.length} ${displayReflections.length === 1 ? 'nota' : 'notas'})</span>
                 <button class="clear-filter-btn" id="btn-clear-filter">Ver todas</button>
             `;
             const containerToUse = isBlogPage ? reflectionsFeedList : blogHeroContainer;
@@ -123,6 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 filterBar.querySelector('#btn-clear-filter').addEventListener('click', () => {
                     currentTagFilter = null;
                     filterBar.remove();
+                    if (isBlogPage) {
+                        history.pushState(null, '', window.location.pathname);
+                    }
                     renderBlogFeed();
                 });
             }
@@ -201,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function getSortedReflections() {
         const sorted = [...reflections].sort((a, b) => new Date(b.date) - new Date(a.date));
         if (currentTagFilter) {
-            return sorted.filter(note => note.tag.toLowerCase() === currentTagFilter.toLowerCase());
+            return sorted.filter(note => isMatchingTag(note.tag, currentTagFilter));
         }
         return sorted;
     }
@@ -218,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         modalDate.textContent = formatDate(note.date);
         modalTag.textContent  = note.tag;
+        modalTag.title        = 'Filtrar por esta etiqueta';
         modalTitle.textContent = note.title;
         modalText.innerHTML  = note.text;
         modalImageWrap.innerHTML = note.image ? `<img src="${note.image}" alt="${note.title}">` : '';
